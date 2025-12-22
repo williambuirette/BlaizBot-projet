@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "targetPages": null,
   "note": "Pas de limite de pages pour V1 - on verra à la fin",
-  "lastUpdate": "2025-12-22",
+  "lastUpdate": "22.12.2025",
   "chapters": [
     {
       "id": "00",
@@ -25,7 +25,7 @@
       "title": "Organisation ChatGPT",
       "file": "02-organisation-chatgpt.md",
       "status": "done",
-      "completedAt": "2025-12-22",
+      "completedAt": "22.09.2025",
       "sections": ["Projet ChatGPT", "Instructions", "Conversations"],
       "note": "Documenté avec captures réelles du projet Blaiz'bot"
     },
@@ -48,7 +48,7 @@
       "title": "Wireframe & UX",
       "file": "05-wireframe-ux.md",
       "status": "done",
-      "completedAt": "2025-01-15",
+      "completedAt": "10.11.2025",
       "sections": ["Design System", "Dashboards", "Flows"],
       "linkedRepo": "blaizbot-wireframe"
     },
@@ -57,7 +57,7 @@
       "title": "Architecture",
       "file": "06-architecture.md",
       "status": "done",
-      "completedAt": "2025-01-18",
+      "completedAt": "25.11.2025",
       "sections": ["Structure", "Prisma", "API", "IA"],
       "linkedRepo": "BlaizBot-V1"
     },
@@ -66,7 +66,7 @@
       "title": "Prompts & Agents",
       "file": "07-prompts-agents.md",
       "status": "done",
-      "completedAt": "2025-01-18",
+      "completedAt": "25.11.2025",
       "sections": ["Stack prompts", "8 agents", "Règles"],
       "linkedRepo": "Vibe-Coding"
     },

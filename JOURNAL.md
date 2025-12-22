@@ -32,7 +32,88 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 ## Sessions
 
-### 2025-01-15 - Création du wireframe (RÉTRO)
+### 15.09.2025 - Brainstorming initial (RÉTRO)
+
+**Durée** : 3h (estimé)
+**Chapitres touchés** : 01-idee-problematique.md
+**Résumé** : Définition de l'idée du projet et de la problématique
+
+**Réalisations** :
+- Identification du besoin : plateforme éducative avec IA
+- Définition de la cible : collégiens et enseignants
+- Ébauche des fonctionnalités principales
+
+**Preuves ajoutées** :
+- [ ] Notes de brainstorming à retrouver
+
+**Prochaines étapes** :
+- Créer le projet ChatGPT dédié
+- Formaliser les spécifications
+
+---
+
+### 22.09.2025 - Organisation ChatGPT (RÉTRO)
+
+**Durée** : 2h (estimé)
+**Chapitres touchés** : 02-organisation-chatgpt.md
+**Résumé** : Création du projet ChatGPT "Blaiz'bot" avec prompt système
+
+**Réalisations** :
+- Projet ChatGPT créé avec 7 conversations
+- Prompt système défini
+- Base de connaissance uploadée
+
+**Preuves ajoutées** :
+- [x] `Screenshot_projet_chatgpt.png` - Vue d'ensemble 7 conversations
+- [x] `Screenshot_prompt_system.png` - Prompt système Vibe Coding
+
+**Prochaines étapes** :
+- Documenter les choix d'outils
+- Commencer le PRD
+
+---
+
+### 05.10.2025 - Choix des outils (RÉTRO)
+
+**Durée** : 4h (estimé)
+**Chapitres touchés** : 03-choix-outils.md
+**Résumé** : Recherche et sélection de la stack technique
+
+**Réalisations** :
+- Choix de Next.js 15 + TypeScript
+- Sélection Supabase pour la BDD
+- Définition du stack IA (OpenAI, Vercel AI SDK)
+
+**Preuves ajoutées** :
+- [ ] Comparatifs à documenter
+
+**Prochaines étapes** :
+- Rédiger le PRD
+- Créer le wireframe
+
+---
+
+### 20.10.2025 - Spécifications PRD (RÉTRO)
+
+**Durée** : 5h (estimé)
+**Chapitres touchés** : 04-specifications-prd.md
+**Résumé** : Rédaction du PRD complet avec user stories
+
+**Réalisations** :
+- PRD structuré avec méthode MoSCoW
+- User stories pour les 3 rôles
+- Critères d'acceptation définis
+
+**Preuves ajoutées** :
+- [ ] PRD complet dans documentation
+
+**Prochaines étapes** :
+- Créer le wireframe interactif
+- Valider l'UX
+
+---
+
+### 10.11.2025 - Création du wireframe (RÉTRO)
 
 **Durée** : 11h (estimé)
 **Chapitres touchés** : 05-wireframe-ux.md
@@ -51,11 +132,11 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 **Prochaines étapes** :
 - Documenter le processus de création
-- Prendre les captures d'écran
+- Définir l'architecture technique
 
 ---
 
-### 2025-01-18 - Architecture et agents
+### 25.11.2025 - Architecture et agents (RÉTRO)
 
 **Durée** : 8h (estimé)
 **Chapitres touchés** : 06-architecture.md, 07-prompts-agents.md
@@ -78,7 +159,7 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 ---
 
-### 2025-12-22 - Restructuration exposé
+### 15.12.2025 - Restructuration exposé
 
 **Durée** : 2h
 **Chapitres touchés** : Tous (00-12)
@@ -103,7 +184,7 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 ---
 
-### 2025-12-22 - Documentation ChatGPT + Plan 10 phases
+### 18.12.2025 - Documentation ChatGPT + Plan 10 phases
 
 **Durée** : 1h30
 **Chapitres touchés** : 02-organisation-chatgpt.md, README
@@ -136,7 +217,7 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 ---
 
-### 2025-12-22 - Restructuration TODO modulaire
+### 20.12.2025 - Restructuration TODO modulaire
 
 **Durée** : 1h
 **Chapitres touchés** : 08-developpement.md
@@ -182,10 +263,10 @@ Ces sessions passées doivent être documentées a posteriori :
 
 | Date estimée | Session | Chapitre | Priorité | Statut |
 | :--- | :--- | :--- | :--- | :--- |
-| Août 2025 | Projet ChatGPT créé | 02 | 🔴 Haute | ✅ Done |
-| Mi-décembre | Brainstorming initial | 01 | 🟡 Moyenne | 🔴 À faire |
-| Début janvier | Choix de la stack | 03 | 🟡 Moyenne | 🔴 À faire |
-| Janvier | User stories | 04 | 🟡 Moyenne | 🔴 À faire |
+| 15.09.2025 | Brainstorming initial | 01 | 🟡 Moyenne | ✅ Done |
+| 22.09.2025 | Projet ChatGPT créé | 02 | 🔴 Haute | ✅ Done |
+| 05.10.2025 | Choix de la stack | 03 | 🟡 Moyenne | ✅ Done |
+| 20.10.2025 | User stories | 04 | 🟡 Moyenne | ✅ Done |
 
 ---
 
@@ -193,10 +274,10 @@ Ces sessions passées doivent être documentées a posteriori :
 
 | Métrique | Valeur | Dernière MAJ |
 | :--- | :--- | :--- |
-| Heures totales | ~23.5h | 2025-12-22 |
-| Lignes wireframe | 6,244 | 2025-01-15 |
+| Heures totales | ~23.5h | 22.12.2025 |
+| Lignes wireframe | 6,244 | 10.11.2025 |
 | Lignes production | 0 | - |
-| Chapitres complétés | 4/13 | 2025-12-22 |
-| Captures réalisées | 5 | 2025-12-22 |
-| Phases planifiées | 10 | 2025-12-22 |
-| Fichiers todo/ | 13 | 2025-12-22 |
+| Chapitres complétés | 4/13 | 22.12.2025 |
+| Captures réalisées | 5 | 22.12.2025 |
+| Phases planifiées | 10 | 22.12.2025 |
+| Fichiers todo/ | 13 | 22.12.2025 |
