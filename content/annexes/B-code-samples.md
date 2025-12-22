@@ -1,6 +1,50 @@
-# Annexe B - Extraits de Code
+# Annexe B - Extraits de Code & Journal des Prompts
 
-> Échantillons de code représentatifs du projet, commentés et expliqués.
+> Échantillons de code représentatifs et documentation des prompts utilisés.
+
+---
+
+## B.0 Journal des Prompts (Best-of)
+
+Cette section présente les **meilleurs exemples** de prompts et rétro-prompts extraits de [`BlaizBot-V1/PROMPTS.md`](https://github.com/williambuirette/BlaizBot-V1/blob/master/PROMPTS.md).
+
+### Workflow utilisé
+
+```
+1. Prompt initial    → Ce que j'écris spontanément
+2. Itérations        → Corrections demandées (objectif : < 3)
+3. Résultat validé   → Code fonctionnel
+4. Rétro-prompt      → Le prompt "parfait" que j'aurais dû écrire
+5. Leçons apprises   → Ce que je retiens
+```
+
+### Exemple type (à compléter pendant le développement)
+
+**Tâche** : Créer le composant Sidebar
+
+**Prompt initial** :
+```
+Fais-moi une sidebar pour le dashboard
+```
+
+**Problème** : Trop vague, résultat incohérent avec le design system
+
+**Rétro-prompt** ✨ :
+```
+Crée un composant Sidebar.tsx en TypeScript/React :
+- Props : { role: 'student' | 'teacher' | 'admin', currentPath: string }
+- Items de navigation selon le rôle (voir wireframe)
+- Style : Tailwind, bg-slate-900, w-64, fixed left
+- État actif sur l'item correspondant à currentPath
+- Icônes Lucide React
+- < 200 lignes
+```
+
+**Leçon** : Toujours préciser le typage des props, le style attendu, et la limite de lignes.
+
+---
+
+*Les meilleurs exemples seront ajoutés au fil du développement.*
 
 ---
 
