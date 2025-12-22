@@ -4,21 +4,100 @@
 
 ---
 
-## B.0 Journal des Prompts (Best-of)
+## B.0 Journal des Prompts - Intérêt Académique
 
-Cette section présente les **meilleurs exemples** de prompts et rétro-prompts extraits de [`BlaizBot-V1/PROMPTS.md`](https://github.com/williambuirette/BlaizBot-V1/blob/master/PROMPTS.md).
+### Pourquoi documenter les prompts ?
 
-### Workflow utilisé
+Le **Journal des Prompts** est un outil d'apprentissage qui permet de :
+
+| Objectif | Description |
+| :--- | :--- |
+| **Traçabilité** | Conserver l'historique de chaque interaction IA |
+| **Amélioration** | Identifier les patterns qui fonctionnent |
+| **Réflexivité** | Comprendre comment l'IA "raisonne" |
+| **Reproductibilité** | Pouvoir reproduire un résultat |
+
+### Structure du journal
+
+Le journal est organisé en **10 fichiers** (1 par phase de développement) :
 
 ```
-1. Prompt initial    → Ce que j'écris spontanément
-2. Itérations        → Corrections demandées (objectif : < 3)
-3. Résultat validé   → Code fonctionnel
-4. Rétro-prompt      → Le prompt "parfait" que j'aurais dû écrire
-5. Leçons apprises   → Ce que je retiens
+BlaizBot-V1/
+├── PROMPTS.md                    ← Index + statistiques globales
+└── prompts/
+    ├── phase-01-init.md          ← Initialisation projet
+    ├── phase-02-layout.md        ← Layout & navigation
+    ├── phase-03-slice.md         ← Vertical slice (démo mock)
+    ├── phase-04-database.md      ← Base de données
+    ├── phase-05-auth.md          ← Authentification
+    ├── phase-06-admin.md         ← Interface Admin
+    ├── phase-07-teacher.md       ← Interface Professeur
+    ├── phase-08-student.md       ← Interface Élève
+    ├── phase-09-ia.md            ← Intégration IA
+    └── phase-10-demo.md          ← Stabilisation & démo
 ```
 
-### Exemple type (à compléter pendant le développement)
+📎 [Voir le journal complet sur GitHub](https://github.com/williambuirette/BlaizBot-V1/blob/master/PROMPTS.md)
+
+### Workflow par tâche
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  1. PROMPT INITIAL                                          │
+│     → Écrire son intention en langage naturel               │
+│     → Documenter tel quel dans le journal                   │
+└─────────────────────┬───────────────────────────────────────┘
+                      ▼
+┌─────────────────────────────────────────────────────────────┐
+│  2. ITÉRATIONS                                              │
+│     → Tester le résultat généré                             │
+│     → Noter chaque correction demandée                      │
+│     → Objectif : < 3 itérations                             │
+└─────────────────────┬───────────────────────────────────────┘
+                      ▼
+┌─────────────────────────────────────────────────────────────┐
+│  3. VALIDATION                                              │
+│     → Code fonctionne ✅                                    │
+│     → Respecte les contraintes (< 350 lignes) ✅            │
+└─────────────────────┬───────────────────────────────────────┘
+                      ▼
+┌─────────────────────────────────────────────────────────────┐
+│  4. RÉTRO-PROMPT                                            │
+│     → Demander : "Quel prompt aurais-je dû écrire ?"        │
+│     → L'IA génère le prompt "parfait"                       │
+└─────────────────────┬───────────────────────────────────────┘
+                      ▼
+┌─────────────────────────────────────────────────────────────┐
+│  5. LEÇONS APPRISES                                         │
+│     → Identifier ce qui manquait au prompt initial          │
+│     → Enrichir sa bibliothèque de patterns                  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Métriques suivies
+
+| Métrique | Description | Objectif |
+| :--- | :--- | :--- |
+| **Itérations** | Nombre de corrections par tâche | < 3 |
+| **Taux 1-shot** | % de prompts réussis du premier coup | > 50% |
+| **Temps** | Durée par tâche | Réduction au fil du projet |
+
+### Valeur académique
+
+Ce workflow apporte une **dimension réflexive** au Vibe Coding :
+
+1. **Avant** : On code "à l'instinct" → résultats aléatoires
+2. **Après** : On documente → on comprend → on s'améliore
+
+> "Le rétro-prompt révèle l'écart entre l'intention floue et l'instruction précise."
+
+---
+
+## B.0.1 Exemples de Prompts (Best-of)
+
+*Les meilleurs exemples seront extraits du journal pendant le développement.*
+
+### Exemple type
 
 **Tâche** : Créer le composant Sidebar
 
@@ -41,10 +120,6 @@ Crée un composant Sidebar.tsx en TypeScript/React :
 ```
 
 **Leçon** : Toujours préciser le typage des props, le style attendu, et la limite de lignes.
-
----
-
-*Les meilleurs exemples seront ajoutés au fil du développement.*
 
 ---
 
