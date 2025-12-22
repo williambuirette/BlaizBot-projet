@@ -137,7 +137,7 @@ Le **RAG** permet à l'IA de chercher dans une base de connaissances avant de r�
 
 | Composant | Rôle | Technologie |
 | :--- | :--- | :--- |
-| **Base de connaissances** | Cours, documents PDF | Supabase + pgvector |
+| **Base de connaissances** | Cours, documents PDF | pgvector (Vercel Postgres) |
 | **Embeddings** | Vectorisation du texte | OpenAI text-embedding-3 |
 | **Retrieval** | Recherche sémantique | Similarity search |
 | **Generation** | Réponse augmentée | GPT-4 |

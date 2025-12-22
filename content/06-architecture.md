@@ -43,7 +43,7 @@ En Vibe Coding, l'architecture doit être :
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                       DATABASE                              │
-│                PostgreSQL (Supabase)                        │
+│                Vercel Postgres                        │
 │              Users, Classes, Courses, etc.                  │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -234,7 +234,7 @@ src/app/
 ```
 ┌─────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────┐
 │ Client  │────▶│  API Route  │────▶│   Prisma    │────▶│   DB    │
-│ (React) │     │ /api/...    │     │   Query     │     │ (Supabase)│
+│ (React) │     │ /api/...    │     │   Query     │     │ (Vercel)│
 └─────────┘     └─────────────┘     └─────────────┘     └─────────┘
      │                │                    │                  │
      │◀───────────────│◀───────────────────│◀─────────────────│
@@ -324,7 +324,7 @@ const guardrails = {
 | :--- | :--- | :--- | :--- |
 | ADR-001 | Next.js full-stack | Next + Express séparé | Simplicité, un seul déploiement |
 | ADR-002 | Prisma ORM | Raw SQL, Drizzle | Type-safety, DX excellent |
-| ADR-003 | Supabase | PlanetScale, Neon | Gratuit, auth intégrée |
+| ADR-003 | Vercel Postgres | PlanetScale, Neon | Gratuit, auth intégrée |
 | ADR-004 | Vercel AI SDK | LangChain | Plus simple pour chat |
 | ADR-005 | shadcn/ui | Material UI, Chakra | Personnalisable, léger |
 

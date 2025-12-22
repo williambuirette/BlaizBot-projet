@@ -58,7 +58,7 @@ Critères : moderne, bien documentée, compatible avec l'assistance IA.
 | **Next.js API Routes** | 15.x | Full-stack en un seul projet |
 | **Prisma** | 5.x | ORM type-safe, migrations auto |
 | **PostgreSQL** | 15.x | Robuste, relationnel, gratuit |
-| **Supabase** | - | Hébergement gratuit, auth intégrée |
+| **Vercel Postgres** | - | Hébergement gratuit, auth intégrée |
 
 ### 3.2.3 Authentification
 
@@ -152,7 +152,7 @@ Utilisation des profils de `Vibe-Coding/` :
 | **IDE** | VS Code | Extensions IA, gratuit |
 | **Frontend** | Next.js 15 + Tailwind | Moderne, DX excellent |
 | **Backend** | API Routes + Prisma | Full-stack simplifié |
-| **BDD** | PostgreSQL (Supabase) | Gratuit, robuste |
+| **BDD** | Vercel Postgres (Neon) | Gratuit, robuste |
 | **Auth** | NextAuth.js v5 | Standard industrie |
 | **IA App** | Vercel AI SDK + OpenAI | Streaming, React hooks |
 | **IA Dev** | ChatGPT + Claude + Copilot | Complémentaires |
@@ -173,7 +173,7 @@ Date/heure : [À compléter]
 Étape : 3 - Choix des outils
 Objectif : Définir la stack technique complète
 Prompt utilisé : "Quelle stack pour une app éducative full-stack..."
-Résultat : Stack Next.js + Prisma + Supabase retenue
+Résultat : Stack Next.js + Prisma + Vercel Postgres retenue
 Décision : 3 modèles IA complémentaires (GPT-4, Claude, Copilot)
 Justification : Équilibre modernité / documentation / coût
 ```

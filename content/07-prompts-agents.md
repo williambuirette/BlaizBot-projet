@@ -337,7 +337,7 @@ BlaizBot-V1/prompts/
 ├── phase-01-init.md       # Next.js, TypeScript, Tailwind, shadcn
 ├── phase-02-layout.md     # Sidebar, Header, Layout dashboard
 ├── phase-03-slice.md      # Login mock, dashboards mockés
-├── phase-04-database.md   # Supabase, Prisma, modèles, seed
+├── phase-04-database.md   # Vercel Postgres, Prisma, modèles, seed
 ├── phase-05-auth.md       # NextAuth v5, RBAC, middleware
 ├── phase-06-admin.md      # Admin CRUD (Users, Classes, Subjects)
 ├── phase-07-teacher.md    # Teacher dashboard, cours, messagerie

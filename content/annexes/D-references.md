@@ -22,7 +22,7 @@
 | Ressource | URL |
 | :--- | :--- |
 | **Vercel** | https://vercel.com/docs |
-| **Supabase** | https://supabase.com/docs |
+| **Vercel Postgres** | https://vercel.com/docs/storage/vercel-postgres |
 | **OpenAI API** | https://platform.openai.com/docs |
 | **GitHub Copilot** | https://docs.github.com/copilot |
 

@@ -64,7 +64,7 @@ L'exposé vise à démontrer :
 | Contrainte | Impact |
 | :--- | :--- |
 | Stack imposée (Next.js) | ✅ Respectée |
-| Hébergement gratuit | → Vercel + Supabase |
+| Hébergement gratuit | → Vercel (tout-en-un) |
 | Pas de données sensibles réelles | → Mock data |
 | Temps limité | → MVP priorisé |
 

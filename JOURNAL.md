@@ -81,8 +81,8 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 **Réalisations** :
 - Choix de Next.js 15 + TypeScript
-- Sélection Supabase pour la BDD
-- Définition du stack IA (OpenAI, Vercel AI SDK)
+- Sélection Vercel Postgres pour la BDD
+- Définition du stack IA (OpenAI/Claude/Gemini, Vercel AI SDK)
 
 **Preuves ajoutées** :
 - [ ] Comparatifs à documenter

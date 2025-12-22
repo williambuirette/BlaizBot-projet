@@ -41,7 +41,7 @@
 | **PostgreSQL** | Syst√®me de gestion de base de donn√©es relationnelle |
 | **Prisma** | ORM (Object-Relational Mapping) pour Node.js |
 | **React** | Biblioth√®que JavaScript pour interfaces utilisateur (Meta) |
-| **Supabase** | Plateforme Backend-as-a-Service (BDD + Auth + Storage) |
+| **Vercel Postgres** | Base de donnÈes PostgreSQL hÈbergÈe par Vercel (powered by Neon) |
 | **Tailwind CSS** | Framework CSS utility-first |
 | **TypeScript** | Superset de JavaScript avec typage statique |
 | **Vercel** | Plateforme de d√©ploiement pour applications web |
