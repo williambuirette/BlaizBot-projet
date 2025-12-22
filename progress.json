@@ -1,0 +1,151 @@
+{
+  "title": "Exposé Vibecoding - BlaizBot",
+  "author": "William Buirette",
+  "version": "2.0.0",
+  "targetPages": null,
+  "note": "Pas de limite de pages pour V1 - on verra à la fin",
+  "lastUpdate": "2025-01-20",
+  "chapters": [
+    {
+      "id": "00",
+      "title": "Cadre du travail",
+      "file": "00-cadre-travail.md",
+      "status": "draft",
+      "sections": ["Contexte", "Contraintes", "Livrables", "Timeline"]
+    },
+    {
+      "id": "01",
+      "title": "Idée & Problématique",
+      "file": "01-idee-problematique.md",
+      "status": "draft",
+      "sections": ["Brainstorming", "Personas", "MVP", "MoSCoW"]
+    },
+    {
+      "id": "02",
+      "title": "Organisation ChatGPT",
+      "file": "02-organisation-chatgpt.md",
+      "status": "to-fill",
+      "sections": ["Projet ChatGPT", "Instructions", "Conversations"],
+      "note": "Rétro-documentation à faire"
+    },
+    {
+      "id": "03",
+      "title": "Choix des outils",
+      "file": "03-choix-outils.md",
+      "status": "draft",
+      "sections": ["Stack technique", "3 IA", "Justifications"]
+    },
+    {
+      "id": "04",
+      "title": "Spécifications PRD",
+      "file": "04-specifications-prd.md",
+      "status": "to-fill",
+      "sections": ["User Stories", "Critères", "RGPD"]
+    },
+    {
+      "id": "05",
+      "title": "Wireframe & UX",
+      "file": "05-wireframe-ux.md",
+      "status": "done",
+      "completedAt": "2025-01-15",
+      "sections": ["Design System", "Dashboards", "Flows"],
+      "linkedRepo": "blaizbot-wireframe"
+    },
+    {
+      "id": "06",
+      "title": "Architecture",
+      "file": "06-architecture.md",
+      "status": "done",
+      "completedAt": "2025-01-18",
+      "sections": ["Structure", "Prisma", "API", "IA"],
+      "linkedRepo": "BlaizBot-V1"
+    },
+    {
+      "id": "07",
+      "title": "Prompts & Agents",
+      "file": "07-prompts-agents.md",
+      "status": "done",
+      "completedAt": "2025-01-18",
+      "sections": ["Stack prompts", "8 agents", "Règles"],
+      "linkedRepo": "Vibe-Coding"
+    },
+    {
+      "id": "08",
+      "title": "Développement",
+      "file": "08-developpement.md",
+      "status": "in-progress",
+      "sections": ["Itérations", "Vibe Coding cycle", "Bugs"],
+      "linkedRepo": "BlaizBot-V1"
+    },
+    {
+      "id": "09",
+      "title": "Démo & Stabilisation",
+      "file": "09-demo-stabilisation.md",
+      "status": "not-started",
+      "sections": ["Critères", "Script démo", "Plan B"]
+    },
+    {
+      "id": "10",
+      "title": "Analyse des résultats",
+      "file": "10-analyse-resultats.md",
+      "status": "not-started",
+      "sections": ["Métriques", "Évaluation", "Comparaison"]
+    },
+    {
+      "id": "11",
+      "title": "Limites & Risques",
+      "file": "11-limites-risques.md",
+      "status": "not-started",
+      "sections": ["Limites VC", "Risques", "Dette technique"]
+    },
+    {
+      "id": "12",
+      "title": "Conclusion",
+      "file": "12-conclusion.md",
+      "status": "not-started",
+      "sections": ["Synthèse", "Apprentissages", "Perspectives"]
+    }
+  ],
+  "annexes": [
+    {
+      "id": "A",
+      "title": "Glossaire",
+      "file": "annexes/A-glossaire.md",
+      "status": "draft"
+    },
+    {
+      "id": "B",
+      "title": "Extraits de code",
+      "file": "annexes/B-code-samples.md",
+      "status": "draft"
+    },
+    {
+      "id": "C",
+      "title": "Captures d'écran",
+      "file": "annexes/C-screenshots.md",
+      "status": "in-progress"
+    },
+    {
+      "id": "D",
+      "title": "Références",
+      "file": "annexes/D-references.md",
+      "status": "draft"
+    }
+  ],
+  "metrics": {
+    "brainstormingHours": 4,
+    "wireframeHours": 11,
+    "architectureHours": 8,
+    "developmentHours": 0,
+    "totalLinesGenerated": 6244,
+    "humanInterventions": 0,
+    "aiSuggestions": 0
+  },
+  "statusLegend": {
+    "not-started": "Pas commencé",
+    "draft": "Structure créée, contenu minimal",
+    "to-fill": "À remplir avec rétro-documentation",
+    "in-progress": "En cours de rédaction",
+    "done": "Terminé"
+  }
+}
