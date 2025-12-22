@@ -409,7 +409,93 @@ Après exécution, nous documentons :
 
 > "Le rétro-prompt transforme chaque erreur en connaissance réutilisable."
 
-## 7.7 Preuves
+## 7.7 Écosystème IA Complet
+
+### 7.7.1 Les deux assistants VS Code
+
+Le projet utilise **deux extensions IA complémentaires** dans VS Code :
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    VS CODE - DUAL AI SETUP                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────┐    ┌─────────────────────────┐    │
+│  │    GITHUB COPILOT       │    │     CLAUDE CODE         │    │
+│  ├─────────────────────────┤    ├─────────────────────────┤    │
+│  │                         │    │                         │    │
+│  │  • Autocomplétion       │    │  • Tâches complexes     │    │
+│  │    temps réel           │    │    multi-fichiers       │    │
+│  │                         │    │                         │    │
+│  │  • Agents custom        │    │  • Mode Agent puissant  │    │
+│  │    @Orchestrateur       │    │    (exécute commandes)  │    │
+│  │    @PM, @Standards...   │    │                         │    │
+│  │                         │    │  • Lit CLAUDE.md        │    │
+│  │  • Chat intégré         │    │    automatiquement      │    │
+│  │                         │    │                         │    │
+│  │  Raccourci : Ctrl+I     │    │  Raccourci : Ctrl+Esc   │    │
+│  └─────────────────────────┘    └─────────────────────────┘    │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+| Extension | Usage principal | Fichier de config |
+|:----------|:----------------|:------------------|
+| **GitHub Copilot** | Autocomplétion, agents custom | `.github/agents/*.md` |
+| **Claude Code** | Refactoring, tâches complexes | `CLAUDE.md` à la racine |
+
+### 7.7.2 Fichier CLAUDE.md
+
+Claude Code lit automatiquement un fichier `CLAUDE.md` à la racine du projet :
+
+```markdown
+# Instructions pour Claude Code
+
+## Contexte Projet
+BlaizBot V1 - Plateforme éducative avec IA intégrée.
+Stack : Next.js 15, TypeScript, Tailwind, Prisma
+BDD : Vercel Postgres (Neon)
+
+## Règles CRITIQUES
+1. ≤ 350 lignes par fichier
+2. Zéro secrets en dur
+3. TypeScript strict
+4. Commits atomiques
+
+## Workflow
+1. Consulter todo/INDEX.md
+2. Suivre les tâches micro-détaillées
+3. Tester avec checkpoints
+4. Commit atomique
+```
+
+*Listing 7.4 : Extrait du fichier CLAUDE.md*
+
+### 7.7.3 Quand utiliser quel outil
+
+| Situation | Outil recommandé |
+|:----------|:-----------------|
+| Écrire du code ligne par ligne | GitHub Copilot (Tab) |
+| Question rapide sur une fonction | Copilot Chat (@Standards) |
+| Refactorer un fichier entier | Claude Code (Agent mode) |
+| Créer plusieurs fichiers liés | Claude Code |
+| Vérifier qualité avant commit | Copilot (@Review) |
+| Débugger une erreur complexe | Claude Code |
+
+### 7.7.4 Skills Claude (optionnel)
+
+Pour le travail **hors VS Code** (rédaction exposé, brainstorming), des Skills ont été créés sur claude.ai :
+
+| Skill | Mission |
+|:------|:--------|
+| **Vibecoding Coach** | Décomposer features en micro-tâches |
+| **Rédacteur Exposé** | Rédaction académique |
+| **Code Reviewer** | Review avec checklist |
+| **Prompt Optimizer** | Améliorer les prompts |
+
+*Voir `docs/SKILLS-CLAUDE.md` pour les instructions complètes.*
+
+## 7.8 Preuves
 
 ### 7.7.1 Captures requises
 
@@ -419,8 +505,10 @@ Après exécution, nous documentons :
 - [ ] `07-prompts/exemple-sortie-agent.png`
 - [ ] `07-prompts/prompts-folder-structure.png` - Structure dossier prompts/
 - [ ] `07-prompts/prompt-example.png` - Exemple de prompt optimisé
+- [ ] `07-prompts/claude-code-extension.png` - Extension Claude Code dans VS Code
+- [ ] `07-prompts/claude-md-file.png` - Fichier CLAUDE.md à la racine
 
-### 7.7.2 Journal de bord
+### 7.8.2 Journal de bord
 
 ```
 Date/heure : 20-22 décembre 2025
@@ -431,9 +519,17 @@ Résultat : 8 agents créés avec règles de triage
 Décision : Agent @Orchestrateur comme point d'entrée
 Justification : Évite la confusion sur quel agent utiliser
 Preuve : BlaizBot-V1/.github/agents/
+
+Date/heure : 22 décembre 2025
+Étape : 7.7 - Configuration écosystème dual IA
+Objectif : Optimiser l'utilisation de Claude Code + Copilot
+Résultat : Fichier CLAUDE.md créé, Skills claude.ai documentés
+Décision : Deux outils complémentaires, pas concurrents
+Justification : Copilot = autocomplétion/agents, Claude = tâches complexes
+Preuve : BlaizBot-V1/CLAUDE.md, docs/SKILLS-CLAUDE.md
 ```
 
 ---
 
-**Mots-clés** : prompts, agents, Vibe Coding, orchestration, spécialisation
-**Statut** : ✅ Réalisé (agents opérationnels)
+**Mots-clés** : prompts, agents, Vibe Coding, orchestration, Claude Code, GitHub Copilot, dual AI
+**Statut** : ✅ Réalisé (agents + Claude Code opérationnels)
