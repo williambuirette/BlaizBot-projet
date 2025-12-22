@@ -136,6 +136,46 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 ---
 
+### 2025-12-22 - Restructuration TODO modulaire
+
+**Durée** : 1h
+**Chapitres touchés** : 08-developpement.md
+**Résumé** : Transformation du TODO monolithique (926 lignes) en dossier modulaire
+
+**Réalisations** :
+- Création dossier `BlaizBot-V1/todo/` avec 13 fichiers
+- INDEX.md comme point d'entrée pour l'IA
+- RULES.md (contraintes 350 lignes, secrets, types)
+- STRUCTURE.md (arborescence cible du projet)
+- 10 fichiers de phases (~150-200 lignes chacun)
+- TODO.md simplifié en pointeur vers le dossier
+- Instructions contextuelles entre chaque tâche
+
+**Structure créée** :
+```
+todo/
+├── INDEX.md              # Navigation + progression
+├── RULES.md              # Contraintes obligatoires
+├── STRUCTURE.md          # Arborescence fichiers
+├── phase-01-init.md      → phase-10-demo.md
+```
+
+**Avantages** :
+- Respect règle 350 lignes (vs 926 avant)
+- IA peut lire un fichier phase sans surcharge contexte
+- Instructions spécifiques à chaque phase
+- Progression trackée dans INDEX.md
+
+**Preuves ajoutées** :
+- [x] Commit `209922f` - "refactor(todo): restructurer en dossier modulaire"
+- [x] 14 fichiers modifiés, +3249 lignes
+
+**Prochaines étapes** :
+- Commencer Phase 1 (Initialisation Next.js)
+- Documenter méthode dans chapitre 08
+
+---
+
 ## À documenter (rétro-documentation)
 
 Ces sessions passées doivent être documentées a posteriori :
@@ -153,9 +193,10 @@ Ces sessions passées doivent être documentées a posteriori :
 
 | Métrique | Valeur | Dernière MAJ |
 | :--- | :--- | :--- |
-| Heures totales | ~22.5h | 2025-12-22 |
+| Heures totales | ~23.5h | 2025-12-22 |
 | Lignes wireframe | 6,244 | 2025-01-15 |
 | Lignes production | 0 | - |
 | Chapitres complétés | 4/13 | 2025-12-22 |
 | Captures réalisées | 5 | 2025-12-22 |
 | Phases planifiées | 10 | 2025-12-22 |
+| Fichiers todo/ | 13 | 2025-12-22 |

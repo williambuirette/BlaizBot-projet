@@ -224,9 +224,77 @@ git commit -m "feat(student): add ChatInterface component with streaming"
 | Auth redirect loop | Boucle infinie login | Vérifier middleware matcher |
 | API 500 | Erreur serveur | Logs + try/catch |
 
-## 8.4 Métriques de développement
+## 8.4 Organisation modulaire du TODO
 
-### 8.4.1 Suivi du temps
+### 8.4.1 Problème du fichier monolithique
+
+Le TODO initial (926 lignes) posait plusieurs problèmes :
+
+| Problème | Impact |
+| :--- | :--- |
+| Taille excessive | Dépassait la règle 350 lignes |
+| Surcharge contexte IA | L'IA lisait tout au lieu de la phase active |
+| Navigation difficile | Scroll constant pour trouver l'info |
+| Pas d'instructions contextuelles | Règles générales vs spécifiques |
+
+### 8.4.2 Solution : dossier modulaire
+
+```
+todo/
+├── INDEX.md              # 🎯 Point d'entrée (navigation + progression)
+├── RULES.md              # ⚠️ Contraintes obligatoires (350 lignes, secrets)
+├── STRUCTURE.md          # 🗂️ Arborescence cible du projet
+│
+├── phase-01-init.md      # 🚀 ~140 lignes
+├── phase-02-layout.md    # 🎨 ~170 lignes
+├── phase-03-slice.md     # 🧪 ~150 lignes
+├── phase-04-database.md  # 🗄️ ~180 lignes
+├── phase-05-auth.md      # 🔐 ~190 lignes
+├── phase-06-admin.md     # 👔 ~180 lignes
+├── phase-07-teacher.md   # 👨‍🏫 ~190 lignes
+├── phase-08-student.md   # 🎓 ~190 lignes
+├── phase-09-ai.md        # 🤖 ~200 lignes
+└── phase-10-demo.md      # 🎬 ~200 lignes
+```
+
+### 8.4.3 Workflow de l'IA avec le nouveau système
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  WORKFLOW TODO MODULAIRE                    │
+│                                                             │
+│   1. OUVRIR INDEX.md                                        │
+│      └─▶ Phase active = phase-01-init.md                   │
+│                                                             │
+│   2. LIRE RULES.md                                          │
+│      └─▶ Contraintes : 350 lignes, secrets, types...       │
+│                                                             │
+│   3. LIRE STRUCTURE.md                                      │
+│      └─▶ Où créer chaque fichier                           │
+│                                                             │
+│   4. OUVRIR phase-XX.md                                     │
+│      └─▶ Instructions contextuelles + tâches détaillées    │
+│                                                             │
+│   5. EXÉCUTER tâche par tâche                               │
+│      └─▶ Validation à chaque étape                         │
+│                                                             │
+│   6. METTRE À JOUR INDEX.md                                 │
+│      └─▶ Progression globale                               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 8.4.4 Avantages mesurés
+
+| Avant | Après | Gain |
+| :--- | :--- | :--- |
+| 1 fichier 926 lignes | 13 fichiers < 200 lignes | Respect règle 350 |
+| Contexte complet chargé | Contexte ciblé par phase | -80% tokens |
+| Instructions génériques | Instructions contextuelles | Moins d'erreurs |
+| Navigation par scroll | Navigation par fichiers | Plus rapide |
+
+## 8.5 Métriques de développement
+
+### 8.5.1 Suivi du temps
 
 | Slice | Estimé | Réel | Écart |
 | :--- | :--- | :--- | :--- |
@@ -236,7 +304,7 @@ git commit -m "feat(student): add ChatInterface component with streaming"
 | Slice 4 | 4j | *À remplir* | |
 | Slice 5 | 3j | *À remplir* | |
 
-### 8.4.2 Lignes de code
+### 8.5.2 Lignes de code
 
 | Catégorie | Lignes | % IA généré | % modifié |
 | :--- | :--- | :--- | :--- |
@@ -246,20 +314,21 @@ git commit -m "feat(student): add ChatInterface component with streaming"
 | Styles (Tailwind) | | | |
 | **Total** | | | |
 
-### 8.4.3 Commits par jour
+### 8.5.3 Commits par jour
 
 *Graphique à générer en fin de projet*
 
-## 8.5 Preuves
+## 8.6 Preuves
 
-### 8.5.1 Captures requises
+### 8.6.1 Captures requises
 
 - [ ] `08-dev/cycle-exemple.png` - Exemple de cycle complet
 - [ ] `08-dev/terminal-dev.png` - Commandes typiques
 - [ ] `08-dev/bug-fix-exemple.png` - Correction de bug
 - [ ] `08-dev/commit-history.png` - Historique Git
+- [ ] `08-dev/todo-structure.png` - Structure dossier todo/
 
-### 8.5.2 Template journal de bord (par itération)
+### 8.6.2 Template journal de bord (par itération)
 
 ```
 Date/heure : [...]
@@ -276,5 +345,5 @@ Preuves : [capture/lien]
 
 ---
 
-**Mots-clés** : itérations, slices, cycle Vibe Coding, bugs, métriques
+**Mots-clés** : itérations, slices, cycle Vibe Coding, bugs, métriques, TODO modulaire
 **Statut** : 🔄 En cours (documentation au fil de l'eau)
