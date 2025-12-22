@@ -71,6 +71,100 @@ MVP BlaizBot :
 | "Fais-moi un chat" | "Crée un composant ChatMessage.tsx avec TypeScript, props: message, sender, timestamp. Style Tailwind, dark mode." |
 | "Corrige le bug" | "Le formulaire ne valide pas l'email. Fichier: LoginForm.tsx ligne 42. Erreur: regex invalide." |
 
+### 🎛️ Context Engineering
+
+Le **Context Engineering** est l'art de fournir le bon contexte à l'IA pour obtenir des réponses pertinentes. C'est la compétence clé du Vibe Coder.
+
+#### Les 4 niveaux de contexte
+
+| Niveau | Source | Exemple BlaizBot |
+| :--- | :--- | :--- |
+| **System** | Instructions permanentes | `copilot-instructions.md`, agents IA |
+| **Project** | Fichiers du workspace | Architecture, schéma Prisma, API docs |
+| **Conversation** | Historique du fil | Messages précédents dans le chat |
+| **Prompt** | Requête immédiate | "Crée le composant X..." |
+
+#### Stratégies de context engineering
+
+```
+📁 Fichiers de contexte dans BlaizBot :
+├── .github/copilot-instructions.md   → Règles globales
+├── .github/agents/*.md               → 8 agents spécialisés
+├── docs/04-MODELE_DONNEES.md         → Schéma Prisma (référence)
+├── docs/05-API_ENDPOINTS.md          → Routes API (référence)
+└── blaizbot-wireframe/               → Maquettes (référence visuelle)
+```
+
+> 💡 **Règle d'or** : Plus le contexte est précis, moins l'IA hallucine.
+
+#### Window context vs Long-term memory
+
+| Type | Description | Outil |
+| :--- | :--- | :--- |
+| **Window** | Contexte limité à la conversation (~128k tokens) | ChatGPT, Copilot Chat |
+| **Long-term** | Mémoire persistante entre sessions | Projets ChatGPT, fichiers `.md` |
+
+### 🔍 RAG (Retrieval-Augmented Generation)
+
+Le **RAG** permet à l'IA de chercher dans une base de connaissances avant de répondre, réduisant les hallucinations.
+
+#### Principe du RAG
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  1. QUESTION                                            │
+│     "Comment fonctionne l'auth dans BlaizBot ?"         │
+└────────────────────┬────────────────────────────────────┘
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│  2. RETRIEVAL (Recherche)                               │
+│     → Recherche dans docs/, code source, schéma Prisma  │
+│     → Trouve: auth.ts, User model, middleware           │
+└────────────────────┬────────────────────────────────────┘
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│  3. AUGMENTATION (Enrichissement)                       │
+│     → Injecte les extraits pertinents dans le prompt    │
+└────────────────────┬────────────────────────────────────┘
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│  4. GENERATION (Réponse)                                │
+│     → L'IA répond avec le contexte réel du projet       │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### RAG dans BlaizBot
+
+| Composant | Rôle | Technologie |
+| :--- | :--- | :--- |
+| **Base de connaissances** | Cours, documents PDF | Supabase + pgvector |
+| **Embeddings** | Vectorisation du texte | OpenAI text-embedding-3 |
+| **Retrieval** | Recherche sémantique | Similarity search |
+| **Generation** | Réponse augmentée | GPT-4 |
+
+#### Cas d'usage dans l'app
+
+```typescript
+// Exemple simplifié de RAG pour le chat élève
+async function askWithRAG(question: string, courseId: string) {
+  // 1. Retrieval - chercher dans les cours
+  const relevantChunks = await searchCourseContent(question, courseId);
+  
+  // 2. Augmentation - construire le prompt
+  const augmentedPrompt = `
+    Contexte du cours:
+    ${relevantChunks.map(c => c.content).join('\n')}
+    
+    Question de l'élève: ${question}
+  `;
+  
+  // 3. Generation - réponse IA
+  return await generateResponse(augmentedPrompt);
+}
+```
+
+> 🎓 **Dans BlaizBot** : L'élève pose une question → L'IA cherche dans ses cours → Répond avec le contexte réel.
+
 ---
 
 ## 📁 Structure
