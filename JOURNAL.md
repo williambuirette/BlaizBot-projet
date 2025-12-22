@@ -103,16 +103,49 @@ Après chaque session de travail significative, ajouter une entrée avec :
 
 ---
 
+### 2025-12-22 - Documentation ChatGPT + Plan 10 phases
+
+**Durée** : 1h30
+**Chapitres touchés** : 02-organisation-chatgpt.md, README
+**Résumé** : Rétro-documentation ChatGPT et structuration plan de développement
+
+**Réalisations** :
+- Chapitre 02 complété avec captures réelles du projet "Blaiz'bot"
+- 5 screenshots déposés (`assets/screenshots/02-organisation/`)
+- README enrichi : PRD, MVP, MoSCoW, Context Engineering, RAG
+- TODO.md restructuré en 10 phases Vibe Coding
+- Règle 350 lignes/fichier intégrée au plan
+- Vertical Slice (Phase 3) ajoutée pour démo précoce
+- Repos GitHub créés : BlaizBot-V1, BlaizBot-projet
+
+**Preuves ajoutées** :
+- [x] `Screenshot_projet_chatgpt.png` - Vue d'ensemble 7 conversations
+- [x] `Screenshot_chemin_prompt_system_projet.png` - Menu instructions
+- [x] `Screenshot_prompt_system.png` - Prompt système Vibe Coding
+- [x] `Screenshot_base_de_connaissance.png` - 2 documents uploadés
+- [x] `scrennshot_chemin_base_de_connaissance.png` - Chemin fichiers
+
+**Décisions prises** :
+- Plan 10 phases validé (fusion proposition Copilot + ChatGPT)
+- Vertical Slice avant DB pour valider UX tôt
+- Admin avant Prof/Élève (source de vérité données)
+
+**Prochaines étapes** :
+- Phase 1 : Initialisation projet Next.js
+- Continuer rétro-documentation chapitres 00, 01, 03, 04
+
+---
+
 ## À documenter (rétro-documentation)
 
 Ces sessions passées doivent être documentées a posteriori :
 
-| Date estimée | Session | Chapitre | Priorité |
-| :--- | :--- | :--- | :--- |
-| Mi-décembre | Projet ChatGPT créé | 02 | 🔴 Haute |
-| Mi-décembre | Brainstorming initial | 01 | 🟡 Moyenne |
-| Début janvier | Choix de la stack | 03 | 🟡 Moyenne |
-| Janvier | User stories | 04 | 🟡 Moyenne |
+| Date estimée | Session | Chapitre | Priorité | Statut |
+| :--- | :--- | :--- | :--- | :--- |
+| Août 2025 | Projet ChatGPT créé | 02 | 🔴 Haute | ✅ Done |
+| Mi-décembre | Brainstorming initial | 01 | 🟡 Moyenne | 🔴 À faire |
+| Début janvier | Choix de la stack | 03 | 🟡 Moyenne | 🔴 À faire |
+| Janvier | User stories | 04 | 🟡 Moyenne | 🔴 À faire |
 
 ---
 
@@ -120,8 +153,9 @@ Ces sessions passées doivent être documentées a posteriori :
 
 | Métrique | Valeur | Dernière MAJ |
 | :--- | :--- | :--- |
-| Heures totales | ~21h | 2025-12-22 |
+| Heures totales | ~22.5h | 2025-12-22 |
 | Lignes wireframe | 6,244 | 2025-01-15 |
 | Lignes production | 0 | - |
-| Chapitres complétés | 3/13 | 2025-12-22 |
-| Captures réalisées | 0 | - |
+| Chapitres complétés | 4/13 | 2025-12-22 |
+| Captures réalisées | 5 | 2025-12-22 |
+| Phases planifiées | 10 | 2025-12-22 |
