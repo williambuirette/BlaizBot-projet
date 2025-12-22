@@ -15,53 +15,51 @@ ChatGPT permet de créer des **projets** qui offrent :
 - **Prompt système** : Instructions permanentes pour orienter les réponses
 - **Historique organisé** : Conversations groupées par sujet
 
-![Création projet ChatGPT](../assets/screenshots/02-organisation/chatgpt-nouveau-projet.png)
-*Figure 2.1 : Interface de création d'un projet ChatGPT*
+![Vue d'ensemble du projet ChatGPT](../assets/screenshots/02-organisation/Screenshot_projet_chatgpt.png)
+*Figure 2.1 : Projet "Blaiz'bot" avec ses 7 fils de conversation (août → décembre 2025)*
 
 ### 2.1.2 Configuration initiale
 
-| Paramètre | Configuration |
+Le projet **"Blaiz'bot"** a été créé en août 2025 et a évolué sur 4 mois :
+
+| Paramètre | Configuration réelle |
 | :--- | :--- |
-| Nom du projet | BlaizBot Development |
-| Modèle | GPT-4 |
-| Documents uploadés | 3 fichiers de référence |
-| Prompt système | 500+ mots de contexte |
+| Nom du projet | **Blaiz'bot** |
+| Période active | 25 août 2025 → 22 décembre 2025 |
+| Conversations | 7 fils thématiques |
+| Documents uploadés | 2 fichiers de cadrage |
+| Prompt système | ~150 mots de contexte Vibe Coding |
 
 ## 2.2 Prompt système
 
 ### 2.2.1 Structure du prompt
 
-Le prompt système définit le **comportement par défaut** de l'IA :
+Le prompt système définit le **comportement par défaut** de l'IA. Voici le prompt réel configuré dans le projet "Blaiz'bot" :
+
+![Menu d'accès aux instructions](../assets/screenshots/02-organisation/Screenshot_chemin_prompt_system_projet.png)
+*Figure 2.2 : Accès aux paramètres via "Modifier les instructions"*
 
 ```markdown
-# Contexte
-Tu es un expert en développement d'applications éducatives modernes.
-Le projet s'appelle BlaizBot : une plateforme éducative avec IA intégrée.
+# Contexte du Projet
+Nous développons un projet de développement informatique scolaire
+avec la méthode : Vibe Coding.
 
-# Stack technique
-- Frontend : Next.js 15, TypeScript, Tailwind CSS, shadcn/ui
-- Backend : Next.js API Routes, Prisma, PostgreSQL (Supabase)
-- Auth : NextAuth.js v5
-- IA : Vercel AI SDK + OpenAI
+## Définition : Vibe Coding (Programmation par ambiance/intuition)
+Le Vibe Coding est une approche du développement logiciel qui utilise
+des assistants IA (Copilot, Cursor, Windsurf, Claude, Loveable, Bolt, etc.)
+comme collaborateurs principaux, où le développeur guide le projet par
+des intentions et des descriptions en langage naturel plutôt que par
+l'écriture manuelle de code.
 
-# Règles de travail
-1. Une étape à la fois (pas de code massif)
-2. Toujours demander confirmation avant de modifier plusieurs fichiers
-3. Commenter le code en français
-4. Utiliser les conventions du projet (JSDoc, Conventional Commits)
-
-# Format des réponses
-- Commencer par un résumé de l'action
-- Montrer le code avec explications
-- Terminer par "Next step" avec 1 action suggérée
-
-# Contraintes
-- Fichiers < 350 lignes
-- Pas de secrets en dur (utiliser .env)
-- TypeScript strict (pas de any)
+## Ma mission
+Je suis chargé du développement d'un projet/logiciel informatique qui
+peut démontrer les capacités et les limites du Vibe Coding
 ```
 
-*Listing 2.1 : Prompt système du projet ChatGPT*
+*Listing 2.1 : Prompt système réel du projet ChatGPT "Blaiz'bot"*
+
+![Prompt système complet](../assets/screenshots/02-organisation/Screenshot_prompt_system.png)
+*Figure 2.3 : Instructions personnalisées configurées dans ChatGPT*
 
 ### 2.2.2 Évolution du prompt
 
@@ -78,11 +76,20 @@ Le prompt a évolué au fil du projet :
 
 ### 2.3.1 Documents uploadés
 
-| Document | Contenu | Usage |
+Deux documents fondateurs ont été uploadés dans le projet ChatGPT :
+
+![Documents uploadés](../assets/screenshots/02-organisation/Screenshot_base_de_connaissance.png)
+*Figure 2.4 : Fichiers de référence uploadés dans le projet*
+
+| Document | Contenu | Rôle |
 | :--- | :--- | :--- |
-| `instructions-ia.md` | Règles de génération de code | Qualité du code |
-| `architecture.md` | Structure du projet | Cohérence |
-| `wireframe-specs.md` | Spécifications UI | Référence visuelle |
+| `Guide de Travail du Projet d'Application Assistée par l'IA.docx` | Méthodologie complète | Cadrage académique |
+| `Brainstorming_Cadrage_VibeCoding_App_Prof_Eleve_IA.docx` | Idéation initiale | Définition du périmètre |
+
+Ces documents permettent à l'IA de :
+- Comprendre le contexte académique du projet
+- Respecter les contraintes du cahier des charges
+- Proposer des solutions alignées avec les objectifs
 
 ### 2.3.2 Mise à jour des documents
 
@@ -93,25 +100,44 @@ Les documents sont mis à jour quand :
 
 ## 2.4 Structure des fils de conversation
 
-### 2.4.1 Organisation par sujet
+### 2.4.1 Chronologie réelle des conversations
+
+Le projet "Blaiz'bot" contient **7 fils de conversation** créés sur 4 mois :
+
+| # | Fil de conversation | Date | Phase |
+| :--- | :--- | :--- | :--- |
+| 1 | **Créer chatbot révision IA** | 25 août 2025 | Idéation |
+| 2 | **Fiche de route application** | 21 sept. 2025 | Cadrage |
+| 3 | **Questions pour document application** | 18 oct. 2025 | Specs |
+| 4 | **Plan de travail IA** | 21 déc. 2025 | Développement |
+| 5 | **Proposition visuelle application** | 21 déc. 2025 | UX/UI |
+| 6 | **Résumé fonctionnalités application** | 21 déc. 2025 | Documentation |
+| 7 | **Tâches post-développement vibecoding** | 22 déc. 2025 | Finalisation |
+
+### 2.4.2 Organisation thématique
 
 ```
-📁 Projet BlaizBot
-├── 💬 Cadrage / PRD
-│   └── Définition du projet, specs produit
-├── 💬 UX / Wireframe
-│   └── Design, maquettes, parcours utilisateur
-├── 💬 Dev / Bugs
-│   └── Code, debugging, refactoring
-├── 💬 Agents & Prompts
-│   └── Configuration des agents VS Code
-├── 💬 Journal de bord
-│   └── Traçabilité, décisions
-└── 💬 Prépa démo + rapport
-    └── Documentation, exposé
+📁 Projet Blaiz'bot (août → décembre 2025)
+│
+├── 🧠 Phase Idéation (août)
+│   └── 💬 Créer chatbot révision IA
+│
+├── 📋 Phase Cadrage (sept-oct)
+│   ├── 💬 Fiche de route application
+│   └── 💬 Questions pour document application
+│
+├── 🛠️ Phase Développement (décembre)
+│   ├── 💬 Plan de travail IA
+│   ├── 💬 Proposition visuelle application
+│   └── 💬 Résumé fonctionnalités application
+│
+└── 📝 Phase Finalisation (décembre)
+    └── 💬 Tâches post-développement vibecoding
 ```
 
-### 2.4.2 Règle d'or
+### 2.4.3 Règle d'or
+
+### 2.4.3 Règle d'or
 
 > **1 fil = 1 sujet**. Ne pas mélanger wireframe et debugging dans la même conversation.
 
@@ -142,29 +168,34 @@ Les documents sont mis à jour quand :
 | Ignorer les erreurs | Demander explication et correction |
 | Copier-coller aveugle | Relire et comprendre le code |
 
-## 2.6 Preuves
+## 2.6 Preuves et traçabilité
 
-### 2.6.1 Captures requises
+### 2.6.1 Captures d'écran
 
-- [ ] `02-organisation/chatgpt-projet-cree.png` - Projet créé
-- [ ] `02-organisation/chatgpt-prompt-systeme.png` - Prompt système
-- [ ] `02-organisation/chatgpt-documents.png` - Documents uploadés
-- [ ] `02-organisation/chatgpt-fils-organises.png` - Structure des conversations
+Les 5 captures suivantes documentent l'organisation du projet ChatGPT :
+
+| Fichier | Description | Figure |
+| :--- | :--- | :--- |
+| `Screenshot_projet_chatgpt.png` | Vue d'ensemble avec 7 conversations | Fig. 2.1 |
+| `Screenshot_chemin_prompt_system_projet.png` | Menu "Modifier les instructions" | Fig. 2.2 |
+| `Screenshot_prompt_system.png` | Prompt système Vibe Coding | Fig. 2.3 |
+| `Screenshot_base_de_connaissance.png` | 2 documents uploadés | Fig. 2.4 |
+| `scrennshot_chemin_base_de_connaissance.png` | Chemin d'accès aux fichiers | - |
 
 ### 2.6.2 Journal de bord
 
 ```
-Date/heure : [À compléter]
+Date/heure : 25 août 2025 (création) → 22 décembre 2025 (en cours)
 Étape : 2 - Organisation projet ChatGPT
 Objectif : Configurer l'environnement IA de travail
-Prompt utilisé : N/A (configuration manuelle)
-Résultat : Projet créé avec prompt système + docs
-Décision : 6 fils de conversation thématiques
-Justification : Clarté du contexte pour l'IA
-Preuve : Screenshots du projet ChatGPT
+Projet : "Blaiz'bot"
+Documents : 2 fichiers de cadrage uploadés
+Conversations : 7 fils thématiques créés sur 4 mois
+Prompt système : Contexte Vibe Coding + mission
+Preuve : 4 captures d'écran (voir section 2.6.1)
 ```
 
 ---
 
-**Mots-clés** : ChatGPT, projet, prompt système, organisation, fils de conversation
-**Statut** : ✅ Réalisé (captures à prendre)
+**Mots-clés** : ChatGPT, projet Blaiz'bot, prompt système, Vibe Coding, organisation
+**Statut** : ✅ Documenté avec captures réelles
