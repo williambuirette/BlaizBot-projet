@@ -232,5 +232,5 @@ BlaizBot-projet/
 
 ---
 
-**Auteur** : William Buirette  
+**Auteur** : Maxime Buirette  
 **Dernière mise à jour** : 22 décembre 2025

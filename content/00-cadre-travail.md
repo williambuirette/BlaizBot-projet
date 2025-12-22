@@ -10,7 +10,7 @@
 | :--- | :--- |
 | **Titre du projet** | BlaizBot - Plateforme éducative intelligente |
 | **Sous-titre** | Application de Vibe Coding avec IA intégrée |
-| **Auteur** | William Buirette |
+| **Auteur** | Maxime Buirette |
 | **Date de début** | Décembre 2025 |
 
 ## 0.2 Contexte académique
