@@ -138,7 +138,10 @@
     "wireframeHours": 11,
     "architectureHours": 8,
     "developmentHours": 0,
-    "totalLinesGenerated": 6244,
+    "documentationHours": 6,
+    "totalLinesGenerated": 18720,
+    "todoLinesAdded": 10614,
+    "promptsLinesAdded": 1862,
     "humanInterventions": 0,
     "aiSuggestions": 0
   },

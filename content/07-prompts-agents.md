@@ -314,6 +314,7 @@ Tu transformes le travail de développement en documentation pour l'exposé.
 | v1.1 | 19/12 | Ajout règles de formatage |
 | v1.2 | 20/12 | Création des agents |
 | v1.3 | 22/12 | Ajout agent @Expose |
+| v2.0 | 22/12 | Création des 10 fichiers prompts optimisés |
 
 ### 7.5.2 Leçons apprises
 
@@ -323,16 +324,103 @@ Tu transformes le travail de développement en documentation pour l'exposé.
 
 > **Leçon 3** : Les agents spécialisés produisent de meilleurs résultats qu'un agent généraliste.
 
-## 7.6 Preuves
+## 7.6 Bibliothèque de Prompts Optimisés
 
-### 7.6.1 Captures requises
+### 7.6.1 Objectif du travail
+
+Avant de commencer le développement, nous avons créé une **bibliothèque de prompts pré-optimisés** pour chaque tâche du projet. L'objectif : réussir chaque tâche **du premier coup** ("one-shot").
+
+### 7.6.2 Structure de la bibliothèque
+
+```
+BlaizBot-V1/prompts/
+├── phase-01-init.md       # Next.js, TypeScript, Tailwind, shadcn
+├── phase-02-layout.md     # Sidebar, Header, Layout dashboard
+├── phase-03-slice.md      # Login mock, dashboards mockés
+├── phase-04-database.md   # Supabase, Prisma, modèles, seed
+├── phase-05-auth.md       # NextAuth v5, RBAC, middleware
+├── phase-06-admin.md      # Admin CRUD (Users, Classes, Subjects)
+├── phase-07-teacher.md    # Teacher dashboard, cours, messagerie
+├── phase-08-student.md    # Student dashboard, cours, progression
+├── phase-09-ia.md         # OpenAI, chat streaming, modes pédagogiques
+└── phase-10-demo.md       # Tests, fix bugs, polish, script démo
+```
+
+**Total** : 10 fichiers, ~1 860 lignes de prompts
+
+### 7.6.3 Format d'un fichier prompt
+
+Chaque fichier suit une structure standardisée :
+
+```markdown
+# Phase X - [Nom]
+
+> Objectif + fichiers TODO liés
+
+## 📋 Étape X.1 — [Titre]
+
+### Prompt X.1.1 — [Action]
+
+```
+[Prompt copy-paste ready pour Copilot]
+```
+
+## 📊 Validation Finale Phase X
+
+[Checklist de fin de phase]
+
+## 📖 Journal des Itérations
+
+[Tableau pour rétro-prompt]
+```
+
+### 7.6.4 Exemple de prompt optimisé
+
+**Phase 1 - Étape 1.4 : Installer shadcn/ui**
+
+```markdown
+Stopper le serveur dev si en cours.
+Exécuter :
+npx shadcn@latest init
+
+Répondre aux questions :
+- Style → Default
+- Base color → Slate
+- CSS variables → Yes
+```
+
+**Pourquoi ce format fonctionne** :
+- Commande exacte à exécuter
+- Réponses attendues pré-définies
+- Aucune ambiguïté → succès garanti
+
+### 7.6.5 Workflow "Rétro-prompt"
+
+Chaque fichier inclut une section **Journal des Itérations** :
+
+| Étape | Date | Durée | Itérations | Rétro-prompt |
+|-------|------|-------|------------|---------------|
+| 1.1   |      |       |            | *À compléter* |
+
+Après exécution, nous documentons :
+1. Le nombre d'itérations réelles
+2. Le prompt idéal a posteriori
+3. Les leçons pour les phases suivantes
+
+> "Le rétro-prompt transforme chaque erreur en connaissance réutilisable."
+
+## 7.7 Preuves
+
+### 7.7.1 Captures requises
 
 - [ ] `07-prompts/chatgpt-prompt-systeme.png`
 - [ ] `07-prompts/vscode-agents-liste.png`
 - [ ] `07-prompts/copilot-chat-agent.png`
 - [ ] `07-prompts/exemple-sortie-agent.png`
+- [ ] `07-prompts/prompts-folder-structure.png` - Structure dossier prompts/
+- [ ] `07-prompts/prompt-example.png` - Exemple de prompt optimisé
 
-### 7.6.2 Journal de bord
+### 7.7.2 Journal de bord
 
 ```
 Date/heure : 20-22 décembre 2025

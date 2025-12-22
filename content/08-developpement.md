@@ -245,17 +245,20 @@ todo/
 ├── RULES.md              # ⚠️ Contraintes obligatoires (350 lignes, secrets)
 ├── STRUCTURE.md          # 🗂️ Arborescence cible du projet
 │
-├── phase-01-init.md      # 🚀 ~140 lignes
-├── phase-02-layout.md    # 🎨 ~170 lignes
-├── phase-03-slice.md     # 🧪 ~150 lignes
-├── phase-04-database.md  # 🗄️ ~180 lignes
-├── phase-05-auth.md      # 🔐 ~190 lignes
-├── phase-06-admin.md     # 👔 ~180 lignes
-├── phase-07-teacher.md   # 👨‍🏫 ~190 lignes
-├── phase-08-student.md   # 🎓 ~190 lignes
-├── phase-09-ai.md        # 🤖 ~200 lignes
-└── phase-10-demo.md      # 🎬 ~200 lignes
+├── phase-01-init.md      # 🚀 Initialisation (~290 lignes)
+├── phase-01-init-suite.md
+├── phase-01-init-fin.md
+├── phase-01-fichiers.md  # Code templates Phase 1
+│
+├── phase-02-layout.md    # 🎨 Layout & Navigation (~280 lignes)
+├── phase-02-layout-suite.md
+├── phase-02-code.md      # Code templates Phase 2
+│
+├── ...                   # (même pattern phases 3-10)
+└── phase-10-demo.md      # 🎬 Stabilisation (~320 lignes)
 ```
+
+**Total** : 40 fichiers, ~10 600 lignes d'instructions contextuelles
 
 ### 8.4.3 Workflow de l'IA avec le nouveau système
 
@@ -287,14 +290,168 @@ todo/
 
 | Avant | Après | Gain |
 | :--- | :--- | :--- |
-| 1 fichier 926 lignes | 13 fichiers < 200 lignes | Respect règle 350 |
+| 1 fichier 926 lignes | 40 fichiers < 350 lignes | Respect règle 350 |
 | Contexte complet chargé | Contexte ciblé par phase | -80% tokens |
 | Instructions génériques | Instructions contextuelles | Moins d'erreurs |
 | Navigation par scroll | Navigation par fichiers | Plus rapide |
 
-## 8.5 Métriques de développement
+### 8.4.5 Enrichissement des TODO (Phase 2)
 
-### 8.5.1 Suivi du temps
+Après la restructuration, nous avons **enrichi** chaque fichier TODO avec :
+
+1. **Section "Instructions IA"** en tête de fichier
+2. **Objectif / Comment / Par quel moyen** pour chaque étape
+3. **Tableaux de tâches** avec critères de validation
+4. **Blocs 💡 INSTRUCTION** avec code prêt à copier
+5. **Références** vers les fichiers -code.md
+
+**Exemple d'enrichissement** :
+
+```markdown
+## 📋 Étape 4.2 — Configurer Prisma
+
+### 🎯 Objectif
+Installer et configurer Prisma, l'ORM TypeScript qui génère
+des types automatiquement.
+
+### 📝 Comment
+1. Installer les packages npm
+2. Initialiser Prisma
+3. Configurer le provider PostgreSQL
+4. Créer le singleton client
+
+### 🔧 Par quel moyen
+- `npm install prisma @prisma/client`
+- `npx prisma init`
+
+### Tâche 4.2.1 — Installer Prisma
+
+| Critère | Attendu |
+| :--- | :--- |
+| Commande | `npm install prisma @prisma/client` |
+| Package.json | Packages présents |
+
+💡 **INSTRUCTION pour l'IA** :
+```
+1. EXÉCUTER: npm install prisma @prisma/client
+2. VÉRIFIER: package.json contient les deux
+```
+```
+
+**Métriques de l'enrichissement** :
+
+| Métrique | Valeur |
+| :--- | :--- |
+| Fichiers modifiés | 40 |
+| Lignes ajoutées | +10 614 |
+| Lignes supprimées | -371 |
+| Commit | `4c2e26d` |
+
+## 8.5 Prompts Optimisés par Phase
+
+### 8.5.1 Objectif
+
+En parallèle des TODO enrichis, nous avons créé une **bibliothèque de prompts pré-optimisés** :
+
+```
+BlaizBot-V1/prompts/
+├── phase-01-init.md       # 350 lignes
+├── phase-02-layout.md     # 170 lignes
+├── phase-03-slice.md      # 150 lignes
+├── phase-04-database.md   # 160 lignes
+├── phase-05-auth.md       # 200 lignes
+├── phase-06-admin.md      # 180 lignes
+├── phase-07-teacher.md    # 170 lignes
+├── phase-08-student.md    # 160 lignes
+├── phase-09-ia.md         # 200 lignes
+└── phase-10-demo.md       # 220 lignes
+```
+
+**Total** : 10 fichiers, ~1 860 lignes de prompts
+
+### 8.5.2 Workflow de préparation
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│   AVANT DÉVELOPPEMENT : PRÉPARATION DES PROMPTS              │
+└─────────────────────────────────────────────────────────────┘
+         │
+         ▼
+┌───────────────────────┐
+│ 1. LIRE todo/phase-XX │  ← Comprendre les tâches
+└───────────────────────┘
+         │
+         ▼
+┌───────────────────────┐
+│ 2. EXTRAIRE les étapes │  ← Identifier chaque action
+└───────────────────────┘
+         │
+         ▼
+┌───────────────────────┐
+│ 3. RÉDIGER le prompt   │  ← Précis, copy-paste ready
+└───────────────────────┘
+         │
+         ▼
+┌───────────────────────┐
+│ 4. AJOUTER validation │  ← Checklist de fin de phase
+└───────────────────────┘
+         │
+         ▼
+┌───────────────────────┐
+│ 5. INCLURE journal    │  ← Section rétro-prompt vide
+└───────────────────────┘
+```
+
+### 8.5.3 Exemple de prompt optimisé
+
+**Phase 4 - Installer Prisma** :
+
+```markdown
+npm install prisma @prisma/client
+npx prisma init
+```
+
+vs
+
+**Prompt enrichi** :
+
+```markdown
+Exécuter les commandes :
+
+npm install prisma @prisma/client
+npx prisma init
+
+Cela crée :
+- prisma/schema.prisma
+- .env (ignorer, on utilise .env.local)
+
+VÉRIFIER : dossier prisma/ existe avec schema.prisma
+```
+
+**Différence** : Le prompt enrichi anticipe les questions et donne le critère de succès.
+
+### 8.5.4 Métriques de la préparation
+
+| Métrique | Valeur |
+| :--- | :--- |
+| Fichiers prompts créés | 10 |
+| Lignes ajoutées | +1 862 |
+| Lignes supprimées | -485 |
+| Commit | `ce93754` |
+
+### 8.5.5 Bénéfice attendu
+
+| Sans préparation | Avec préparation |
+| :--- | :--- |
+| "Fais-moi une sidebar" | Prompt 50 lignes avec specs |
+| 5-10 itérations | 1-3 itérations (objectif) |
+| Résultats variables | Résultats prévisibles |
+
+> "Investir 2h en préparation pour gagner 10h en exécution."
+
+## 8.7 Métriques de développement
+
+### 8.7.1 Suivi du temps
 
 | Slice | Estimé | Réel | Écart |
 | :--- | :--- | :--- | :--- |
@@ -304,7 +461,7 @@ todo/
 | Slice 4 | 4j | *À remplir* | |
 | Slice 5 | 3j | *À remplir* | |
 
-### 8.5.2 Lignes de code
+### 8.7.2 Lignes de code
 
 | Catégorie | Lignes | % IA généré | % modifié |
 | :--- | :--- | :--- | :--- |
@@ -314,13 +471,13 @@ todo/
 | Styles (Tailwind) | | | |
 | **Total** | | | |
 
-### 8.5.3 Commits par jour
+### 8.7.3 Commits par jour
 
 *Graphique à générer en fin de projet*
 
-## 8.6 Preuves
+## 8.8 Preuves
 
-### 8.6.1 Captures requises
+### 8.8.1 Captures requises
 
 - [ ] `08-dev/cycle-exemple.png` - Exemple de cycle complet
 - [ ] `08-dev/terminal-dev.png` - Commandes typiques
@@ -328,7 +485,7 @@ todo/
 - [ ] `08-dev/commit-history.png` - Historique Git
 - [ ] `08-dev/todo-structure.png` - Structure dossier todo/
 
-### 8.6.2 Template journal de bord (par itération)
+### 8.8.2 Template journal de bord (par itération)
 
 ```
 Date/heure : [...]
