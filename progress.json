@@ -5,7 +5,7 @@
   "targetPages": null,
   "note": "Pas de limite de pages pour V1 - on verra à la fin",
   "lastUpdate": "23.12.2025",
-  "phaseCompleted": "phase-04",
+  "phaseCompleted": "phase-05",
   "automation": {
     "description": "Mise à jour automatique via checkpoints EXPOSÉ dans BlaizBot-V1/todo/",
     "triggers": [

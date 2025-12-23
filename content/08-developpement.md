@@ -417,13 +417,109 @@ src/
 Phase 2 — Layout             : ✅ Complété (23.12.2025)
 Phase 3 — Vertical Slice     : ✅ Complété (23.12.2025)
 Phase 4 — Database           : ✅ Complété (23.12.2025)
-Phase 5 — Auth               : ⬜ À venir
+Phase 5 — Auth               : ✅ Complété (23.12.2025)
 Phase 6 — Admin              : ⬜ À venir
 Phase 7 — Teacher            : ⬜ À venir
 Phase 8 — Student            : ⬜ À venir
 Phase 9 — IA                 : ⬜ À venir
 Phase 10 — Démo              : ⬜ À venir
 ```
+
+---
+
+### ✅ Phase 5 — Authentification & RBAC (23.12.2025)
+
+**Objectif** : Implémenter l'authentification avec NextAuth v5 et le contrôle d'accès basé sur les rôles (RBAC).
+
+#### 5.1 Stack d'authentification
+
+| Technologie | Version | Usage |
+|:------------|:--------|:------|
+| NextAuth.js | v5 (beta) | Framework d'auth Next.js |
+| bcryptjs | 3.x | Hash des mots de passe |
+| JWT | - | Session strategy (stateless) |
+
+#### 5.2 Complexité rencontrée : Next.js 16 + NextAuth v5
+
+**Problème initial** : Le pattern `export { auth as middleware }` documenté dans NextAuth ne fonctionne plus avec Next.js 16.
+
+```typescript
+// ❌ ERREUR : "must export a middleware function"
+import { auth } from '@/lib/auth';
+export default auth((req) => { ... });
+```
+
+**Solution** : Utiliser `getToken` de `next-auth/jwt` au lieu du wrapper `auth()` :
+
+```typescript
+// ✅ FONCTIONNE avec Next.js 16
+import { getToken } from 'next-auth/jwt';
+
+export async function middleware(req: NextRequest) {
+  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+  // ...
+}
+```
+
+**Leçon apprise** : Les versions beta (NextAuth v5) peuvent avoir des incompatibilités avec les dernières versions de Next.js.
+
+#### 5.3 Architecture RBAC
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     MIDDLEWARE RBAC                         │
+│                                                             │
+│  /login, /api/auth/*  →  Public (pass through)             │
+│                                                             │
+│  Pas de token ?       →  Redirect /login                   │
+│                                                             │
+│  /admin/*  + role≠ADMIN    →  Redirect /unauthorized       │
+│  /teacher/* + role≠TEACHER →  Redirect /unauthorized       │
+│  /student/* + role≠STUDENT →  Redirect /unauthorized       │
+│                                                             │
+│  Token valide + route OK   →  NextResponse.next()          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 5.4 Fichiers créés Phase 5
+
+| Fichier | Lignes | Description |
+|:--------|:-------|:------------|
+| `src/lib/auth.ts` | 55 | Config NextAuth (Credentials, JWT) |
+| `src/middleware.ts` | 57 | RBAC + protection routes |
+| `src/types/next-auth.d.ts` | 20 | Augmentation types Session |
+| `src/app/api/auth/[...nextauth]/route.ts` | 3 | Route handler NextAuth |
+| `src/app/unauthorized/page.tsx` | 45 | Page accès refusé |
+| `src/components/providers/SessionProvider.tsx` | 12 | Wrapper client session |
+
+**Fichiers modifiés** :
+| Fichier | Modification |
+|:--------|:-------------|
+| `src/components/auth/LoginForm.tsx` | `signIn` NextAuth au lieu de localStorage |
+| `src/components/layout/Header.tsx` | Bouton logout avec `signOut` |
+| `src/app/(dashboard)/layout.tsx` | Server Component avec `auth()` |
+| `src/app/layout.tsx` | Wrapper SessionProvider |
+
+#### 5.5 Tests de sécurité validés
+
+| Test | Résultat |
+|:-----|:---------|
+| Sans login → `/student` | ✅ Redirect `/login` |
+| Login élève → `/student` | ✅ Accès autorisé |
+| Élève → `/admin` | ✅ Redirect `/unauthorized` |
+| Admin → `/admin` | ✅ Accès autorisé |
+| Logout | ✅ Session détruite, redirect `/login` |
+
+#### 5.6 Validations
+
+- ✅ `npm run lint` — 0 erreur
+- ✅ `npm run build` — Build réussi (routes dynamiques)
+- ✅ Tous les tests RBAC passent
+- ✅ Aucun secret hardcodé (`AUTH_SECRET` dans .env)
+
+**Temps estimé** : 5h | **Temps réel** : ~4h (problèmes middleware Next.js 16)
+
+**Capture** : `assets/screenshots/phase-05-login.png` *(à créer)*
 
 ---
 
