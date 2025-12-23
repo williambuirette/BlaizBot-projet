@@ -1,10 +1,30 @@
 {
   "title": "Exposé Vibecoding - BlaizBot",
   "author": "Maxime Buirette",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "targetPages": null,
   "note": "Pas de limite de pages pour V1 - on verra à la fin",
-  "lastUpdate": "22.12.2025",
+  "lastUpdate": "23.12.2025",
+  "automation": {
+    "description": "Mise à jour automatique via checkpoints EXPOSÉ dans BlaizBot-V1/todo/",
+    "triggers": [
+      "Après chaque REFACTOR CHECKPOINT dans une phase",
+      "Après correction de bug majeur",
+      "En fin de session de développement"
+    ],
+    "phaseMapping": {
+      "phase-01": { "chapter": "08", "hours": 2 },
+      "phase-02": { "chapter": "08", "hours": 3 },
+      "phase-03": { "chapter": "08", "hours": 3 },
+      "phase-04": { "chapter": "08", "hours": 4 },
+      "phase-05": { "chapter": "08", "hours": 5 },
+      "phase-06": { "chapter": "08", "hours": 7 },
+      "phase-07": { "chapter": "08", "hours": 7 },
+      "phase-08": { "chapter": "08", "hours": 7 },
+      "phase-09": { "chapter": "08", "hours": 9 },
+      "phase-10": { "chapter": "09,10", "hours": 5 }
+    }
+  },
   "chapters": [
     {
       "id": "00",

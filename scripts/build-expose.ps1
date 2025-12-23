@@ -23,22 +23,21 @@ $WordExportDir = Join-Path $ExportsDir "word"
 New-Item -ItemType Directory -Path $HtmlExportDir -Force | Out-Null
 New-Item -ItemType Directory -Path $WordExportDir -Force | Out-Null
 
-# Liste des fichiers dans l'ordre
+# Liste des fichiers dans l'ordre (correspond à content/)
 $chapters = @(
-    "00-page-de-garde.md",
-    "01-introduction.md",
-    "02-problematique.md",
-    "03-vibecoding-definition.md",
-    "04-methodologie.md",
-    "05-etude-de-cas-blaizbot.md",
-    "06-phase-brainstorming.md",
-    "07-phase-wireframe.md",
-    "08-phase-architecture.md",
-    "09-phase-developpement.md",
-    "10-collaboration-ia.md",
-    "11-resultats-metriques.md",
-    "12-limites-challenges.md",
-    "13-conclusion.md"
+    "00-cadre-travail.md",
+    "01-idee-problematique.md",
+    "02-organisation-chatgpt.md",
+    "03-choix-outils.md",
+    "04-specifications-prd.md",
+    "05-wireframe-ux.md",
+    "06-architecture.md",
+    "07-prompts-agents.md",
+    "08-developpement.md",
+    "09-demo-stabilisation.md",
+    "10-analyse-resultats.md",
+    "11-limites-risques.md",
+    "12-conclusion.md"
 )
 
 $annexes = @(

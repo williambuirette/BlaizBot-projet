@@ -305,6 +305,60 @@ Après la restructuration, nous avons **enrichi** chaque fichier TODO avec :
 4. **Blocs 💡 INSTRUCTION** avec code prêt à copier
 5. **Références** vers les fichiers -code.md
 
+### 8.4.6 Automatisation des mises à jour exposé
+
+Chaque phase contient maintenant un **EXPOSÉ CHECKPOINT** qui déclenche automatiquement :
+
+1. Mise à jour de `progress.json` (heures, statuts)
+2. Ajout du résumé de phase dans ce chapitre
+3. Capture d'écran requise
+4. Commit dans BlaizBot-projet
+
+**Mapping phases → heures estimées** :
+
+| Phase | Nom | Heures | Chapitre |
+|:------|:----|:-------|:---------|
+| 1 | Initialisation | 2h | 08 |
+| 2 | Layout | 3h | 08 |
+| 3 | Vertical Slice | 3h | 08 |
+| 4 | Database | 4h | 08 |
+| 5 | Auth | 5h | 08 |
+| 6 | Admin | 7h | 08 |
+| 7 | Teacher | 7h | 08 |
+| 8 | Student | 7h | 08 |
+| 9 | IA | 9h | 08 |
+| 10 | Démo | 5h | 09, 10 |
+| **Total** | | **52h** | |
+
+---
+
+## 8.5 Journal des phases (AUTOMATIQUE)
+
+> Cette section est mise à jour automatiquement après chaque EXPOSÉ CHECKPOINT.
+
+<!-- DÉBUT JOURNAL PHASES -->
+
+### ⏳ Phases en attente
+
+Les sections ci-dessous seront complétées au fur et à mesure du développement.
+
+```
+Phase 1 — Initialisation     : ⬜ À venir
+Phase 2 — Layout             : ⬜ À venir
+Phase 3 — Vertical Slice     : ⬜ À venir
+Phase 4 — Database           : ⬜ À venir
+Phase 5 — Auth               : ⬜ À venir
+Phase 6 — Admin              : ⬜ À venir
+Phase 7 — Teacher            : ⬜ À venir
+Phase 8 — Student            : ⬜ À venir
+Phase 9 — IA                 : ⬜ À venir
+Phase 10 — Démo              : ⬜ À venir
+```
+
+<!-- FIN JOURNAL PHASES -->
+
+---
+
 **Exemple d'enrichissement** :
 
 ```markdown
