@@ -330,6 +330,36 @@ Chaque phase contient maintenant un **EXPOSÉ CHECKPOINT** qui déclenche automa
 | 10 | Démo | 5h | 09, 10 |
 | **Total** | | **52h** | |
 
+### 8.4.7 Optimisation du workflow (23.12.2025)
+
+Pour améliorer le suivi et éviter les oublis de documentation, nous avons ajouté :
+
+**1. Tableau de progression enrichi** (INDEX.md)
+
+| Phase | Statut | Tests | Refactor | Exposé |
+|:------|:-------|:------|:---------|:-------|
+| 1 | 🔴 | ⬜ | ⬜ | ⬜ |
+
+→ Visibilité immédiate des 3 checkpoints par phase.
+
+**2. Conventions de nommage captures** (RULES.md)
+
+```
+assets/screenshots/
+├── phase-01-hello.png       # Obligatoire
+├── phase-05-auth-redirect.gif  # Animation
+└── phase-10-demo.mp4        # Vidéo longue
+```
+
+**3. Script expose-status.ps1**
+
+```powershell
+.\scripts\expose-status.ps1
+# Affiche : métriques, chapitres, captures manquantes, actions requises
+```
+
+Ce script permet de vérifier en un coup d'œil l'état de la documentation.
+
 ---
 
 ## 8.5 Journal des phases (AUTOMATIQUE)
