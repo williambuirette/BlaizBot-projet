@@ -434,10 +434,9 @@ Phase 10 — Démo              : ⬜ À venir
 **Composants créés** :
 | Fichier | Lignes | Rôle |
 |:--------|:-------|:-----|
-| `Sidebar.tsx` | 113 | Navigation par rôle (ADMIN/TEACHER/STUDENT) |
-| `SidebarItem.tsx` | 38 | Item de navigation réutilisable |
+| `Sidebar.tsx` | 98 | Navigation par rôle (ADMIN/TEACHER/STUDENT) |
 | `Header.tsx` | 62 | Recherche + Avatar + Dropdown |
-| `(dashboard)/layout.tsx` | 25 | Wrapper dashboard |
+| `(dashboard)/layout.tsx` | 36 | Wrapper dashboard avec role dynamique |
 
 **Pages créées** (12 fichiers, ~10 lignes chacun) :
 - **Admin** : `/admin`, `/admin/users`, `/admin/classes`, `/admin/subjects`
@@ -448,17 +447,25 @@ Phase 10 — Démo              : ⬜ À venir
 - Navigation basée sur `Role` (majuscules : ADMIN | TEACHER | STUDENT)
 - `navItemsByRole: Record<Role, NavItem[]>` pour le mapping
 - Layout avec `ml-64` pour compenser la Sidebar fixe
+- Role dynamique basé sur la route (`getRoleFromPathname`)
 - Pages vides = Server Components (pas de 'use client')
 
 **Validations** :
 - ✅ `npm run lint` — 0 erreur
 - ✅ `npm run build` — 16 pages générées
-- ✅ Navigation fonctionnelle sur `/student`
-- ✅ Sidebar + Header visibles
+- ✅ Navigation fonctionnelle sur `/student`, `/teacher`, `/admin`
+- ✅ Sidebar change selon la route
 
-**Itérations** : 1 (aucune correction nécessaire)
+**Audit post-validation** :
+| Problème détecté | Correction |
+|:-----------------|:-----------|
+| Role hardcodé STUDENT | → Dynamique via `usePathname()` |
+| URLs sidebar ≠ pages | → Alignement des hrefs |
+| SidebarItem.tsx inutilisé | → Supprimé (YAGNI) |
 
-**Temps estimé** : 3h | **Temps réel** : ~45min
+**Itérations** : 2 (1 création + 1 audit/fix)
+
+**Temps estimé** : 3h | **Temps réel** : ~1h
 
 **Capture** : `assets/screenshots/phase-02-dashboard.png` *(à créer)*
 
