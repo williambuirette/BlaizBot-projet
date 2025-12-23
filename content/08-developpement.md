@@ -414,7 +414,7 @@ src/
 ### ⏳ Phases en attente
 
 ```
-Phase 2 — Layout             : ⬜ À venir
+Phase 2 — Layout             : ✅ Complété (23.12.2025)
 Phase 3 — Vertical Slice     : ⬜ À venir
 Phase 4 — Database           : ⬜ À venir
 Phase 5 — Auth               : ⬜ À venir
@@ -424,6 +424,43 @@ Phase 8 — Student            : ⬜ À venir
 Phase 9 — IA                 : ⬜ À venir
 Phase 10 — Démo              : ⬜ À venir
 ```
+
+---
+
+### ✅ Phase 2 — Layout & Navigation (23.12.2025)
+
+**Objectif** : Créer la structure de navigation complète avec Sidebar, Header et toutes les pages vides.
+
+**Composants créés** :
+| Fichier | Lignes | Rôle |
+|:--------|:-------|:-----|
+| `Sidebar.tsx` | 113 | Navigation par rôle (ADMIN/TEACHER/STUDENT) |
+| `SidebarItem.tsx` | 38 | Item de navigation réutilisable |
+| `Header.tsx` | 62 | Recherche + Avatar + Dropdown |
+| `(dashboard)/layout.tsx` | 25 | Wrapper dashboard |
+
+**Pages créées** (12 fichiers, ~10 lignes chacun) :
+- **Admin** : `/admin`, `/admin/users`, `/admin/classes`, `/admin/subjects`
+- **Teacher** : `/teacher`, `/teacher/courses`, `/teacher/classes`, `/teacher/messages`
+- **Student** : `/student`, `/student/courses`, `/student/ai`, `/student/messages`
+
+**Patterns établis** :
+- Navigation basée sur `Role` (majuscules : ADMIN | TEACHER | STUDENT)
+- `navItemsByRole: Record<Role, NavItem[]>` pour le mapping
+- Layout avec `ml-64` pour compenser la Sidebar fixe
+- Pages vides = Server Components (pas de 'use client')
+
+**Validations** :
+- ✅ `npm run lint` — 0 erreur
+- ✅ `npm run build` — 16 pages générées
+- ✅ Navigation fonctionnelle sur `/student`
+- ✅ Sidebar + Header visibles
+
+**Itérations** : 1 (aucune correction nécessaire)
+
+**Temps estimé** : 3h | **Temps réel** : ~45min
+
+**Capture** : `assets/screenshots/phase-02-dashboard.png` *(à créer)*
 
 <!-- FIN JOURNAL PHASES -->
 
