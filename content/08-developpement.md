@@ -415,8 +415,8 @@ src/
 
 ```
 Phase 2 — Layout             : ✅ Complété (23.12.2025)
-Phase 3 — Vertical Slice     : ⬜ À venir
-Phase 4 — Database           : ⬜ À venir
+Phase 3 — Vertical Slice     : ✅ Complété (23.12.2025)
+Phase 4 — Database           : ✅ Complété (23.12.2025)
 Phase 5 — Auth               : ⬜ À venir
 Phase 6 — Admin              : ⬜ À venir
 Phase 7 — Teacher            : ⬜ À venir
@@ -424,6 +424,123 @@ Phase 8 — Student            : ⬜ À venir
 Phase 9 — IA                 : ⬜ À venir
 Phase 10 — Démo              : ⬜ À venir
 ```
+
+---
+
+### ✅ Phase 4 — Database & Vercel (23.12.2025)
+
+**Objectif** : Connecter une base de données PostgreSQL (Neon) via Vercel et configurer Prisma ORM.
+
+#### 4.1 Complexité rencontrée : Prisma 7 vs Prisma 6
+
+**Problème initial** : L'installation par défaut (`npm install prisma`) installe Prisma 7 qui a **cassé la rétrocompatibilité**.
+
+| Prisma 6 | Prisma 7 (breaking changes) |
+|:---------|:----------------------------|
+| `url` dans schema.prisma | `url` dans `prisma.config.ts` |
+| Import `@prisma/client` | Import depuis `./generated/prisma/client` |
+| Provider `prisma-client-js` | Provider `prisma-client` |
+| Charge `.env` automatiquement | Nécessite `import 'dotenv/config'` |
+
+**Solution** : Downgrade vers Prisma 6 (stable)
+```bash
+npm uninstall prisma @prisma/client
+npm install prisma@6 @prisma/client@6
+```
+
+**Leçon apprise** : Toujours vérifier les breaking changes des versions majeures avant installation.
+
+#### 4.2 Configuration Neon via Vercel Marketplace
+
+**Changement Vercel 2025** : Vercel Postgres n'est plus natif, il utilise maintenant des **providers du Marketplace** (Neon, Supabase, PlanetScale...).
+
+**Étapes manuelles effectuées** :
+1. Vercel Dashboard → Storage → Browse Marketplace
+2. Sélection **Neon** (PostgreSQL serverless, Free tier)
+3. Création base : `blaizbot-db` (région US-East-1)
+4. Récupération credentials (pooled + direct URLs)
+
+**URLs de connexion** :
+| Type | Usage | Format |
+|:-----|:------|:-------|
+| `DATABASE_URL` | Requêtes (pooled) | `...@ep-xxx-pooler.c-3...` |
+| `DIRECT_URL` | Migrations Prisma | `...@ep-xxx.c-3...` |
+
+⚠️ **Pooled** = connexions partagées (performance)
+⚠️ **Direct** = connexion unique (obligatoire pour `prisma migrate`)
+
+#### 4.3 Schéma Prisma final
+
+**22 modèles créés** :
+
+| Catégorie | Modèles |
+|:----------|:--------|
+| Auth & Users | `User`, `TeacherProfile`, `StudentProfile` |
+| Organisation | `Subject`, `Class` |
+| Contenu | `Course`, `CourseFile`, `Exercise` |
+| Attribution | `Assignment`, `Grade`, `Progression` |
+| Lab | `LabProject`, `LabSource` |
+| Knowledge | `KnowledgeBase` |
+| Messagerie | `Conversation`, `Message` |
+| Calendrier | `CalendarEvent` |
+| IA | `AISettings`, `AIChat` |
+
+**9 enums** : `Role`, `AssignmentTargetType`, `AssignmentStatus`, `LabSourceType`, `KnowledgeOwnerType`, `ConversationType`, `AIProvider`, `AIRestrictionLevel`
+
+#### 4.4 Connexion VS Code ↔ Vercel
+
+**Problème** : Vercel CLI était connecté au mauvais compte (celui d'un client).
+
+**Solution** :
+```bash
+npx vercel logout                    # Déconnexion
+npx vercel login                     # Reconnexion (ouvre navigateur)
+npx vercel link                      # Liaison au projet
+npx vercel env pull .env.local       # Sync des variables
+```
+
+**Résultat** : VS Code peut maintenant interagir directement avec Vercel :
+- `npx vercel` → Deploy preview
+- `npx vercel --prod` → Deploy production
+- `npx vercel env pull` → Synchroniser variables
+- `npx vercel logs` → Voir logs
+
+#### 4.5 Seed de données
+
+**Script `prisma/seed.ts`** crée :
+- 6 matières (Maths, Français, Histoire-Géo, SVT, Physique, Anglais)
+- 3 classes (3ème A, 3ème B, 4ème A)
+- 6 utilisateurs (1 admin, 2 profs, 3 élèves)
+- 2 cours (Les Fractions, La Révolution Française)
+
+**Comptes de test** :
+| Rôle | Email | Mot de passe |
+|:-----|:------|:-------------|
+| Admin | `admin@blaizbot.edu` | `admin123` |
+| Prof | `m.dupont@blaizbot.edu` | `prof123` |
+| Élève | `lucas.martin@blaizbot.edu` | `eleve123` |
+
+#### 4.6 Fichiers créés Phase 4
+
+| Fichier | Lignes | Description |
+|:--------|:-------|:------------|
+| `prisma/schema.prisma` | 350 | Schéma complet 22 modèles |
+| `prisma/seed.ts` | 210 | Script de données initiales |
+| `prisma/migrations/` | ~1500 | SQL généré automatiquement |
+| `src/lib/prisma.ts` | 18 | Client singleton Next.js |
+| `.env.local` / `.env` | 20 | Variables Vercel/Neon |
+
+#### 4.7 Validations
+
+- ✅ `npx prisma validate` — Schéma valide
+- ✅ `npx prisma migrate dev --name init` — Migration appliquée
+- ✅ `npm run db:seed` — 6 matières, 3 classes, 6 users, 2 cours
+- ✅ `npm run build` — Build Next.js réussi
+- ✅ `npx vercel ls` — Déploiement Ready
+
+**Temps estimé** : 4h | **Temps réel** : ~3h (malgré les problèmes Prisma 7)
+
+**Capture** : `assets/screenshots/phase-04-prisma-studio.png` *(à créer)*
 
 ---
 

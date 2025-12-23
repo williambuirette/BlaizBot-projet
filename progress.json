@@ -5,7 +5,7 @@
   "targetPages": null,
   "note": "Pas de limite de pages pour V1 - on verra à la fin",
   "lastUpdate": "23.12.2025",
-  "phaseCompleted": "phase-03",
+  "phaseCompleted": "phase-04",
   "automation": {
     "description": "Mise à jour automatique via checkpoints EXPOSÉ dans BlaizBot-V1/todo/",
     "triggers": [
@@ -158,13 +158,14 @@
     "brainstormingHours": 4,
     "wireframeHours": 11,
     "architectureHours": 8,
-    "developmentHours": 5.5,
-    "documentationHours": 6,
-    "totalLinesGenerated": 19400,
+    "developmentHours": 8.5,
+    "documentationHours": 7,
+    "totalLinesGenerated": 21500,
     "todoLinesAdded": 10614,
     "promptsLinesAdded": 2150,
-    "humanInterventions": 0,
-    "aiSuggestions": 0
+    "humanInterventions": 2,
+    "aiSuggestions": 0,
+    "note": "Phase 4: +3h dev (Prisma 7 downgrade, Vercel link), +2100 lignes (schema + seed)"
   },
   "statusLegend": {
     "not-started": "Pas commencé",
