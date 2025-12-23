@@ -623,23 +623,45 @@ VÉRIFIER : dossier prisma/ existe avec schema.prisma
 
 | Slice | Estimé | Réel | Écart |
 | :--- | :--- | :--- | :--- |
-| Slice 1 | 4j | *À remplir* | |
-| Slice 2 | 6j | *À remplir* | |
-| Slice 3 | 6j | *À remplir* | |
-| Slice 4 | 4j | *À remplir* | |
-| Slice 5 | 3j | *À remplir* | |
+| Phase 1 Init | 2j | 2h | Rapide grâce aux prompts |
+| Phase 2 Layout | 3j | 3h | + audit et corrections |
+| Phase 3 Mock | 3j | 1h | Données + dashboards |
+| Phase 4 | 4j | *À remplir* | |
+| Phase 5+ | ... | *À remplir* | |
 
 ### 8.7.2 Lignes de code
 
 | Catégorie | Lignes | % IA généré | % modifié |
 | :--- | :--- | :--- | :--- |
-| Composants React | *À mesurer* | | |
-| API Routes | | | |
-| Prisma schema | | | |
-| Styles (Tailwind) | | | |
-| **Total** | | | |
+| Composants React | ~500 | 95% | 5% |
+| API Routes | 0 | - | - |
+| Prisma schema | 0 | - | - |
+| Types/Constants | ~450 | 100% | 0% |
+| Mock Data | ~70 | 100% | 0% |
+| **Total Phase 1-3** | ~1020 | 98% | 2% |
 
-### 8.7.3 Commits par jour
+### 8.7.3 Journal Phase 3 (23.12.2025)
+
+**Objectif** : Vertical Slice - Démontrer l'UI avec données mock (sans BDD)
+
+| Tâche | Fichiers créés | Itérations | Observations |
+| :--- | :--- | :--- | :--- |
+| 3.1 Login | `(auth)/login/page.tsx`, `LoginForm.tsx` | 1 | shadcn Label nécessaire |
+| 3.2 Student | `mockData.ts`, 4 composants dashboard | 2 | TypeScript strict: `split()[0]` |
+| 3.3 Teacher | Extension mockData + page | 1 | Pattern firstName réutilisé |
+| 3.4 Admin | Extension mockData + page | 1 | Stats plateforme |
+
+**Bug corrigé** : Hydration mismatch Header.tsx
+- Cause : Radix UI génère IDs dynamiques différents SSR/client
+- Solution : `useSyncExternalStore` (useState+useEffect interdit par ESLint)
+
+**Routes fonctionnelles** :
+- `/login` → 3 boutons connexion rapide (Élève, Professeur, Admin)
+- `/student` → Dashboard avec WelcomeCard, StatsCards, RecentCourses
+- `/teacher` → Dashboard avec stats et liste classes
+- `/admin` → Dashboard avec métriques plateforme
+
+### 8.7.4 Commits par jour
 
 *Graphique à générer en fin de projet*
 
