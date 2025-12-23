@@ -368,12 +368,52 @@ Ce script permet de vérifier en un coup d'œil l'état de la documentation.
 
 <!-- DÉBUT JOURNAL PHASES -->
 
+### ✅ Phase 1 — Initialisation (23.12.2025)
+
+**Objectif** : Créer le squelette Next.js 15 avec toutes les fondations techniques.
+
+**Stack installée** :
+| Technologie | Version | Notes |
+|:------------|:--------|:------|
+| Next.js | 16.1.1 | App Router, Turbopack par défaut |
+| React | 19.2.3 | Dernière version stable |
+| TypeScript | 5.x | Strict + noUncheckedIndexedAccess |
+| Tailwind CSS | 4.0 | Nouvelle syntaxe @import |
+| shadcn/ui | new-york-v4 | 6 composants de base |
+| ESLint | 9.x | Flat config + Prettier |
+
+**Composants shadcn/ui installés** :
+- button, input, card, avatar, dropdown-menu, sonner
+
+**Structure créée** :
+```
+src/
+├── app/             # Next.js App Router
+├── components/
+│   ├── ui/          # 6 composants shadcn
+│   ├── layout/      # Headers, Sidebars
+│   └── features/    # Composants métier
+├── lib/             # Prisma, auth, utils
+├── hooks/           # Custom hooks
+├── types/           # Types partagés (Role, User, ApiResponse)
+└── constants/       # Config app (ROUTES, APP_CONFIG)
+```
+
+**Validations** :
+- ✅ `npm run lint` — 0 erreur
+- ✅ `npm run build` — Build réussi
+- ✅ `npx tsc --noEmit` — Types valides
+- ✅ `npm run dev` — Serveur fonctionnel localhost:3000
+
+**Temps estimé** : 2h | **Temps réel** : ~1.5h
+
+**Capture** : `assets/screenshots/phase-01-hello.png` *(à créer)*
+
+---
+
 ### ⏳ Phases en attente
 
-Les sections ci-dessous seront complétées au fur et à mesure du développement.
-
 ```
-Phase 1 — Initialisation     : ⬜ À venir
 Phase 2 — Layout             : ⬜ À venir
 Phase 3 — Vertical Slice     : ⬜ À venir
 Phase 4 — Database           : ⬜ À venir
