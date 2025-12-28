@@ -211,9 +211,10 @@ git commit -m "feat(student): add ChatInterface component with streaming"
 
 | # | Bug | Cause | Solution | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| 001 | *À documenter pendant le dev* | | | |
-| 002 | | | | |
-| ... | | | | |
+| 001 | Zod `.errors` undefined | API Zod v3 utilise `.issues` pas `.errors` | Remplacer par `.issues` dans toutes les API routes | ✅ Fixé |
+| 002 | UserRow.name inexistant | Prisma schema utilise firstName/lastName | Refactorer types, hook, composants (7 fichiers) | ✅ Fixé |
+| 003 | Class.year inexistant | Champ non prévu dans schéma Prisma | Utiliser studentCount via _count.students | ✅ Fixé |
+| 004 | Subject.color inexistant | Champ non prévu dans schéma Prisma | Mapping couleur côté client par nom | ✅ Fixé |
 
 ### 8.3.3 Patterns de bugs fréquents
 
@@ -418,7 +419,7 @@ Phase 2 — Layout             : ✅ Complété (23.12.2025)
 Phase 3 — Vertical Slice     : ✅ Complété (23.12.2025)
 Phase 4 — Database           : ✅ Complété (23.12.2025)
 Phase 5 — Auth               : ✅ Complété (23.12.2025)
-Phase 6 — Admin              : ⬜ À venir
+Phase 6 — Admin              : ✅ Complété (28.12.2025)
 Phase 7 — Teacher            : ⬜ À venir
 Phase 8 — Student            : ⬜ À venir
 Phase 9 — IA                 : ⬜ À venir
@@ -520,6 +521,117 @@ export async function middleware(req: NextRequest) {
 **Temps estimé** : 5h | **Temps réel** : ~4h (problèmes middleware Next.js 16)
 
 **Capture** : `assets/screenshots/phase-05-login.png` *(à créer)*
+
+---
+
+### ✅ Phase 6 — Interface Admin (28.12.2025)
+
+**Objectif** : Implémenter le dashboard admin complet avec CRUD utilisateurs, classes et matières.
+
+#### 6.1 Stack utilisée
+
+| Technologie | Usage |
+|:------------|:------|
+| shadcn/ui | Table, Dialog, Select, DropdownMenu |
+| React Hook Form (pattern) | Gestion état formulaires |
+| Zod | Validation côté serveur |
+| bcryptjs | Hash mots de passe création utilisateurs |
+
+#### 6.2 Complexité rencontrée : Alignement Types/Prisma
+
+**Problème critique** : Les types TypeScript ne correspondaient pas au schéma Prisma.
+
+| Type Initial (incorrect) | Schéma Prisma (réel) |
+|:-------------------------|:---------------------|
+| `UserRow.name` | `firstName` + `lastName` |
+| `ClassRow.year` | N'existe pas |
+| `SubjectRow.color` | N'existe pas |
+
+**Solution** : Audit complet du schéma Prisma avant de coder les types.
+
+```typescript
+// ❌ AVANT (type inventé)
+export type UserRow = { name: string | null; ... }
+
+// ✅ APRÈS (aligné Prisma)
+export type UserRow = { firstName: string; lastName: string; ... }
+```
+
+**Leçon apprise** : Toujours consulter `prisma/schema.prisma` comme source de vérité pour les types.
+
+#### 6.3 Bug Zod : `.issues` vs `.errors`
+
+**Problème** : Utilisation de `error.errors` qui n'existe pas dans Zod.
+
+```typescript
+// ❌ ERREUR : Property 'errors' does not exist
+catch (e) { if (e instanceof z.ZodError) { console.log(e.errors) } }
+
+// ✅ CORRECT : Utiliser .issues
+catch (e) { if (e instanceof z.ZodError) { console.log(e.issues) } }
+```
+
+#### 6.4 Architecture CRUD
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  FLUX CRUD ADMIN                            │
+│                                                             │
+│  Page (/admin/users)                                        │
+│    │                                                        │
+│    ├─► Hook (useUserForm)  →  État local formulaire        │
+│    │                                                        │
+│    ├─► Modal (UserFormModal)  →  UI création/édition       │
+│    │                                                        │
+│    └─► Table (UsersTable)  →  Affichage + actions          │
+│          │                                                  │
+│          └─► API (/api/admin/users)  →  Prisma CRUD        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 6.5 Fichiers créés Phase 6
+
+| Fichier | Lignes | Description |
+|:--------|:-------|:------------|
+| `src/app/(dashboard)/admin/page.tsx` | 85 | Dashboard stats + cards |
+| `src/app/(dashboard)/admin/users/page.tsx` | 95 | Page CRUD utilisateurs |
+| `src/app/(dashboard)/admin/classes/page.tsx` | 80 | Page CRUD classes |
+| `src/app/(dashboard)/admin/subjects/page.tsx` | 75 | Page CRUD matières |
+| `src/app/api/admin/users/route.ts` | 85 | GET/POST users |
+| `src/app/api/admin/users/[id]/route.ts` | 80 | GET/PUT/DELETE user |
+| `src/app/api/admin/classes/route.ts` | 70 | GET/POST classes |
+| `src/app/api/admin/classes/[id]/route.ts` | 65 | GET/PUT/DELETE class |
+| `src/app/api/admin/subjects/route.ts` | 60 | GET/POST subjects |
+| `src/app/api/admin/subjects/[id]/route.ts` | 55 | GET/PUT/DELETE subject |
+| `src/components/features/admin/UsersTable.tsx` | 120 | Table utilisateurs |
+| `src/components/features/admin/UserFormModal.tsx` | 150 | Modal CRUD user |
+| `src/components/features/admin/ClassesTable.tsx` | 100 | Table classes |
+| `src/components/features/admin/ClassFormModal.tsx` | 120 | Modal CRUD class |
+| `src/components/features/admin/SubjectsTable.tsx` | 90 | Table matières |
+| `src/components/features/admin/SubjectFormModal.tsx` | 100 | Modal CRUD subject |
+| `src/hooks/admin/useUserForm.ts` | 55 | Hook formulaire user |
+| `src/hooks/admin/useClassForm.ts` | 50 | Hook formulaire class |
+| `src/hooks/admin/useSubjectForm.ts` | 45 | Hook formulaire subject |
+| `src/types/admin.ts` | 35 | Types partagés admin |
+| `src/lib/validations/admin.ts` | 45 | Schémas Zod admin |
+
+#### 6.6 Validations
+
+- ✅ `npm run lint` — 0 erreur
+- ✅ `npm run build` — Build réussi
+- ✅ CRUD Users fonctionnel (create, read, update, delete)
+- ✅ CRUD Classes fonctionnel
+- ✅ CRUD Subjects fonctionnel
+- ✅ Hash bcrypt sur mots de passe
+- ✅ Validation Zod sur toutes les routes
+
+**Temps estimé** : 8h | **Temps réel** : ~10h (bugs types + debug Zod)
+
+**Captures** : 
+- `assets/screenshots/02-organisation/admin-dashboard.png` ✅
+- `assets/screenshots/02-organisation/admin-users.png` ✅
+- `assets/screenshots/02-organisation/admin-classes.png` ✅
+- `assets/screenshots/02-organisation/admin-subjects.png` ✅
 
 ---
 

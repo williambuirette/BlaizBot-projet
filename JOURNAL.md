@@ -257,6 +257,44 @@ todo/
 
 ---
 
+### 28.12.2025 - Phase 6 Admin complète
+
+**Durée** : ~7h (sessions cumulées 27-28.12)
+**Chapitres touchés** : 08-developpement.md
+**Résumé** : Interface Admin avec CRUD complet (Users, Classes, Subjects)
+
+**Réalisations** :
+- API `/api/admin/stats` avec 4 KPIs
+- CRUD Users : API + UsersTable + UserFormModal + page
+- CRUD Classes : API + ClassesTable + ClassFormModal + page
+- CRUD Subjects : API + SubjectsTable + SubjectFormModal + page
+- StatsCard component réutilisable
+- 16 vérifications ADMIN sur toutes les routes
+
+**Bugs corrigés** :
+- Zod `.issues` vs `.errors` (API validation)
+- Prisma schema : `name` → `firstName/lastName`, `password` → `passwordHash`
+- Class sans `year`, Subject sans `color`
+
+**Fichiers créés** (11 fichiers, ~1200 lignes) :
+- `src/app/api/admin/stats/route.ts`
+- `src/app/api/admin/users/route.ts` + `[id]/route.ts`
+- `src/app/api/admin/classes/route.ts` + `[id]/route.ts`
+- `src/app/api/admin/subjects/route.ts` + `[id]/route.ts`
+- `src/components/features/admin/*.tsx` (7 composants)
+
+**Preuves ajoutées** :
+- [x] `admin-dashboard.png` - Dashboard avec 4 KPIs
+- [x] `admin-users.png` - CRUD utilisateurs
+- [x] `admin-classes.png` - CRUD classes
+- [x] `admin-subjects.png` - CRUD matières
+
+**Prochaines étapes** :
+- Phase 7 : Interface Professeur
+- Captures d'écran UI Admin
+
+---
+
 ## À documenter (rétro-documentation)
 
 Ces sessions passées doivent être documentées a posteriori :
@@ -274,10 +312,10 @@ Ces sessions passées doivent être documentées a posteriori :
 
 | Métrique | Valeur | Dernière MAJ |
 | :--- | :--- | :--- |
-| Heures totales | ~23.5h | 22.12.2025 |
+| Heures totales | ~44.5h | 28.12.2025 |
 | Lignes wireframe | 6,244 | 10.11.2025 |
-| Lignes production | 0 | - |
+| Lignes production | ~4,500 | 28.12.2025 |
 | Chapitres complétés | 4/13 | 22.12.2025 |
-| Captures réalisées | 5 | 22.12.2025 |
-| Phases planifiées | 10 | 22.12.2025 |
+| Captures réalisées | 9 | 28.12.2025 |
+| Phases développement | 6/10 | 28.12.2025 |
 | Fichiers todo/ | 13 | 22.12.2025 |
