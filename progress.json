@@ -4,8 +4,8 @@
   "version": "2.1.0",
   "targetPages": null,
   "note": "Pas de limite de pages pour V1 - on verra à la fin",
-  "lastUpdate": "28.12.2025",
-  "phaseCompleted": "phase-06",
+  "lastUpdate": "29.12.2025",
+  "phaseCompleted": "phase-07",
   "automation": {
     "description": "Mise à jour automatique via checkpoints EXPOSÉ dans BlaizBot-V1/todo/",
     "triggers": [
@@ -158,14 +158,14 @@
     "brainstormingHours": 4,
     "wireframeHours": 11,
     "architectureHours": 8,
-    "developmentHours": 20.5,
+    "developmentHours": 29.5,
     "documentationHours": 7,
-    "totalLinesGenerated": 24500,
-    "todoLinesAdded": 10614,
-    "promptsLinesAdded": 2150,
-    "humanInterventions": 5,
+    "totalLinesGenerated": 26500,
+    "todoLinesAdded": 11000,
+    "promptsLinesAdded": 2200,
+    "humanInterventions": 6,
     "aiSuggestions": 0,
-    "note": "Phase 6: +7h dev (Admin CRUD), +3000 lignes (API, composants, pages), 3 bugs fix (Zod .issues, Prisma schema)"
+    "note": "Phase 7: +9h dev (Teacher Dashboard, Courses, Gemini AI), +2000 lignes"
   },
   "statusLegend": {
     "not-started": "Pas commencé",
