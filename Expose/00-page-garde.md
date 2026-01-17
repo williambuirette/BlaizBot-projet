@@ -7,9 +7,9 @@
 ### Travail de maturité
 
 **Auteur** : Maxime Buirette  
-**Établissement** : [Nom de l'établissement]  
-**Classe** : [Année et section]  
-**Directeur de travail** : [Nom du directeur]
+**Établissement** : [lycée Blaise Cendrars]  
+**Classe** : [3L]  
+
 
 **Année scolaire** : 2025-2026
 
