@@ -56,9 +56,9 @@ Exemples chemins complets :
    - Exemples de code/prompts → bloc de code formaté
 
 ### Étape 2 : Rechercher les visuels existants
-1. Consulter le wireframe pour trouver des captures existantes
-2. Vérifier les assets existants dans `screenshots/`
-3. Identifier ce qui doit être créé
+1. Consulter le wireframe dans `pages/` pour trouver des captures existantes
+2. Si le fichier PNG existe déjà → l'utiliser directement
+3. Si le fichier n'existe pas → créer un placeholder
 
 ### Étape 3 : Insérer les annotations
 
@@ -66,12 +66,82 @@ Exemples chemins complets :
 ```markdown
 <!-- [VISUEL-{CHAP}.{NUM}] 
   Type: {capture|schema|tableau|code|infographie|graphique}
-  Source: {chemin fichier existant | "À créer" | "À capturer"}
-  Réf-Wireframe: {ID fichier wireframe si applicable, ex: C-01-02}
-  Prompt-Création: {si infographie, le prompt pour générer l'image}
+  Source: {chemin fichier existant dans pages/ | "À créer" | "À capturer"}
+  Destination: {chemin dans pages/ où créer/placer le fichier}
+  Prompt-Création: {si applicable, le prompt pour générer l'image}
   Légende: {Figure X : texte descriptif}
   Position: {après-paragraphe | pleine-largeur | côté-texte}
 -->
+```
+
+### Étape 4 : Créer les fichiers placeholder dans `pages/`
+
+**RÈGLE CRITIQUE** : Pour chaque visuel à créer/capturer, l'agent DOIT créer :
+1. L'arborescence de dossiers si elle n'existe pas
+2. Un fichier placeholder `.png.md` à l'emplacement final
+
+**Organisation dans `pages/`** :
+```
+pages/
+├── A-auth/           → Captures authentification
+├── B-admin/          → Captures admin
+├── C-student/        → Captures élève
+├── D-teacher/        → Captures professeur
+├── E-docs/           → Documentation
+└── F-expose/         → 🆕 Visuels spécifiques à l'exposé
+    ├── 00-page-garde/
+    │   ├── logo-blaizbot.png.md      → Placeholder
+    │   └── logo-blaizbot.png         → (à remplacer)
+    ├── 01-introduction/
+    ├── 02-chapitre-1/
+    ├── 03-chapitre-2/
+    └── ...
+```
+
+**Logique de placement** :
+| Type de visuel | Emplacement |
+|----------------|-------------|
+| Capture interface app (existante) | `pages/{A,B,C,D}-*/...` (wireframe existant) |
+| Capture interface app (nouvelle) | `pages/{A,B,C,D}-*/...` (créer placeholder) |
+| Capture externe (tweet, web) | `pages/F-expose/XX-chapitre/` |
+| Schéma/Diagramme | `pages/F-expose/XX-chapitre/` |
+| Infographie | `pages/F-expose/XX-chapitre/` |
+| Logo/Branding | `pages/F-expose/00-page-garde/` |
+
+**Contenu du fichier placeholder** (`.png.md`) :
+```markdown
+# 🖼️ VISUEL-X.X - [Description courte]
+
+> **Fichier à créer** : Remplacer ce `.md` par le `.png` final
+
+| Propriété | Valeur |
+|-----------|--------|
+| **ID** | VISUEL-X.X |
+| **Type** | [capture/schema/infographie] |
+| **Chapitre** | [Nom du chapitre] |
+| **Légende** | [Texte de la légende] |
+
+---
+
+## 📋 Instructions
+
+[Instructions détaillées pour créer ce visuel]
+
+## 🎨 Prompt (si applicable)
+
+```
+[Prompt pour IA générative]
+```
+
+## ✅ Checklist
+
+- [ ] Visuel créé
+- [ ] Fichier renommé en `.png`
+- [ ] Ce fichier `.md` supprimé
+
+---
+
+*Placeholder créé par @Agent-MiseEnForme*
 ```
 
 **Exemples concrets** :
