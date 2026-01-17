@@ -1,41 +1,59 @@
-# Page de garde
+<div align="center">
 
-<p align="center">
-  <img src="../pages/F-expose/00-page-garde/logo-blaizbot.png" alt="Logo BlaizBot" width="180">
-</p>
+<br><br>
 
----
+<img src="../pages/F-expose/00-page-garde/logo-blaizbot.png" alt="Logo BlaizBot" width="200">
 
-## BlaizBot — Développement assisté par IA
+<br>
 
-### Travail de maturité
+# BlaizBot
 
-**Auteur** : Maxime Buirette  
-**Établissement** : [lycée Blaise Cendrars]  
-**Classe** : [3L]  
+### Développement d'une application éducative assisté par Intelligence Artificielle
 
-
-**Année scolaire** : 2025-2026
+<br>
 
 ---
 
-### Résumé du projet
+**Travail de maturité**
+
+---
+
+<br>
+
+|   |   |
+|--:|:--|
+| **Auteur** | Maxime Buirette |
+| **Établissement** | Lycée Blaise Cendrars |
+| **Classe** | 3L |
+| **Année scolaire** | 2025-2026 |
+| **Date de remise** | 21 janvier 2026 |
+
+<br><br>
+
+---
+
+<br>
+
+### Résumé
+
+</div>
 
 Ce travail de maturité explore le **vibe coding**, une nouvelle approche du développement logiciel assistée par intelligence artificielle. À travers la réalisation de **BlaizBot**, une application web éducative full-stack, ce projet démontre comment un développeur peut collaborer efficacement avec des modèles de langage (LLM) pour concevoir, prototyper et déployer une application complète.
 
-<p align="center">
-  <img src="../pages/F-expose/00-page-garde/aperçu-application.png" alt="Aperçu de l'application BlaizBot" width="450">
-</p>
+<div align="center">
 
-*Figure : Aperçu de l'application BlaizBot*
+<br>
 
-**Mots-clés** : Vibe Coding, Intelligence Artificielle, Développement Web, Next.js, Application Éducative, LLM, Prompt Engineering
+<img src="../pages/F-expose/00-page-garde/aperçu-application.png" alt="Aperçu de l'application BlaizBot" width="500">
 
----
+*Aperçu de l'interface élève de BlaizBot*
 
-**Date de remise** : [À compléter]  
-**Nombre de pages** : [À compléter après finalisation]
+<br><br>
 
 ---
 
-> Ce document constitue la version finale du travail de maturité de Maxime Buirette, présentant la méthodologie, la réalisation et l'analyse d'un projet de développement assisté par IA dans un contexte académique.
+<br>
+
+**Mots-clés** : `Vibe Coding` · `Intelligence Artificielle` · `Développement Web` · `Next.js` · `LLM` · `Prompt Engineering`
+
+</div>
