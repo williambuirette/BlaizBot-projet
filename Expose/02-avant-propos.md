@@ -1,6 +1,6 @@
 # Avant-propos
 
-> Ce chapitre présente le projet en quelques mots et explique en toute transparence comment cet exposé a été rédigé.
+> Ce document présente un résumé synthétique du projet BlaizBot, suivi d'une note de transparence expliquant comment j'ai rédigé cet exposé en utilisant l'intelligence artificielle.
 
 ---
 
@@ -8,7 +8,9 @@
 
 ## Le projet en quelques mots
 
-Ce travail de maturité explore le **vibe coding**, une nouvelle manière de programmer en collaborant avec une intelligence artificielle. L'idée est simple : au lieu d'écrire tout le code à la main, le développeur décrit ce qu'il veut obtenir, l'IA propose une solution, puis le développeur teste, corrige et améliore progressivement. Pour tester cette méthode de manière concrète, j'ai développé **BlaizBot**, une application web complète destinée à aider les élèves à réviser leurs cours avec l'aide d'un assistant intelligent.
+Ce travail de maturité porte sur le **vibe coding**, une nouvelle façon de programmer où l'on collabore avec une intelligence artificielle pour écrire du code. Plutôt que de tout coder soi-même ligne par ligne, on décrit ce qu'on veut obtenir en langage naturel, et l'IA génère le code correspondant.
+
+Pour explorer cette approche concrètement, j'ai créé **BlaizBot**, une application web éducative complète. Cette plateforme permet aux professeurs de créer des cours et des quiz, et aux élèves de réviser leurs cours avec l'aide d'un assistant intelligent.
 
 ---
 
