@@ -8,11 +8,36 @@
 |---------|------|
 | **Page de garde** | i |
 | **Remerciements** | ii |
-| **Résumé / Abstract** | iii |
-| **Table des matières** | iv |
-| **Liste des figures** | vi |
-| **Liste des tableaux** | vii |
-| **Liste des abréviations** | viii |
+| **Avant-propos** | iii |
+| **Table des matières** | vii |
+| **Liste des figures** | ix |
+| **Liste des tableaux** | x |
+| **Liste des abréviations** | xi |
+
+---
+
+## Avant-propos
+
+### PARTIE A — Résumé du projet
+
+| Section | Titre | Page |
+|---------|-------|------|
+| | Le projet en quelques mots | iii |
+| | Ce que j'ai réalisé (5 étapes) | iii |
+| | Ce que j'ai appris | iv |
+| | Conclusion du résumé | iv |
+
+### PARTIE B — Note méthodologique sur la rédaction
+
+| Section | Titre | Page |
+|---------|-------|------|
+| | Pourquoi cette note ? | v |
+| | Outils utilisés pour la rédaction | v |
+| | Méthode de travail | v |
+| | Ce que l'IA a fait | vi |
+| | Ce que j'ai fait moi-même | vi |
+| | Pourquoi cette approche est-elle honnête ? | vi |
+| | Limites de cette approche | vii |
 
 ---
 
