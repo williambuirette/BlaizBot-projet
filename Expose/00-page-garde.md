@@ -6,7 +6,6 @@
 
 <br>
 
-# BlaizBot
 
 ### Développement d'une application éducative assisté par Intelligence Artificielle
 
