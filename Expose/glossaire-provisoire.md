@@ -936,4 +936,661 @@ Séquence d'écrans et d'actions qu'un utilisateur suit pour accomplir un object
 
 ---
 
-<!-- PROCHAIN CHAPITRE À TRAITER : 09-chapitre-5.md -->
+---
+
+# Chapitre : 09-chapitre-5.md (Développement de l'application)
+
+> ⚠️ Ce chapitre décrit l'implémentation technique du MVP. Seuls les **nouveaux termes** non définis précédemment sont listés.
+
+## Termes extraits
+
+### 🔤 Anglicismes
+
+**Middleware** *(anglicisme)*  
+*Français : Intergiciel, logiciel intermédiaire*  
+Code qui s'exécute entre la requête de l'utilisateur et la réponse du serveur. Dans Next.js, le middleware (`src/middleware.ts`) vérifie l'authentification et applique les règles RBAC avant d'accéder aux pages.
+
+**JWT (JSON Web Token)** *(anglicisme)*  
+Standard ouvert pour créer des jetons d'authentification sécurisés. Le token contient des informations encodées (identité, rôle) et est signé cryptographiquement. Stocké dans un cookie, il permet de maintenir la session.  
+📎 Spécification : [https://jwt.io](https://jwt.io)
+
+**Cookie** *(anglicisme)*  
+Petit fichier texte stocké par le navigateur, utilisé pour conserver des informations entre les requêtes (session, préférences). Dans BlaizBot, le cookie de session contient le JWT d'authentification.
+
+**Hachage (mot de passe)** *(calque de l'anglais « hashing »)*  
+Transformation cryptographique irréversible d'un mot de passe en une chaîne de caractères fixe. Permet de stocker les mots de passe de manière sécurisée : on compare les hachages, jamais les mots de passe en clair.
+
+**Agile** *(anglicisme)*  
+*Français : Méthode agile*  
+Ensemble de méthodologies de développement favorisant l'itération, la collaboration et l'adaptation au changement. Le vibe coding s'inscrit naturellement dans une approche agile par ses cycles courts.
+
+**Seed (base de données)** *(anglicisme)*  
+*Français : Données d'amorçage, jeu de données initial*  
+Script ou processus qui remplit la base de données avec des données de test ou de démonstration. Permet de travailler avec un environnement réaliste dès le développement.
+
+**Brouillon (isDraft)** *(traduction de « draft »)*  
+État d'un contenu (cours, article) non encore publié. Le professeur peut préparer un cours en mode brouillon avant de le rendre visible aux élèves.
+
+**Responsive / Responsivité** *(anglicisme)*  
+*Français : Adaptatif, conception adaptative*  
+Capacité d'une interface à s'adapter automatiquement à différentes tailles d'écran (ordinateur, tablette, mobile). Grâce à Tailwind CSS, BlaizBot ajuste son affichage selon le support.
+
+**Asynchrone** *(calque de l'anglais « asynchronous »)*  
+Mode d'exécution où les opérations ne bloquent pas le programme en attendant leur résultat. Les appels API et les requêtes IA sont asynchrones pour ne pas figer l'interface.
+
+**Indicateur de chargement** *(anglais : Loading indicator)*  
+Élément visuel (spinner, barre de progression) indiquant qu'une opération est en cours. Améliore l'expérience utilisateur en signalant que l'application n'est pas bloquée.
+
+---
+
+### 🛠️ Outils et applications
+
+**Neon**  
+Service de base de données PostgreSQL serverless, compatible avec Vercel. Offre une mise à l'échelle automatique et une latence réduite pour les applications cloud.  
+📎 Site : [https://neon.tech](https://neon.tech)  
+📎 Documentation : [https://neon.tech/docs](https://neon.tech/docs)
+
+---
+
+### 📦 Technologies et frameworks
+
+**Gemini 2.0 Flash**  
+Version optimisée du modèle Gemini de Google, conçue pour la rapidité. Supporte le multimodal (texte, image, audio, vidéo) et le streaming en temps réel. Utilisé dans BlaizBot pour le chat pédagogique.  
+🏢 Éditeur : Google DeepMind  
+📎 Documentation : [https://ai.google.dev/gemini-api](https://ai.google.dev/gemini-api)
+
+---
+
+### 💻 Termes techniques
+
+**Modèle de données**  
+Représentation abstraite de la structure des données d'une application : entités, attributs et relations. Dans Prisma, le modèle est défini dans `schema.prisma` et génère 46 tables pour BlaizBot.
+
+**Table (base de données)**  
+Structure de stockage organisant les données en lignes (enregistrements) et colonnes (champs). Exemple : table `User` avec colonnes `id`, `email`, `role`, `passwordHash`.
+
+**Relation 1:1 (one-to-one)**  
+Association entre deux entités où chaque enregistrement d'une table correspond à exactement un enregistrement d'une autre. Exemple : `User` ↔ `StudentProfile`.
+
+**Structure hiérarchique**  
+Organisation en niveaux imbriqués. Dans BlaizBot : Cours → Chapitres → Sections → Cartes. Permet une navigation structurée du contenu pédagogique.
+
+**Carte pédagogique**  
+Unité de contenu dans BlaizBot. 5 types : Note (texte libre), Leçon (contenu structuré), Vidéo (lien média), Exercice (question ouverte), Quiz (QCM avec correction automatique).
+
+**QCM (Questionnaire à Choix Multiples)**  
+Type d'exercice où l'élève choisit parmi plusieurs réponses proposées. Permet une correction automatique immédiate.
+
+**Correction automatique**  
+Évaluation instantanée des réponses de l'élève par comparaison avec les réponses attendues. Possible pour les QCM et certains formats structurés.
+
+**Prompt stack**  
+Empilement structuré de prompts envoyés au modèle IA : (1) prompt système de base, (2) contexte RAG du cours, (3) prompt personnalisé de l'élève, (4) historique de conversation. Permet des réponses contextualisées.
+
+**Mode streaming**  
+Affichage progressif des réponses de l'IA, mot par mot, au fur et à mesure de la génération. Rend l'échange plus naturel et réduit l'attente perçue.
+
+**Requête agrégée**  
+Requête de base de données calculant des statistiques (moyennes, comptages, sommes) plutôt que retournant des données individuelles. Utilisée pour les KPI des dashboards.
+
+**Taux de complétion**  
+Pourcentage de contenu terminé par rapport au total. Dans BlaizBot : chapitres complétés / total chapitres d'un cours.
+
+**Taux de réussite**  
+Pourcentage de réponses correctes sur un exercice ou ensemble d'exercices. Indicateur de performance pédagogique.
+
+---
+
+### 📐 Méthodologie
+
+**Développement par phases**  
+Organisation du travail en étapes successives et logiques : Auth → Admin → Professeur → Élève → IA → Stabilisation. Chaque phase a des objectifs et critères de fin définis.
+
+**Boucle TODO → prompt → code → test → commit**  
+Cycle de travail répété pour chaque tâche : identifier la tâche, formuler le prompt, intégrer le code généré, tester immédiatement, valider par un commit. Cœur de la méthode vibe coding.
+
+**Test en conditions réelles**  
+Validation d'une fonctionnalité en l'utilisant comme un vrai utilisateur, avec des données et scénarios réalistes. Plus fiable que les tests unitaires isolés pour détecter les problèmes d'ergonomie.
+
+**Refactoring léger**  
+Réorganisation minimale du code pour améliorer la lisibilité sans modifier le comportement. Découpage de composants volumineux, suppression de code redondant.
+
+**Scénario de bout en bout (E2E)**  
+*Anglais : End-to-end scenario*  
+Test couvrant un parcours utilisateur complet, de l'action initiale au résultat final. Exemple : création de cours → assignation → réalisation par l'élève → consultation des résultats.
+
+---
+
+### 🏗️ Architecture et conception
+
+**Route API**  
+Chemin d'accès exposant une fonctionnalité backend. Dans Next.js : `/api/teacher/courses` pour les opérations sur les cours, `/api/ai/chat` pour le chat IA.
+
+**Route protégée**  
+Page ou API accessible uniquement aux utilisateurs authentifiés avec le bon rôle. Le middleware vérifie le JWT et applique les règles RBAC.
+
+**Redirection automatique**  
+Navigation vers une page spécifique déclenchée par le système. Après connexion, l'utilisateur est redirigé vers le dashboard correspondant à son rôle.
+
+**Séparation des vues**  
+Architecture où chaque rôle a son propre espace avec ses propres données filtrées. Un professeur ne voit pas les mêmes informations qu'un élève ou un admin.
+
+**Filtrage par session**  
+Restriction des données accessibles en fonction de l'utilisateur connecté. Le backend vérifie le rôle et l'identité avant de retourner les données autorisées.
+
+---
+
+### 🎓 Termes éducatifs (BlaizBot)
+
+**Révision libre**  
+Mode d'entraînement où l'élève choisit lui-même les cartes de révision, sans assignation obligatoire. Complète les exercices assignés par le professeur.
+
+**Supplément de révision**  
+Contenu créé par l'élève pour son usage personnel (fiches, notes). Utilise les mêmes types de cartes que les cours mais en mode édition élève.
+
+**Coach IA**  
+Module affichant des indicateurs personnalisés (compréhension, autonomie, rigueur), des badges et des recommandations basées sur l'activité de l'élève.
+
+**Tuteur virtuel**  
+Rôle de l'assistant IA dans BlaizBot : accompagner l'élève dans ses révisions, répondre aux questions, guider la réflexion sans donner directement les réponses.
+
+**Guidage progressif**  
+Approche pédagogique de l'IA : poser des questions, donner des indices, encourager la réflexion avant de fournir la solution complète. Favorise l'apprentissage actif.
+
+**Apprentissage actif**  
+*Anglais : Active learning*  
+Méthode pédagogique où l'apprenant construit ses connaissances par la réflexion et l'action, plutôt que par la réception passive d'informations.
+
+**Échéance (deadline)**  
+Date limite pour rendre un devoir ou compléter un exercice. Affichée dans l'agenda de l'élève et utilisée pour le suivi par le professeur.
+
+---
+
+### 🔐 Sécurité
+
+**HTTPS**  
+*HyperText Transfer Protocol Secure*  
+Protocole de communication sécurisé chiffrant les échanges entre le navigateur et le serveur. Obligatoire en production pour protéger les cookies de session et les données sensibles.
+
+**Message d'erreur générique**  
+Réponse volontairement vague en cas d'échec d'authentification ("Identifiants incorrects") pour ne pas révéler si un email existe dans la base (protection contre l'énumération).
+
+**Variables d'environnement**  
+→ Déjà défini (fichier .env). Ici précisé : stockées dans `.env.local` en développement, configurées directement sur Vercel en production.
+
+---
+
+## Statistiques du chapitre
+
+| Catégorie | Nombre de termes |
+|-----------|------------------|
+| 🔤 Anglicismes | 10 |
+| 🛠️ Outils/Applications | 1 |
+| 📦 Technologies/Frameworks | 1 |
+| 💻 Termes techniques | 13 |
+| 📐 Méthodologie | 5 |
+| 🏗️ Architecture | 5 |
+| 🎓 Termes éducatifs | 7 |
+| 🔐 Sécurité | 3 |
+| **Total** | **45** |
+
+---
+
+*Chapitre traité le : 17 janvier 2026*
+
+---
+
+---
+
+# Chapitre : 10-chapitre-6.md (Fonctionnement de l'application)
+
+> ⚠️ Ce chapitre décrit le fonctionnement concret de l'application terminée. Seuls les **nouveaux termes** non définis précédemment sont listés.
+
+## Termes extraits
+
+### 🔤 Anglicismes
+
+**Client-serveur** *(modèle)*  
+Architecture où le client (navigateur) envoie des requêtes au serveur qui traite les données et renvoie les réponses. Next.js génère le contenu côté serveur avant de l'envoyer au navigateur.
+
+**WebSocket** *(anglicisme)*  
+Protocole de communication bidirectionnelle en temps réel entre le navigateur et le serveur. Non utilisé dans BlaizBot (messagerie simple), mais mentionné comme amélioration possible.
+
+**Push notification** *(anglicisme)*  
+*Français : Notification push, notification instantanée*  
+Message envoyé automatiquement à l'utilisateur sans qu'il ait besoin de rafraîchir l'application. Non implémenté dans le MVP, prévu comme amélioration future.
+
+**Multimodal** *(anglicisme)*  
+Capacité d'un modèle IA à traiter plusieurs types de données : texte, images, audio, vidéo. Gemini 2.0 Flash est multimodal, ce qui permet des interactions riches.
+
+---
+
+### 💻 Termes techniques
+
+**Rendu côté serveur (SSR)**  
+*Anglais : Server-Side Rendering*  
+Technique où le HTML est généré sur le serveur à chaque requête avant d'être envoyé au navigateur. Améliore le référencement (SEO) et le temps de chargement initial.
+
+**Génération statique (SSG)**  
+*Anglais : Static Site Generation*  
+Technique où les pages HTML sont pré-générées au moment du build. Plus rapide que SSR mais moins adapté au contenu dynamique.
+
+**Requête Prisma**  
+Appel à la base de données via l'ORM Prisma. Syntaxe TypeScript typée qui génère automatiquement les requêtes SQL. Exemple : `prisma.user.findMany()`.
+
+**Token JWT (détail)**  
+→ Déjà défini. Ici précisé : le token BlaizBot contient l'identité de l'utilisateur et son rôle, encodés et signés cryptographiquement pour garantir l'intégrité.
+
+**Flux de données**  
+Parcours des informations à travers les différentes couches de l'application : interface → API → base de données → retour. Comprendre les flux aide à débugger et optimiser.
+
+**Requête POST / GET / PUT / DELETE**  
+Méthodes HTTP standard pour les API REST :  
+- GET : récupérer des données  
+- POST : créer une ressource  
+- PUT : modifier une ressource  
+- DELETE : supprimer une ressource
+
+**Rafraîchissement (données)**  
+Rechargement périodique des données depuis le serveur pour afficher les mises à jour. La messagerie BlaizBot rafraîchit régulièrement sans WebSocket.
+
+**Actions rapides (IA)**  
+Boutons pré-configurés dans l'interface de chat qui déclenchent des prompts spécifiques : "Générer un quiz", "Créer un résumé", "Expliquer cet exercice".
+
+---
+
+### 🏗️ Architecture et conception
+
+**Couche frontend / backend**  
+Séparation logique de l'application :  
+- Frontend : interface visible (React, composants UI)  
+- Backend : logique serveur (API routes, accès BDD, authentification)  
+Next.js unifie les deux dans un seul projet.
+
+**Routes API dédiées**  
+Organisation des endpoints par domaine fonctionnel :  
+- `/api/admin/*` : opérations admin  
+- `/api/teacher/*` : opérations professeur  
+- `/api/student/*` : opérations élève  
+- `/api/ai/*` : interactions IA
+
+**Schéma de base de données**  
+Définition formelle de la structure des données : tables, colonnes, types, relations, contraintes. Dans Prisma : fichier `schema.prisma` décrivant les 46 modèles de BlaizBot.
+
+**Table des assignations**  
+Table pivot reliant cours/exercices aux élèves/classes avec métadonnées (date limite, statut). Permet le suivi des devoirs et la gestion des échéances.
+
+**Table de progression**  
+Stockage de l'avancement de chaque élève : sections terminées, scores, temps passé. Alimente les KPI des dashboards.
+
+**Table de résultats**  
+Enregistrement des scores et réponses aux exercices/quiz. Permet la correction, le suivi et le calcul des moyennes.
+
+---
+
+### 🎓 Termes éducatifs (BlaizBot)
+
+**Scénario de démonstration**  
+Séquence d'actions prédéfinie pour montrer le fonctionnement complet de l'application. Le scénario BlaizBot en 7 étapes valide le flux Admin → Prof → Élève → Résultats.
+
+**Comptes de démonstration**  
+Utilisateurs fictifs créés pour tester et présenter l'application. Dans BlaizBot : 1 admin, 2 professeurs, 6 élèves répartis dans 4 classes.
+
+**Cycle pédagogique complet**  
+Enchaînement création → assignation → réalisation → évaluation → suivi. Le scénario de démonstration valide ce cycle de bout en bout.
+
+**Question intermédiaire**  
+Technique pédagogique de l'IA : avant de donner la réponse, poser une question pour guider la réflexion. "Qu'as-tu déjà essayé ?" ou "Quel est le premier terme à isoler ?".
+
+**Score (quiz)**  
+Résultat chiffré d'un exercice, généralement exprimé en fraction (2/3) ou pourcentage (66%). Affiché immédiatement pour les QCM à correction automatique.
+
+**Explication (correction)**  
+Texte accompagnant une réponse incorrecte pour aider l'élève à comprendre son erreur. Améliore la valeur pédagogique des quiz.
+
+---
+
+### 📐 Méthodologie
+
+**Validation de bout en bout**  
+Processus de test couvrant l'intégralité d'un parcours, de l'action initiale au résultat final. Confirme que tous les modules interagissent correctement.
+
+**Preuve de faisabilité**  
+*Anglais : Proof of concept (POC)*  
+Démonstration qu'un concept ou une architecture fonctionne en pratique. Le wireframe codé a servi de preuve de faisabilité avant le développement complet.
+
+---
+
+## Statistiques du chapitre
+
+| Catégorie | Nombre de termes |
+|-----------|------------------|
+| 🔤 Anglicismes | 4 |
+| 💻 Termes techniques | 8 |
+| 🏗️ Architecture | 6 |
+| 🎓 Termes éducatifs | 6 |
+| 📐 Méthodologie | 2 |
+| **Total** | **26** |
+
+---
+
+*Chapitre traité le : 17 janvier 2026*
+
+---
+
+---
+
+# Chapitre : 11-chapitre-7.md (Prospective : l'avenir du vibe coding)
+
+> ⚠️ Chapitre réflexif et prospectif. Nouveaux termes liés à l'évolution du métier, l'éthique et la formation.
+
+## Termes extraits
+
+### 🔤 Anglicismes
+
+**Scope creep** *(anglicisme)*  
+*Français : Dérive du périmètre, glissement de périmètre*  
+Extension progressive et non contrôlée du périmètre d'un projet, ajoutant des fonctionnalités non prévues initialement. Risque majeur en développement, évitable par un cadrage strict.
+
+**Boîte noire** *(calque de l'anglais « black box »)*  
+Système dont on utilise les résultats sans comprendre le fonctionnement interne. Risque du vibe coding : dépendre d'une IA sans comprendre ce qu'elle génère.
+
+---
+
+### 🛠️ Outils et applications
+
+**Cursor**  
+Éditeur de code basé sur VS Code, spécialisé dans l'intégration IA. Permet de dialoguer avec l'IA sur l'ensemble du projet, pas seulement sur le fichier courant. Va plus loin que GitHub Copilot dans l'assistance conversationnelle.  
+📎 Site : [https://cursor.sh](https://cursor.sh)
+
+**GPT-4**  
+Modèle de langage d'OpenAI, successeur de GPT-3.5. Réputé pour sa polyvalence, sa capacité à suivre des instructions complexes et sa performance sur le code. Base de ChatGPT Plus et de nombreuses applications.  
+🏢 Éditeur : OpenAI  
+📎 Documentation : [https://platform.openai.com/docs/models/gpt-4](https://platform.openai.com/docs/models/gpt-4)
+
+---
+
+### 💻 Termes techniques
+
+**Contexte (IA)**  
+Ensemble des informations fournies au modèle pour une requête : prompt système, historique de conversation, fichiers de référence. Les LLM actuels ont une limite de contexte (fenêtre de tokens) qui restreint la taille des projets analysables.
+
+**Fenêtre de contexte**  
+*Anglais : Context window*  
+Nombre maximum de tokens qu'un modèle peut traiter simultanément. Limite actuelle des LLM : les projets très larges dépassent la fenêtre et perdent en cohérence.
+
+**Prédiction statistique**  
+Mécanisme fondamental des LLM : générer le prochain token le plus probable basé sur les patterns appris. Ce n'est pas une "compréhension" mais un calcul de probabilité.
+
+**Code vulnérable**  
+Code contenant des failles de sécurité exploitables : injections SQL, XSS, secrets exposés, etc. L'IA peut générer du code vulnérable sans s'en rendre compte, nécessitant une relecture humaine.
+
+---
+
+### 📐 Méthodologie / Évolution du métier
+
+**Pilote (développeur)**  
+Nouvelle posture du développeur en vibe coding : il définit les objectifs, guide l'IA avec des consignes claires, vérifie les résultats et prend les décisions. Moins exécutant, plus superviseur.
+
+**Automatisation des tâches répétitives**  
+Délégation à l'IA des parties mécaniques du développement : boilerplate, création de pages similaires, formulaires standards. Libère du temps pour les tâches à plus forte valeur ajoutée.
+
+**Vision architecturale**  
+Compétence de conception globale : structurer un projet, organiser les modules, anticiper l'évolution, faire communiquer les composants. Reste entièrement humaine et gagne en importance avec le vibe coding.
+
+**Formation continue**  
+*Anglais : Continuous learning*  
+Apprentissage tout au long de la carrière pour rester à jour face aux évolutions technologiques. Enjeu majeur avec l'émergence des outils IA.
+
+**Auditeur de code généré**  
+Nouveau rôle potentiel : spécialiste vérifiant la qualité, la sécurité et la conformité du code produit par l'IA. Combine compétences techniques et esprit critique.
+
+**Intégrateur IA**  
+Rôle émergent : professionnel spécialisé dans l'intégration d'outils IA dans les équipes et processus de développement existants.
+
+---
+
+### ⚖️ Éthique et société (nouvelle catégorie)
+
+**Propriété intellectuelle (code généré)**  
+Question juridique non résolue : à qui appartient le code généré par l'IA ? À l'utilisateur, à l'éditeur du modèle, aux auteurs des données d'entraînement ? Les législations peinent à suivre.
+
+**Dépendance technologique**  
+Risque de devenir incapable de travailler sans les outils IA. Importance de maintenir des compétences de programmation autonome.
+
+**Impact environnemental (IA)**  
+Coût énergétique de l'entraînement et de l'utilisation des modèles de langage. Chaque requête consomme de l'électricité et génère du CO₂. Facteur à considérer dans une utilisation responsable.
+
+**Équité d'accès**  
+Inégalité d'accès aux meilleurs outils IA (payants, limités géographiquement). Risque de fracture numérique entre ceux qui peuvent utiliser ces outils et les autres.
+
+**Fracture numérique**  
+*Anglais : Digital divide*  
+Écart entre les personnes ayant accès aux technologies et compétences numériques, et celles qui en sont exclues. L'IA pourrait creuser cette fracture si l'accès reste inégal.
+
+---
+
+### 🚧 Risques et limites
+
+**Accumulation de dette technique**  
+Risque d'accepter du code IA fonctionnel mais non optimal : redondances, mauvaises pratiques, complexité inutile. Le gain de temps initial se transforme en coût de maintenance.
+
+**Perte de compréhension**  
+Danger de ne plus comprendre son propre projet quand l'IA écrit tout. En cas de bug ou d'évolution, on se retrouve face à du code non maîtrisé.
+
+**Dépendance psychologique**  
+Perte du réflexe de chercher soi-même, de lire la documentation, de comprendre en profondeur. Confort immédiat qui peut nuire à l'apprentissage long terme.
+
+**Code généré sans contexte**  
+L'IA ne connaît pas les spécificités du projet : contraintes métier, conventions d'équipe, historique de décisions. Elle peut proposer des solutions théoriquement correctes mais inadaptées au contexte réel.
+
+---
+
+### 🔮 Prospective (nouvelle catégorie)
+
+**Développement en langage naturel**  
+Vision future : créer des applications en décrivant ce qu'on veut, sans écrire de code. Possible pour des projets simples, le code restera nécessaire pour les projets complexes.
+
+**Architecte-superviseur**  
+Évolution du rôle de développeur vers 2030 : définir les grandes lignes, valider les choix de l'IA, intervenir sur les parties critiques. Les tâches répétitives entièrement automatisées.
+
+**Spécialiste prompt engineering**  
+Nouveau métier potentiel : expert en formulation de consignes efficaces pour les IA. Combine compétences linguistiques, techniques et compréhension des modèles.
+
+---
+
+## Statistiques du chapitre
+
+| Catégorie | Nombre de termes |
+|-----------|------------------|
+| 🔤 Anglicismes | 2 |
+| 🛠️ Outils/Applications | 2 |
+| 💻 Termes techniques | 4 |
+| 📐 Méthodologie/Évolution | 6 |
+| ⚖️ Éthique et société | 5 |
+| 🚧 Risques et limites | 4 |
+| 🔮 Prospective | 3 |
+| **Total** | **26** |
+
+---
+
+*Chapitre traité le : 17 janvier 2026*
+
+---
+
+---
+
+# Chapitre : 12-chapitre-8.md (Conclusion générale)
+
+> ⚠️ Chapitre de bilan et réflexion. Reprend les concepts-clés du travail. Peu de nouveaux termes, principalement des récapitulatifs et quelques précisions complémentaires.
+
+## Termes extraits
+
+### 🔤 Anglicismes
+
+**Bug** *(anglicisme courant)*  
+*Français : Bogue (officiel mais peu utilisé), erreur de programmation*  
+Défaut dans un programme provoquant un comportement inattendu. Peut aller de l'affichage incorrect à un crash complet. L'IA peut introduire des bugs subtils que seuls les tests révèlent.
+
+---
+
+### 💻 Termes techniques
+
+**WebSockets**  
+Protocole de communication bidirectionnelle persistante entre le client (navigateur) et le serveur. Permet des échanges en temps réel sans rechargement de page. Utilisé pour les messageries instantanées, les notifications push.  
+📎 Documentation : [https://developer.mozilla.org/fr/docs/Web/API/WebSockets_API](https://developer.mozilla.org/fr/docs/Web/API/WebSockets_API)
+
+**Notifications en temps réel**  
+*Anglais : Real-time notifications*  
+Alertes envoyées instantanément à l'utilisateur sans qu'il ait à rafraîchir la page. Nécessite WebSockets ou Server-Sent Events (SSE). Amélioration prioritaire pour BlaizBot.
+
+**Indicateurs de lecture/saisie**  
+*Anglais : Read receipts / Typing indicators*  
+Fonctionnalités de messagerie montrant si le message a été lu ("vu") et si l'interlocuteur est en train d'écrire ("..."). Standard dans les apps modernes, absentes dans la version actuelle de BlaizBot.
+
+---
+
+### 🛠️ Outils et plateformes
+
+**Moodle**  
+Plateforme d'apprentissage en ligne (LMS) open source, très répandue dans l'éducation. Permet de créer des cours, quiz, forums. Une intégration avec BlaizBot faciliterait l'adoption par les écoles.  
+📎 Site : [https://moodle.org](https://moodle.org)
+
+**Google Classroom**  
+Service Google de gestion de classes virtuelles. Largement utilisé dans les écoles. Une intégration permettrait de synchroniser notes, devoirs et élèves entre les deux plateformes.  
+📎 Site : [https://classroom.google.com](https://classroom.google.com)
+
+---
+
+### 🎓 Termes éducatifs / Pédagogie
+
+**LMS (Learning Management System)**  
+*Français : Système de gestion de l'apprentissage*  
+Plateforme logicielle pour administrer, documenter, suivre et diffuser des formations en ligne. Exemples : Moodle, Google Classroom, Canvas. BlaizBot pourrait s'interfacer avec ces systèmes existants.
+
+**Analyse prédictive (éducation)**  
+Application de l'IA pour anticiper les difficultés des élèves avant qu'elles ne se manifestent. Basée sur les patterns de réponses, temps passé, historique. Perspective d'amélioration pour BlaizBot.
+
+**Contenu adaptatif**  
+*Anglais : Adaptive content*  
+Contenu pédagogique qui s'ajuste automatiquement au niveau et au rythme de chaque élève. L'IA permet de personnaliser exercices et explications selon les lacunes détectées.
+
+**Fiches de révision personnalisées**  
+Documents de synthèse générés automatiquement par l'IA, adaptés aux besoins spécifiques de chaque élève. Cible les points faibles identifiés dans les exercices précédents.
+
+---
+
+### 📐 Méthodologie / Compétences
+
+**Compétences transversales**  
+*Anglais : Soft skills, transversal skills*  
+Capacités applicables dans différents contextes : résolution de problèmes, esprit critique, organisation, communication. Le vibe coding développe ces compétences autant que les compétences techniques.
+
+**Esprit critique (face à l'IA)**  
+Capacité à évaluer objectivement les propositions de l'IA, identifier les erreurs, ne pas accepter aveuglément. Compétence essentielle pour un usage efficace du vibe coding.
+
+**Capitaliser (sur l'expérience)**  
+Tirer parti des apprentissages passés pour améliorer ses pratiques futures. La documentation permet de capitaliser : ne pas refaire les mêmes erreurs, réutiliser les solutions qui fonctionnent.
+
+---
+
+### 📝 Bilan et enseignements (récapitulatif)
+
+**Les 5 enseignements clés du projet** *(synthèse)*  
+1. L'IA est puissante mais imparfaite → vérification humaine obligatoire  
+2. Qualité du prompt = qualité du résultat → prompt engineering essentiel  
+3. Tests et validation restent indispensables → l'IA ne "comprend" pas  
+4. Documentation cruciale → traçabilité des décisions  
+5. L'humain garde le contrôle stratégique → architecture, sécurité, logique métier
+
+**Collaboration humain-IA**  
+Modèle de travail où l'humain définit les objectifs et valide les résultats, tandis que l'IA génère les implémentations. Ni remplacement ni opposition, mais complémentarité.
+
+---
+
+## Note sur ce chapitre
+
+Ce chapitre de conclusion reprend et synthétise de nombreux concepts déjà définis dans les chapitres précédents :
+- MVP, wireframe, brainstorming (chapitres 1-4)
+- Next.js, React, TypeScript, Prisma, NextAuth, Vercel (chapitre 5)
+- Hallucinations, prompt engineering, scope creep (chapitres 3, 5, 7)
+- Tests unitaires, déploiement, dette technique (chapitres 5, 7)
+
+Ces termes ne sont pas redéfinis ici pour éviter les doublons. Ils seront consolidés dans le glossaire final.
+
+---
+
+## Statistiques du chapitre
+
+| Catégorie | Nombre de termes |
+|-----------|------------------|
+| 🔤 Anglicismes | 1 |
+| 💻 Termes techniques | 3 |
+| 🛠️ Outils/Plateformes | 2 |
+| 🎓 Termes éducatifs | 4 |
+| 📐 Méthodologie | 3 |
+| 📝 Bilan (synthèse) | 2 |
+| **Total** | **15** |
+
+---
+
+*Chapitre traité le : 17 janvier 2026*
+
+---
+
+---
+
+# 🏁 EXTRACTION TERMINÉE
+
+## Récapitulatif global
+
+| Chapitre | Termes extraits |
+|----------|-----------------|
+| 02-avant-propos | 29 |
+| 04-introduction-generale | 39 |
+| 05-chapitre-1 | 16 |
+| 06-chapitre-2 | 18 |
+| 07-chapitre-3 | 27 |
+| 08-chapitre-4 | 38 |
+| 09-chapitre-5 | 45 |
+| 10-chapitre-6 | 26 |
+| 11-chapitre-7 | 26 |
+| **12-chapitre-8** | **15** |
+| **TOTAL BRUT** | **279 termes** |
+
+## Catégories utilisées
+
+| Emoji | Catégorie |
+|-------|-----------|
+| 🔤 | Anglicismes |
+| 💻 | Termes techniques |
+| 🛠️ | Outils et applications |
+| 📦 | Frameworks et bibliothèques |
+| 🤖 | Intelligence artificielle |
+| 📐 | Méthodologie |
+| 👤 | Personnalités |
+| 🏫 | Domaine éducatif |
+| 🏗️ | Architecture logicielle |
+| 🎓 | Termes éducatifs BlaizBot |
+| 🔐 | Sécurité |
+| ⚖️ | Éthique et société |
+| 🚧 | Risques et limites |
+| 🔮 | Prospective |
+| 📝 | Bilan / Synthèse |
+
+---
+
+## Prochaine étape : CONSOLIDATION
+
+Le fichier `glossaire-provisoire.md` contient **279 termes bruts** avec des doublons potentiels entre chapitres.
+
+**Actions à réaliser :**
+1. Fusionner les définitions dupliquées (garder la plus complète)
+2. Harmoniser le format de chaque entrée
+3. Trier par ordre alphabétique
+4. Créer le fichier `glossaire.md` final (version propre)
+5. Ajouter une section "Index des anglicismes" en annexe
+
+---
+
+*Extraction terminée le : 17 janvier 2026*

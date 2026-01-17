@@ -1027,4 +1027,578 @@ Le vibe coding va continuer à se démocratiser. Les développeurs qui sauront c
 Ce travail de maturité m'a permis de vivre concrètement cette transformation du métier de développeur. L'expérience a été enrichissante et m'a préparé aux défis du développement logiciel de demain. Le vibe coding n'est pas une menace pour les développeurs, mais une opportunité de se concentrer sur ce qui compte vraiment : résoudre des problèmes et créer de la valeur.
 
 ---
+# Glossaire
+
+> Ce glossaire rassemble les termes techniques, anglicismes et concepts spécialisés utilisés dans cet exposé. Les termes anglais sont accompagnés de leur équivalent français lorsqu'il existe. Les définitions sont adaptées au contexte du vibe coding et du projet BlaizBot.
+
+---
+
+## A
+
+**Agile** *(méthode)* — Ensemble de méthodologies de développement logiciel favorisant l'itération, la collaboration et l'adaptation au changement. Le vibe coding s'inscrit naturellement dans une approche agile par ses cycles courts.
+
+**API** *(Application Programming Interface)* — Interface de programmation permettant à des logiciels de communiquer entre eux. Une API web expose des points d'accès (endpoints) pour effectuer des opérations sur les données.
+
+**App Router** — Système de routage de Next.js 13+ basé sur l'arborescence des dossiers dans le répertoire `app/`.
+
+**Application web** — Programme informatique accessible via un navigateur, sans installation locale. Fonctionne selon le modèle client-serveur.
+
+**Apprentissage actif** *(active learning)* — Méthode pédagogique où l'apprenant construit ses connaissances par la réflexion et l'action, plutôt que par réception passive.
+
+**Assignation** — Attribution d'un cours, devoir ou quiz à un élève ou une classe, éventuellement avec une date limite.
+
+**Asynchrone** — Mode d'exécution où les opérations ne bloquent pas le programme en attendant leur résultat. Essentiel pour les appels API et requêtes IA.
+
+---
+
+## B
+
+**Backend** *(partie serveur)* — Partie d'une application qui s'exécute sur le serveur : logique métier, accès à la base de données, authentification, API.
+
+**Backlog** *(carnet de commandes)* — Liste ordonnée et priorisée des tâches ou fonctionnalités à développer dans un projet.
+
+**Base de données** — Système organisé de stockage et de gestion de données structurées.
+
+**Bibliothèque** *(library)* — Collection de fonctions et de code préécrit réutilisable. Exemple : React est une bibliothèque d'interface utilisateur.
+
+**Boilerplate** *(code standard)* — Code générique et répétitif nécessaire au fonctionnement mais n'apportant pas de valeur métier directe.
+
+**Boucle de feedback** *(feedback loop)* — Processus cyclique où le résultat d'une action influence l'action suivante. En vibe coding : test → identification des problèmes → reformulation du prompt.
+
+**Brainstorming** *(remue-méninges)* — Technique de créativité visant à produire un maximum d'idées sans jugement initial.
+
+**Bug** *(bogue)* — Erreur ou défaut dans un programme provoquant un comportement inattendu ou incorrect.
+
+---
+
+## C
+
+**CDN** *(Content Delivery Network)* — Réseau de serveurs distribués géographiquement pour servir le contenu depuis le serveur le plus proche de l'utilisateur.
+
+**Chatbot** *(agent conversationnel)* — Programme simulant une conversation avec un utilisateur, généralement via du texte.
+
+**CI/CD** *(intégration et déploiement continus)* — Pratiques automatisant les tests (CI) et le déploiement (CD) à chaque modification du code.
+
+**Claude** — Famille de modèles de langage développée par Anthropic. Versions : Sonnet, Opus, Haiku.
+
+**Commit** *(validation)* — Dans Git, enregistrement des modifications du code à un moment donné, accompagné d'un message descriptif.
+
+**Composant** — En React, bloc de code réutilisable encapsulant une partie de l'interface utilisateur.
+
+**Cookie** — Petit fichier stocké par le navigateur pour conserver des informations entre les requêtes (session, préférences).
+
+**CRUD** — Acronyme de Create, Read, Update, Delete. Désigne les quatre opérations de base sur les données.
+
+---
+
+## D
+
+**Dashboard** *(tableau de bord)* — Interface regroupant des indicateurs clés et informations importantes pour un type d'utilisateur.
+
+**Déploiement** *(deployment)* — Publication d'une application sur un serveur ou une plateforme cloud pour la rendre accessible aux utilisateurs.
+
+**Design system** *(système de design)* — Ensemble de règles de conception unifiées : palette de couleurs, typographie, espacements, composants standardisés.
+
+**Dette technique** *(technical debt)* — Coût futur engendré par des choix de développement rapides ou simplifiés. Comme une dette financière, elle génère des « intérêts ».
+
+---
+
+## E
+
+**Endpoint** *(point d'accès)* — URL spécifique d'une API correspondant à une opération (GET, POST, PUT, DELETE).
+
+**ESLint** — Outil d'analyse statique de code JavaScript/TypeScript détectant les erreurs et problèmes de style.
+
+---
+
+## F
+
+**Fenêtre de contexte** *(context window)* — Nombre maximum de tokens qu'un modèle de langage peut traiter simultanément. Limite actuelle des LLM.
+
+**Frontend** *(interface cliente)* — Partie visible d'une application, manipulée par l'utilisateur. S'exécute dans le navigateur.
+
+**Full-stack** *(pile complète)* — Développement couvrant à la fois le frontend et le backend.
+
+---
+
+## G
+
+**Gemini** — Famille de modèles de langage multimodaux développée par Google DeepMind. Gemini 2.0 Flash est utilisé dans BlaizBot.
+
+**Git** — Système de gestion de versions distribué permettant de suivre les modifications du code et de collaborer.
+
+**GitHub** — Plateforme d'hébergement de code utilisant Git, avec fonctionnalités de collaboration (issues, pull requests).
+
+**GitHub Copilot** — Assistant de programmation IA intégré aux éditeurs de code, suggérant du code en temps réel.
+
+**GPT** *(Generative Pre-trained Transformer)* — Architecture de réseau de neurones développée par OpenAI, base des LLM modernes.
+
+---
+
+## H
+
+**Hachage** *(hashing)* — Transformation cryptographique irréversible, utilisée pour stocker les mots de passe de manière sécurisée.
+
+**Hallucination** — Phénomène où un modèle d'IA génère des informations fausses ou inventées tout en les présentant avec assurance.
+
+**Header** *(en-tête)* — Barre supérieure d'une page web contenant généralement le titre et le menu utilisateur.
+
+**HTTPS** — Protocole de communication sécurisé chiffrant les échanges entre le navigateur et le serveur.
+
+---
+
+## I
+
+**IA générative** *(generative AI)* — Catégorie d'intelligence artificielle capable de créer du contenu nouveau (texte, code, images) à partir d'instructions.
+
+**Intelligence artificielle (IA)** — Branche de l'informatique visant à créer des systèmes capables d'effectuer des tâches nécessitant normalement l'intelligence humaine.
+
+**Interface utilisateur (UI)** *(User Interface)* — Ensemble des éléments visuels et interactifs permettant d'interagir avec une application.
+
+**Itération** — Cycle répété d'un processus. En vibe coding, chaque itération produit une version améliorée du code.
+
+---
+
+## J
+
+**JWT** *(JSON Web Token)* — Standard de jetons d'authentification sécurisés contenant des informations encodées et signées cryptographiquement.
+
+---
+
+## K
+
+**Kickoff** *(lancement)* — Document ou prompt initial détaillé pour démarrer une phase de développement.
+
+**KPI** *(Key Performance Indicator)* — Indicateur clé de performance permettant d'évaluer la progression vers un objectif.
+
+---
+
+## L
+
+**Layout** *(mise en page)* — Structure visuelle partagée entre plusieurs pages : en-tête, menu latéral, pied de page.
+
+**Linter** — Outil d'analyse statique parcourant le code pour détecter des erreurs sans l'exécuter.
+
+**LLM** *(Large Language Model)* — Grand modèle de langage entraîné sur d'immenses quantités de texte. Exemples : GPT-4, Claude, Gemini.
+
+**LMS** *(Learning Management System)* — Plateforme de gestion de l'apprentissage en ligne. Exemples : Moodle, Google Classroom.
+
+---
+
+## M
+
+**Markdown** — Langage de balisage léger pour formater du texte avec une syntaxe simple (titres, listes, liens, code).
+
+**Middleware** *(intergiciel)* — Code s'exécutant entre la requête de l'utilisateur et la réponse du serveur.
+
+**Migration** — Script décrivant une modification du schéma de base de données, permettant de versionner son évolution.
+
+**Mock** *(données simulées)* — Données fictives utilisées pendant le développement pour tester sans connexion réelle.
+
+**MVP** *(Minimum Viable Product)* — Produit minimum viable : version avec juste assez de fonctionnalités pour être utilisable.
+
+---
+
+## N
+
+**Next.js** — Framework React pour le développement d'applications web, offrant le rendu côté serveur et le routage automatique.
+
+**NextAuth** — Bibliothèque d'authentification pour Next.js gérant connexion, sessions et rôles utilisateurs.
+
+---
+
+## O
+
+**ORM** *(Object-Relational Mapping)* — Technique permettant de manipuler une base de données relationnelle comme des objets dans le code. Prisma est un ORM.
+
+---
+
+## P
+
+**PostgreSQL** — Système de gestion de base de données relationnelle open source, réputé pour sa robustesse.
+
+**Prettier** — Outil de formatage automatique de code appliquant un style cohérent.
+
+**Prisma** — ORM moderne pour Node.js et TypeScript, générant un client typé à partir du schéma de base de données.
+
+**Prompt** *(invite, consigne)* — Instruction donnée à un modèle d'IA pour obtenir une réponse ou une génération.
+
+**Prompt engineering** *(ingénierie de prompts)* — Art de formuler des instructions précises pour obtenir les meilleurs résultats d'une IA générative.
+
+**Prompt système** *(system prompt)* — Instructions de base définissant le comportement et les limites d'une IA au début d'une conversation.
+
+**Prototype** — Version préliminaire d'une application permettant de tester et valider les concepts.
+
+---
+
+## Q
+
+**QCM** *(Questionnaire à Choix Multiples)* — Type d'exercice où l'élève choisit parmi plusieurs réponses proposées.
+
+---
+
+## R
+
+**RAG** *(Retrieval-Augmented Generation)* — Technique combinant un modèle de langage avec une base de connaissances externe pour des réponses plus précises.
+
+**RBAC** *(Role-Based Access Control)* — Système de permissions où les droits d'accès sont attribués selon le rôle de l'utilisateur.
+
+**React** — Bibliothèque JavaScript pour construire des interfaces utilisateur basées sur des composants réutilisables.
+
+**Refactoring** *(refactorisation)* — Réorganisation du code pour améliorer sa lisibilité ou maintenabilité, sans changer son comportement.
+
+**Responsive** *(adaptatif)* — Capacité d'une interface à s'adapter automatiquement à différentes tailles d'écran.
+
+**Route** — URL ou chemin d'accès à une ressource ou une page dans une application web.
+
+---
+
+## S
+
+**Scope creep** *(dérive du périmètre)* — Extension progressive et non contrôlée du périmètre d'un projet.
+
+**Seed** *(données d'amorçage)* — Script remplissant la base de données avec des données de test ou démonstration.
+
+**Serverless** *(sans serveur)* — Architecture où le code s'exécute dans des fonctions éphémères gérées par le cloud.
+
+**shadcn/ui** — Collection de composants React réutilisables basés sur Radix UI et stylés avec Tailwind CSS.
+
+**Sidebar** *(barre latérale)* — Zone de navigation verticale située sur le côté de l'écran.
+
+**Stack technique** *(pile technologique)* — Ensemble des technologies utilisées pour développer une application.
+
+**Streaming** — Affichage progressif des réponses de l'IA, mot par mot, au fur et à mesure de la génération.
+
+---
+
+## T
+
+**Tailwind CSS** — Framework CSS utilitaire utilisant des classes comme `bg-blue-500` plutôt que des styles sémantiques.
+
+**Terminal** — Interface en ligne de commande permettant d'exécuter des instructions textuelles.
+
+**TODO list** *(liste de tâches)* — Document listant les actions à accomplir dans un projet.
+
+**Token** — Unité de base utilisée par les LLM pour traiter le texte. Un mot français ≈ 1,3 tokens.
+
+**Travail de maturité** — En Suisse, travail de recherche réalisé par les élèves en fin de gymnase (équivalent du lycée français).
+
+**TypeScript** — Sur-ensemble de JavaScript ajoutant le typage statique, permettant de détecter les erreurs à la compilation.
+
+---
+
+## U
+
+**UI** *(User Interface)* — Interface utilisateur, partie visible d'une application.
+
+**UX** *(User Experience)* — Expérience utilisateur, qualité de l'interaction avec un produit.
+
+---
+
+## V
+
+**Validation humaine** — Étape indispensable du vibe coding où le développeur vérifie que le code généré fonctionne correctement.
+
+**Variables d'environnement** — Paramètres de configuration stockés en dehors du code source (fichier `.env`).
+
+**Vercel** — Plateforme cloud de déploiement spécialisée pour Next.js, offrant déploiement automatique et CDN global.
+
+**Vibe coding** — Nouvelle approche de programmation où le développeur décrit ce qu'il veut en langage naturel et laisse l'IA générer le code. Terme popularisé par Andrej Karpathy en février 2025.
+
+**VS Code** *(Visual Studio Code)* — Éditeur de code open source développé par Microsoft, extensible via des extensions.
+
+---
+
+## W
+
+**WebSocket** — Protocole de communication bidirectionnelle en temps réel entre le navigateur et le serveur.
+
+**Wireframe** *(maquette fil de fer)* — Représentation schématique d'une interface montrant la structure sans le design graphique final.
+
+---
+
+## Personnalité citée
+
+**Andrej Karpathy** — Chercheur en IA, ex-directeur de l'IA chez Tesla, co-fondateur d'OpenAI. A popularisé le terme « vibe coding » via un post sur la plateforme X en février 2025.
+
+---
+
+## Index des anglicismes
+
+Les termes suivants sont des anglicismes couramment utilisés en informatique. Leur équivalent français est indiqué entre parenthèses.
+
+| Anglicisme | Équivalent français |
+|------------|---------------------|
+| Backend | Partie serveur |
+| Backlog | Carnet de commandes |
+| Boilerplate | Code standard |
+| Brainstorming | Remue-méninges |
+| Bug | Bogue |
+| Commit | Validation |
+| Dashboard | Tableau de bord |
+| Deadline | Échéance |
+| Deployment | Déploiement |
+| Design system | Système de design |
+| Feedback | Rétroaction |
+| Frontend | Interface cliente |
+| Full-stack | Pile complète |
+| Header | En-tête |
+| Kickoff | Lancement |
+| Layout | Mise en page |
+| Mock | Données simulées |
+| Placeholder | Espace réservé |
+| Prompt | Invite, consigne |
+| Refactoring | Refactorisation |
+| Responsive | Adaptatif |
+| Scope creep | Dérive du périmètre |
+| Seed | Données d'amorçage |
+| Serverless | Sans serveur |
+| Sidebar | Barre latérale |
+| Stack | Pile technologique |
+| Streaming | Diffusion progressive |
+| Template | Gabarit |
+| Token | Jeton |
+| Wireframe | Maquette fil de fer |
+
+---
+
+# Bibliographie
+
+> Références documentaires, techniques et ressources web consultées dans le cadre de ce travail de maturité sur le vibecoding.
+
+---
+
+## I. Publications scientifiques
+
+1. **Vaswani, A., Shazeer, N., Parmar, N., et al.** (2017). *Attention Is All You Need*. arXiv:1706.03762.  
+   — Article fondateur de l'architecture Transformer, base des LLM modernes.  
+   https://arxiv.org/abs/1706.03762
+
+2. **OpenAI.** (2023). *GPT-4 Technical Report*. arXiv:2303.08774.  
+   https://arxiv.org/abs/2303.08774
+
+---
+
+## II. Sources primaires — Origine du vibecoding
+
+3. **Karpathy, A.** (2025, 2 février). Publication sur X (anciennement Twitter) introduisant le terme *vibe coding*.  
+   — Chercheur en IA, ex-directeur IA Tesla, co-fondateur OpenAI.  
+   https://x.com/karpathy
+
+---
+
+## III. Assistants IA conversationnels
+
+### ChatGPT — OpenAI
+4. **OpenAI.** (2025). *ChatGPT*.  
+   — Assistant conversationnel basé sur GPT-4.  
+   - Application : https://chat.openai.com  
+   - Documentation API : https://platform.openai.com/docs
+
+### Claude — Anthropic
+5. **Anthropic.** (2025). *Claude 3.5 Sonnet*.  
+   — Assistant IA avec focus sur la sécurité et l'alignement.  
+   - Application : https://claude.ai  
+   - Documentation API : https://docs.anthropic.com
+
+### Gemini — Google DeepMind
+6. **Google DeepMind.** (2025). *Gemini 2.0 Flash*.  
+   — Modèle multimodal de Google.  
+   - Application : https://gemini.google.com  
+   - Documentation API : https://ai.google.dev/docs
+
+---
+
+## IV. Environnements de développement
+
+### Éditeurs de code
+7. **Microsoft.** (2025). *Visual Studio Code*.  
+   — Éditeur de code open source, extensible.  
+   - Site : https://code.visualstudio.com  
+   - Documentation : https://code.visualstudio.com/docs
+
+8. **Cursor Inc.** (2025). *Cursor*.  
+   — Éditeur basé sur VS Code, spécialisé intégration IA.  
+   https://cursor.sh
+
+### Assistant de programmation
+9. **GitHub.** (2025). *GitHub Copilot*.  
+   — Assistant de complétion de code basé sur l'IA.  
+   - Site : https://github.com/features/copilot  
+   - Documentation : https://docs.github.com/copilot
+
+---
+
+## V. Contrôle de version
+
+10. **Git.** (2025). *Git — Distributed Version Control System*.  
+    — Système de gestion de versions décentralisé.  
+    - Site : https://git-scm.com  
+    - Documentation : https://git-scm.com/doc
+
+11. **GitHub.** (2025). *GitHub Platform*.  
+    — Plateforme d'hébergement de code et collaboration.  
+    - Site : https://github.com  
+    - Documentation : https://docs.github.com
+
+12. **GitHub.** (2025). *GitHub Desktop*.  
+    — Interface graphique pour Git.  
+    https://desktop.github.com
+
+---
+
+## VI. Frameworks et bibliothèques — Frontend
+
+### Framework principal
+13. **Vercel.** (2025). *Next.js 15*.  
+    — Framework React avec rendu hybride SSR/SSG.  
+    - Site : https://nextjs.org  
+    - Documentation : https://nextjs.org/docs
+
+14. **Meta.** (2025). *React 19*.  
+    — Bibliothèque JavaScript pour interfaces utilisateur.  
+    - Site : https://react.dev  
+    - Documentation : https://react.dev/learn
+
+### Styles et composants
+15. **Tailwind Labs.** (2025). *Tailwind CSS v4*.  
+    — Framework CSS utilitaire.  
+    - Site : https://tailwindcss.com  
+    - Documentation : https://tailwindcss.com/docs
+
+16. **shadcn.** (2025). *shadcn/ui*.  
+    — Collection de composants React réutilisables.  
+    - Site : https://ui.shadcn.com  
+    - Documentation : https://ui.shadcn.com/docs
+
+17. **Radix.** (2025). *Radix UI*.  
+    — Primitives d'accessibilité pour React.  
+    - Site : https://www.radix-ui.com  
+    - Documentation : https://www.radix-ui.com/docs
+
+---
+
+## VII. Technologies Backend
+
+### Langage
+18. **Microsoft.** (2025). *TypeScript 5.x*.  
+    — Surensemble typé de JavaScript.  
+    - Site : https://www.typescriptlang.org  
+    - Documentation : https://www.typescriptlang.org/docs
+
+### ORM et base de données
+19. **Prisma Data Inc.** (2025). *Prisma ORM*.  
+    — ORM moderne pour Node.js et TypeScript.  
+    - Site : https://www.prisma.io  
+    - Documentation : https://www.prisma.io/docs
+
+20. **PostgreSQL Global Development Group.** (2025). *PostgreSQL 16*.  
+    — Système de gestion de base de données relationnelle.  
+    - Site : https://www.postgresql.org  
+    - Documentation : https://www.postgresql.org/docs
+
+### Authentification
+21. **Auth.js.** (2025). *NextAuth.js v5*.  
+    — Solution d'authentification pour Next.js.  
+    - Site : https://authjs.dev  
+    - Documentation : https://authjs.dev/getting-started
+
+---
+
+## VIII. Plateformes d'hébergement
+
+22. **Vercel Inc.** (2025). *Vercel Platform*.  
+    — Plateforme de déploiement pour applications web.  
+    - Site : https://vercel.com  
+    - Documentation : https://vercel.com/docs
+
+23. **Neon Inc.** (2025). *Neon*.  
+    — Base de données PostgreSQL serverless.  
+    - Site : https://neon.tech  
+    - Documentation : https://neon.tech/docs
+
+---
+
+## IX. Outils de qualité de code
+
+24. **ESLint.** (2025). *ESLint*.  
+    — Linter pour JavaScript et TypeScript.  
+    - Site : https://eslint.org  
+    - Documentation : https://eslint.org/docs
+
+25. **Prettier.** (2025). *Prettier*.  
+    — Formateur de code opinionné.  
+    - Site : https://prettier.io  
+    - Documentation : https://prettier.io/docs
+
+---
+
+## X. Design et prototypage
+
+26. **Figma Inc.** (2025). *Figma*.  
+    — Outil de design collaboratif en ligne.  
+    - Site : https://www.figma.com  
+    - Documentation : https://help.figma.com
+
+---
+
+## XI. Plateformes éducatives (référence)
+
+27. **Moodle.** (2025). *Moodle LMS*.  
+    — Système de gestion d'apprentissage open source.  
+    - Site : https://moodle.org  
+    - Documentation : https://docs.moodle.org
+
+28. **Google.** (2025). *Google Classroom*.  
+    — Plateforme éducative en ligne.  
+    https://classroom.google.com
+
+---
+
+## XII. Standards et spécifications
+
+29. **ECMA International.** (2025). *JSON (JavaScript Object Notation)*.  
+    https://www.json.org
+
+30. **IETF.** (2015). *JWT — JSON Web Token (RFC 7519)*.  
+    https://jwt.io
+
+31. **MDN Web Docs.** (2025). *CSS — Cascading Style Sheets*.  
+    https://developer.mozilla.org/fr/docs/Web/CSS
+
+32. **MDN Web Docs.** (2025). *WebSockets API*.  
+    https://developer.mozilla.org/fr/docs/Web/API/WebSockets_API
+
+33. **Gruber, J.** (2004). *Markdown*.  
+    https://daringfireball.net/projects/markdown/
+
+---
+
+## XIII. Outils bureautiques
+
+34. **Microsoft.** (2025). *Microsoft Word*.  
+    — Traitement de texte pour la rédaction de l'exposé.  
+    https://www.microsoft.com/microsoft-365/word
+
+---
+
+## Notes méthodologiques
+
+- Toutes les URL ont été vérifiées et sont accessibles au **17 janvier 2026**.
+- Les numéros de version correspondent aux outils utilisés durant le développement de BlaizBot.
+- Les documentations techniques sont citées comme sources primaires pour l'implémentation.
+- Le format de citation suit les conventions académiques adaptées aux ressources numériques.
+
+---
+
+| Statistiques | Valeur |
+|:-------------|:-------|
+| **Références totales** | 34 |
+| **Publications scientifiques** | 2 |
+| **Documentations techniques** | 18 |
+| **Plateformes et services** | 8 |
+| **Standards et spécifications** | 5 |
+| **Personnalités citées** | 1 |
+
+---
 Maxime Buirette
