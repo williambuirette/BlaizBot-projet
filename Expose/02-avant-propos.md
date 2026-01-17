@@ -69,15 +69,15 @@ Cette note a donc pour objectif de clarifier exactement ce que j'ai fait moi-mê
 
 ## Outils utilisés pour la rédaction
 
-Pour rédiger cet exposé, j'ai utilisé plusieurs outils complémentaires :
+J'ai utilisé plusieurs outils complémentaires pour rédiger cet exposé.
 
-**ChatGPT (OpenAI)** a servi principalement pour le brainstorming initial, la structuration des idées et la relecture de certains passages. Je lui posais des questions sur la structure à adopter, sur la clarté de mes explications, ou pour reformuler des phrases trop techniques.
+**ChatGPT (OpenAI)** a servi au brainstorming initial et à la structuration. Par exemple, quand je bloquais sur la manière d'expliquer le concept de "prompt engineering", je lui posais la question : "Comment vulgariser ce terme pour quelqu'un qui n'a jamais codé ?" Sa reformulation m'aidait à trouver mes propres mots. Je l'utilisais aussi pour repérer les passages trop techniques.
 
-**Claude (Anthropic)**, intégré dans Visual Studio Code via GitHub Copilot, a été utilisé pour la rédaction de certains paragraphes à partir de mes notes et de mes consignes. Je lui fournissais le contexte (ce que je voulais expliquer, le style souhaité, les informations factuelles) et il proposait une première version que je relisais et modifiais ensuite. Claude a également été utilisé pour la mise en page des fichiers Markdown, l'organisation des chapitres et la structuration visuelle du document (titres, tableaux, listes).
+**Claude (Anthropic)**, intégré dans VS Code via GitHub Copilot, a été mon outil principal pour la rédaction. Je lui donnais mes notes brutes (souvent désordonnées), le contexte métier, et le ton souhaité. Il proposait une première version. Puis je relisais phrase par phrase pour corriger, préciser et "m'approprier" le texte. En moyenne, je gardais 60-70% de ses propositions telles quelles, le reste était retravaillé. Claude m'a aussi beaucoup aidé pour la mise en page Markdown (titres, tableaux, listes).
 
-**Gemini (Google)** a été utilisé ponctuellement comme troisième source d'assistance, notamment pour comparer des réponses ou obtenir un angle différent sur certaines questions.
+**Gemini (Google)** servait ponctuellement de "troisième avis", notamment pour comparer des approches ou obtenir un angle différent sur une question.
 
-**Visual Studio Code** a été mon environnement de travail principal, aussi bien pour le code que pour la rédaction de l'exposé. L'avantage de VS Code est de pouvoir travailler directement sur les fichiers Markdown du projet tout en ayant accès aux différentes interfaces d'IA en parallèle. J'avais généralement plusieurs fenêtres ouvertes : VS Code avec le code et les fichiers de l'exposé, plus les interfaces web de ChatGPT, Claude et Gemini accessibles à côté. Cette configuration me permettait de passer rapidement d'un outil à l'autre selon le besoin, et de copier-coller du contexte entre l'application et les assistants IA.
+**Visual Studio Code** a été mon environnement de travail principal, aussi bien pour le code que pour l'exposé. L'avantage ? Travailler directement sur les fichiers Markdown du projet tout en ayant les IA accessibles. J'avais généralement plusieurs fenêtres ouvertes : VS Code avec le code et l'exposé, plus les interfaces web de ChatGPT, Claude et Gemini à côté. Cette configuration me permettait de passer rapidement d'un outil à l'autre et de copier-coller du contexte entre l'application et les assistants IA.
 
 **Microsoft Word** a été utilisé pour la mise en forme finale, l'ajout des captures d'écran et la préparation du document à imprimer.
 
@@ -93,11 +93,11 @@ Ma méthode de rédaction a suivi un processus en plusieurs étapes, similaire �
 
 **Étape 2 : Structuration du plan.** Avec l'aide de ChatGPT, j'ai défini une table des matières détaillée qui couvre tous les aspects du projet. Ce plan a évolué au fil de la rédaction, mais il m'a donné un cadre clair dès le départ.
 
-**Étape 3 : Rédaction assistée par chapitre.** Pour chaque chapitre, je procédais ainsi :
-- Je relisais mes notes et les éléments factuels (code, commits, captures)
-- Je rédigeais un premier brouillon, parfois avec l'aide de l'IA pour formuler certains passages
-- Je relisais intégralement pour vérifier l'exactitude et le style
-- Je corrigeais, reformulais et complétais jusqu'à obtenir un texte qui me convenait
+**Étape 3 : Rédaction assistée par chapitre.** Pour chaque chapitre, même routine :
+- Relecture de mes notes et des éléments factuels (code, commits, captures)
+- Premier brouillon, parfois avec l'aide de l'IA pour formuler certains passages
+- Relecture intégrale pour vérifier l'exactitude et le style
+- Corrections et reformulations jusqu'à obtenir un texte qui me convenait
 
 **Étape 4 : Vérification des faits.** J'ai systématiquement vérifié que les informations techniques étaient correctes : versions des outils, noms des technologies, fonctionnement réel de l'application. L'IA peut inventer ou se tromper, donc cette vérification était indispensable.
 
@@ -127,7 +127,7 @@ Malgré l'assistance de l'IA, le travail humain est resté central :
 
 - **La vérification factuelle** : j'ai vérifié chaque information technique en la comparant avec le code réel, les commits Git et les captures d'écran.
 
-- **Le style et le ton** : j'ai relu et modifié chaque passage pour qu'il corresponde à ma manière de m'exprimer. L'IA a tendance à être plus formelle ou plus générique que je ne le souhaite.
+- **Le style et le ton** : j'ai relu et modifié chaque passage pour qu'il corresponde à ma manière de m'exprimer. L'IA a tendance à être plus formelle ou plus générique que je ne le souhaite. Par exemple, elle écrivait souvent "il est important de noter que..." alors que je préfère aller droit au but.
 
 - **La cohérence globale** : j'ai assuré que les chapitres s'enchaînent logiquement et que le fil conducteur reste clair du début à la fin.
 

@@ -4,32 +4,32 @@
 
 ## Contexte et enjeux
 
-L'intelligence artificielle transforme en profondeur de nombreux secteurs professionnels, et le développement logiciel connaît actuellement une mutation particulièrement significative. L'émergence de modèles de langage avancés (LLM) tels que GPT-4 d'OpenAI, Claude d'Anthropic ou Gemini de Google DeepMind a ouvert des possibilités inédites : générer du code à partir d'instructions en langage naturel, proposer des corrections automatiques, assister les développeurs dans leurs choix d'architecture ou détecter des erreurs avant même l'exécution.
+L'intelligence artificielle transforme en profondeur de nombreux secteurs professionnels. Le développement logiciel vit une mutation particulièrement significative. GPT-4 d'OpenAI, Claude d'Anthropic, Gemini de Google DeepMind : ces modèles de langage avancés (LLM) ont ouvert des possibilités inédites. Générer du code à partir d'instructions en langage naturel. Proposer des corrections automatiques. Assister les développeurs dans leurs choix d'architecture. Détecter des erreurs avant même l'exécution.
 
 En février 2025, le terme **vibe coding** s'est diffusé dans la communauté des développeurs, notamment suite à un message d'Andrej Karpathy sur la plateforme X. Cette approche décrit une nouvelle manière de programmer où le développeur "suit son instinct" et collabore étroitement avec une IA pour accélérer la production de code. Le vibe coding ne consiste pas à "coder sans réfléchir", mais à déléguer stratégiquement certaines tâches répétitives à l'IA tout en conservant le contrôle sur les décisions importantes. Le développeur devient un "pilote" qui guide l'IA avec des consignes précises, teste les propositions et corrige les erreurs.
 
-Cette évolution soulève des questions fondamentales : comment garantir la qualité et la maintenabilité du code produit ? Quel niveau d'expertise technique reste nécessaire ? Quelles compétences nouvelles (comme le prompt engineering) deviennent essentielles ? Quelles sont les limites réelles de l'automatisation, et où l'intervention humaine demeure-t-elle indispensable ? Ce travail de maturité propose d'explorer ces questions à travers une expérimentation concrète et documentée.
+Cette évolution soulève des questions fondamentales : comment garantir la qualité du code produit ? Quel niveau d'expertise reste nécessaire ? Quelles compétences nouvelles (comme le prompt engineering) deviennent essentielles ? Où l'intervention humaine demeure-t-elle indispensable ? J'ai voulu explorer ces questions à travers une expérimentation concrète et documentée.
 
 ---
 
 ## Problématique
 
-Ce travail de maturité cherche à répondre à la question centrale suivante :
+La question centrale que j'explore dans ce travail :
 
 > **Dans quelle mesure le vibe coding permet-il de développer une application web complète et fonctionnelle, et quelles sont les opportunités et les limites de cette approche en termes de rapidité, de qualité et d'accessibilité ?**
 
-Pour répondre à cette problématique de manière pragmatique, j'ai choisi de réaliser un projet concret de bout en bout : **BlaizBot**, une application web éducative full-stack intégrant une intelligence artificielle. BlaizBot est conçue pour aider les enseignants à faire réviser leurs élèves en s'appuyant sur un assistant pédagogique intelligent. L'application comprend trois interfaces (Administrateur, Professeur, Élève) et intègre un chatbot IA capable de guider les élèves dans leurs révisions.
+Pour y répondre concrètement, j'ai réalisé un projet de bout en bout : **BlaizBot**, une application web éducative full-stack intégrant une intelligence artificielle. BlaizBot est conçue pour aider les enseignants à faire réviser leurs élèves en s'appuyant sur un assistant pédagogique intelligent. L'application comprend trois interfaces (Administrateur, Professeur, Élève) et intègre un chatbot IA capable de guider les élèves dans leurs révisions.
 
-L'objectif n'est pas seulement de produire une application fonctionnelle, mais surtout de **documenter méthodiquement la démarche** : de la conception initiale (brainstorming, wireframe) jusqu'au déploiement du prototype, en passant par chaque étape de développement assisté par IA. Cette documentation rigoureuse permet d'évaluer concrètement l'efficacité du vibe coding, d'identifier ses forces (rapidité, automatisation) et ses faiblesses (hallucinations, dette technique potentielle).
+Mon objectif n'est pas seulement de produire une application fonctionnelle. Je veux surtout **documenter méthodiquement la démarche** : de la conception initiale (brainstorming, wireframe) jusqu'au déploiement du prototype, en passant par chaque étape de développement assisté par IA. Cette documentation permet d'évaluer concrètement l'efficacité du vibe coding, d'identifier ses forces (rapidité, automatisation) et ses faiblesses (hallucinations, dette technique potentielle).
 
 ---
 
 ## Objectifs du travail
 
-Ce travail de maturité poursuit cinq objectifs complémentaires :
+J'ai fixé cinq objectifs complémentaires à ce travail :
 
 ### 1. Comprendre et expérimenter le vibe coding
-Tester cette méthodologie émergente sur un projet réel, identifier ses avantages concrets (gain de temps, automatisation des tâches répétitives) et ses limites (nécessité de validation humaine, risques d'erreurs). L'expérimentation porte sur l'utilisation de plusieurs modèles d'IA (ChatGPT pour la planification, Claude pour le code, Gemini pour le chatbot) avec des agents spécialisés.
+Tester cette méthodologie émergente sur un projet réel. Identifier ses avantages concrets (gain de temps, automatisation des tâches répétitives) et ses limites (nécessité de validation humaine, risques d'erreurs). J'ai utilisé plusieurs modèles d'IA : ChatGPT pour la planification, Claude pour le code, Gemini pour le chatbot. Avec des agents spécialisés.
 
 ### 2. Développer une application fonctionnelle
 Créer BlaizBot, un MVP (Minimum Viable Product) démontrable comprenant :
@@ -42,17 +42,17 @@ Créer BlaizBot, un MVP (Minimum Viable Product) démontrable comprenant :
 La stack technique retenue est moderne : Next.js 16.1.1, React 19.2.3, TypeScript 5.x (strict), Tailwind CSS v4, Prisma 6.19.
 
 ### 3. Documenter rigoureusement la démarche
-Expliquer chaque phase de manière structurée et traçable :
+Chaque phase est expliquée de manière structurée et traçable :
 - Les échanges avec l'IA (prompts, réponses, itérations)
 - Les décisions architecturales et techniques
 - Les erreurs rencontrées et les corrections apportées
 - Les commits Git et l'historique de développement
 - Les captures d'écran illustrant la progression
 
-Cette documentation constitue la preuve concrète de la méthode vibe coding et permet d'en évaluer l'efficacité réelle.
+Cette documentation constitue la preuve concrète de la méthode. Elle permet d'évaluer l'efficacité réelle du vibe coding.
 
 ### 4. Analyser les résultats de manière critique
-Évaluer objectivement :
+J'évalue objectivement :
 - Le gain de temps réel par rapport à un développement traditionnel
 - La qualité du code généré (lisibilité, maintenabilité, performance)
 - Le nombre d'itérations nécessaires par fonctionnalité
@@ -70,13 +70,13 @@ Anticiper l'évolution du métier de développeur à l'horizon 2030 :
 
 ## Structure de l'exposé
 
-Cet exposé académique est organisé en **cinq parties thématiques** regroupant **huit chapitres**, suivies d'annexes techniques.
+Cet exposé s'organise en **cinq parties thématiques** regroupant **huit chapitres**, suivies d'annexes techniques.
 
 ### PREMIÈRE PARTIE : CADRE THÉORIQUE
 
 **Chapitre 1 — Le Vibe Coding : une nouvelle approche du développement**
 
-Ce chapitre pose les fondements théoriques du vibe coding. Il en retrace l'origine (message d'Andrej Karpathy, février 2025), explique le fonctionnement des LLM (GPT, Claude, Gemini) et décrit la boucle itérative caractéristique du vibe coding : Intention → Génération par l'IA → Test → Correction → Amélioration. Il analyse ensuite les avantages (automatisation, rapidité, accessibilité) et les limites (hallucinations, nécessité de validation) tout en précisant le rôle central de l'humain comme "pilote" et juge final.
+Ce chapitre pose les fondements théoriques du vibe coding. Je retrace son origine (message d'Andrej Karpathy, février 2025), j'explique le fonctionnement des LLM (GPT, Claude, Gemini) et je décris la boucle itérative caractéristique : Intention → Génération par l'IA → Test → Correction → Amélioration. J'analyse ensuite les avantages (automatisation, rapidité, accessibilité) et les limites (hallucinations, nécessité de validation) en précisant le rôle central de l'humain comme "pilote" et juge final.
 
 ### DEUXIÈME PARTIE : PRÉSENTATION DU PROJET
 
