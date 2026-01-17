@@ -226,11 +226,16 @@ BlaizBot-projet/
 
 ## 📚 Ressources Vibe Coding
 
+### Références méthodologiques
 - [Andrej Karpathy - "Vibe Coding"](https://twitter.com/karpathy/status/1886192184808149383) - Tweet originel
 - [Simon Willison - AI-assisted coding](https://simonwillison.net/) - Bonnes pratiques
 - [Cursor Documentation](https://cursor.sh/docs) - IDE IA-first
 
+### Documentation interne
+- [docs/HUMANISATION_TEXTE.md](docs/HUMANISATION_TEXTE.md) - Guide complet d'humanisation de texte IA
+- [.github/agents/humanize.agent.md](.github/agents/humanize.agent.md) - Agent @Humanize
+
 ---
 
 **Auteur** : Maxime Buirette  
-**Dernière mise à jour** : 22 décembre 2025
+**Dernière mise à jour** : 17 janvier 2026

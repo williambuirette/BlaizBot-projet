@@ -7,12 +7,11 @@
 | Section | Page |
 |---------|------|
 | **Page de garde** | i |
-| **Remerciements** | ii |
-| **Avant-propos** | iii |
-| **Table des matières** | vii |
-| **Liste des figures** | ix |
-| **Liste des tableaux** | x |
-| **Liste des abréviations** | xi |
+| **Avant-propos** | ii |
+| **Table des matières** | vi |
+| **Liste des figures** | viii |
+| **Liste des tableaux** | ix |
+| **Liste des abréviations** | x |
 
 ---
 
