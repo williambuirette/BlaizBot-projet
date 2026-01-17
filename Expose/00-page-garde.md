@@ -1,6 +1,8 @@
 # Page de garde
 
-![Logo BlaizBot](../pages/F-expose/00-page-garde/logo-blaizbot.png)
+<p align="center">
+  <img src="../pages/F-expose/00-page-garde/logo-blaizbot.png" alt="Logo BlaizBot" width="180">
+</p>
 
 ---
 
@@ -21,7 +23,11 @@
 
 Ce travail de maturité explore le **vibe coding**, une nouvelle approche du développement logiciel assistée par intelligence artificielle. À travers la réalisation de **BlaizBot**, une application web éducative full-stack, ce projet démontre comment un développeur peut collaborer efficacement avec des modèles de langage (LLM) pour concevoir, prototyper et déployer une application complète.
 
-![Aperçu de l'application BlaizBot](../pages/F-expose/00-page-garde/aperçu-application.png)
+<p align="center">
+  <img src="../pages/F-expose/00-page-garde/aperçu-application.png" alt="Aperçu de l'application BlaizBot" width="450">
+</p>
+
+*Figure : Aperçu de l'application BlaizBot*
 
 **Mots-clés** : Vibe Coding, Intelligence Artificielle, Développement Web, Next.js, Application Éducative, LLM, Prompt Engineering
 
