@@ -1,5 +1,3 @@
-![Logo BlaizBot](../pages/F-expose/00-page-garde/logo-blaizbot.png)
-
 # BlaizBot
 
 ## Développement d'une application éducative assisté par Intelligence Artificielle
@@ -28,7 +26,6 @@ Ce travail de maturité explore le **vibe coding**, une nouvelle approche du dé
 
 L'objectif est double : d'une part, créer une plateforme fonctionnelle permettant aux professeurs de gérer des cours et aux élèves de réviser avec l'aide d'un assistant IA ; d'autre part, documenter et analyser cette méthode de développement émergente où l'humain guide l'IA plutôt que d'écrire chaque ligne de code manuellement.
 
-![Aperçu de l'application BlaizBot](../pages/F-expose/00-page-garde/aperçu-application.png)
 
 ---
 
