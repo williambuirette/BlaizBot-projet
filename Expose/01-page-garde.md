@@ -18,7 +18,7 @@
 
 *La Chaux-de-Fonds, janvier 2026*
 
----
+<div style="page-break-after: always;"></div>
 
 # Résumé
 

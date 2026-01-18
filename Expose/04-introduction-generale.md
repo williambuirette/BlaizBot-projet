@@ -4,42 +4,42 @@
 
 ## Contexte et enjeux
 
-L'intelligence artificielle transforme en profondeur de nombreux secteurs professionnels. Le développement logiciel vit une mutation particulièrement significative. GPT-4 d'OpenAI, Claude d'Anthropic, Gemini de Google DeepMind : ces modèles de langage avancés (LLM) ont ouvert des possibilités inédites. Générer du code à partir d'instructions en langage naturel. Proposer des corrections automatiques. Assister les développeurs dans leurs choix d'architecture. Détecter des erreurs avant même l'exécution.
+L'intelligence artificielle transforme en profondeur de nombreux secteurs professionnels. Le développement logiciel, en particulier, vit une vraie mutation. ChatGPT d'OpenAI, Claude d'Anthropic, Gemini de Google DeepMind : ces modèles de langage avancés (LLM) ont ouvert des possibilités qu'on n'imaginait pas il y a deux ans. Générer du code à partir d'instructions en langage naturel. Proposer des corrections automatiques. Assister les développeurs dans leurs choix d'architecture. Détecter des erreurs avant même l'exécution.
 
-En février 2025, le terme **vibe coding** s'est diffusé dans la communauté des développeurs, notamment suite à un message d'Andrej Karpathy sur la plateforme X. Cette approche décrit une nouvelle manière de programmer où le développeur "suit son instinct" et collabore étroitement avec une IA pour accélérer la production de code. Le vibe coding ne consiste pas à "coder sans réfléchir", mais à déléguer stratégiquement certaines tâches répétitives à l'IA tout en conservant le contrôle sur les décisions importantes. Le développeur devient un "pilote" qui guide l'IA avec des consignes précises, teste les propositions et corrige les erreurs.
+En février 2025, le terme **vibe coding** s'est répandu dans la communauté des développeurs, après un message d'Andrej Karpathy sur la plateforme X. L'idée ? Une nouvelle manière de programmer où le développeur "suit son instinct" et collabore étroitement avec une IA pour accélérer la production de code. Attention, le vibe coding ne consiste pas à "coder sans réfléchir". Il s'agit plutôt de déléguer les tâches répétitives à l'IA tout en gardant le contrôle sur les décisions importantes. Le développeur devient un "pilote" qui guide l'IA avec des consignes précises, teste les propositions, et corrige les erreurs.
 
-Cette évolution soulève des questions fondamentales : comment garantir la qualité du code produit ? Quel niveau d'expertise reste nécessaire ? Quelles compétences nouvelles (comme le prompt engineering) deviennent essentielles ? Où l'intervention humaine demeure-t-elle indispensable ? J'ai voulu explorer ces questions à travers une expérimentation concrète et documentée.
+Mais cette évolution soulève des questions de fond. Comment garantir la qualité du code produit ? Quel niveau d'expertise reste nécessaire ? Quelles compétences nouvelles — comme le prompt engineering — deviennent essentielles ? Et surtout : où l'intervention humaine reste-t-elle indispensable ? J'ai voulu explorer ces questions à travers une expérimentation concrète et documentée.
 
 ---
 
 ## Problématique
 
-La question centrale que j'explore dans ce travail :
+La question centrale de ce travail :
 
 > **Dans quelle mesure le vibe coding permet-il de développer une application web complète et fonctionnelle, et quelles sont les opportunités et les limites de cette approche en termes de rapidité, de qualité et d'accessibilité ?**
 
-Pour y répondre concrètement, j'ai réalisé un projet de bout en bout : **BlaizBot**, une application web éducative full-stack intégrant une intelligence artificielle. BlaizBot est conçue pour aider les enseignants à faire réviser leurs élèves en s'appuyant sur un assistant pédagogique intelligent. L'application comprend trois interfaces (Administrateur, Professeur, Élève) et intègre un chatbot IA capable de guider les élèves dans leurs révisions.
+Pour y répondre, j'ai réalisé un projet de bout en bout : **BlaizBot**, une application web éducative full-stack avec intelligence artificielle intégrée. BlaizBot aide les enseignants à faire réviser leurs élèves grâce à un assistant pédagogique intelligent. Concrètement, l'application propose trois interfaces (Administrateur, Professeur, Élève) et intègre un chatbot IA capable de guider les élèves dans leurs révisions.
 
-Mon objectif n'est pas seulement de produire une application fonctionnelle. Je veux surtout **documenter méthodiquement la démarche** : de la conception initiale (brainstorming, wireframe) jusqu'au déploiement du prototype, en passant par chaque étape de développement assisté par IA. Cette documentation permet d'évaluer concrètement l'efficacité du vibe coding, d'identifier ses forces (rapidité, automatisation) et ses faiblesses (hallucinations, dette technique potentielle).
+Mon objectif n'est pas seulement de produire une application qui fonctionne. Je veux surtout **documenter méthodiquement chaque étape** : de la conception initiale (brainstorming, wireframe) jusqu'au déploiement du prototype, en passant par toutes les phases de développement assisté par IA. Pourquoi ? Parce que cette documentation permet d'évaluer concrètement l'efficacité du vibe coding — ses forces (rapidité, automatisation) comme ses faiblesses (hallucinations, dette technique potentielle).
 
 ---
 
 ## Objectifs du travail
 
-J'ai fixé cinq objectifs complémentaires à ce travail :
+J'ai fixé cinq objectifs à ce travail :
 
 ### 1. Comprendre et expérimenter le vibe coding
-Tester cette méthodologie émergente sur un projet réel. Identifier ses avantages concrets (gain de temps, automatisation des tâches répétitives) et ses limites (nécessité de validation humaine, risques d'erreurs). J'ai utilisé plusieurs modèles d'IA : ChatGPT pour la planification, Claude pour le code, Gemini pour le chatbot. Avec des agents spécialisés.
+Tester cette méthodologie émergente sur un projet réel. Identifier ce qui fonctionne vraiment (gain de temps, automatisation) et ce qui pose problème (validation humaine nécessaire, risques d'erreurs). Pour ça, j'ai utilisé plusieurs modèles d'IA : ChatGPT pour la planification, Claude pour le code, Gemini pour le chatbot. Le tout orchestré par des agents spécialisés.
 
 ### 2. Développer une application fonctionnelle
-Créer BlaizBot, un MVP (Minimum Viable Product) démontrable comprenant :
-- Une authentification multi-rôles avec gestion des permissions (NextAuth v5)
+Créer BlaizBot, un MVP (Minimum Viable Product) démontrable avec :
+- Une authentification multi-rôles et gestion des permissions (NextAuth v5)
 - Une base de données complète (46 modèles Prisma sur PostgreSQL)
 - Trois interfaces distinctes (Admin, Professeur, Élève)
 - Un assistant IA pédagogique intégré (Gemini 2.0 Flash)
 - Un déploiement automatisé (Vercel)
 
-La stack technique retenue est moderne : Next.js 16.1.1, React 19.2.3, TypeScript 5.x (strict), Tailwind CSS v4, Prisma 6.19.
+La stack technique est moderne : Next.js 16.1.1, React 19.2.3, TypeScript 5.x (strict), Tailwind CSS v4, Prisma 6.19.
 
 ### 3. Documenter rigoureusement la démarche
 Chaque phase est expliquée de manière structurée et traçable :
@@ -49,7 +49,7 @@ Chaque phase est expliquée de manière structurée et traçable :
 - Les commits Git et l'historique de développement
 - Les captures d'écran illustrant la progression
 
-Cette documentation constitue la preuve concrète de la méthode. Elle permet d'évaluer l'efficacité réelle du vibe coding.
+Cette documentation, c'est la preuve concrète de la méthode. Elle permet d'évaluer l'efficacité réelle du vibe coding.
 
 ### 4. Analyser les résultats de manière critique
 J'évalue objectivement :
@@ -57,14 +57,14 @@ J'évalue objectivement :
 - La qualité du code généré (lisibilité, maintenabilité, performance)
 - Le nombre d'itérations nécessaires par fonctionnalité
 - Les types d'erreurs produites par l'IA (hallucinations, incohérences)
-- Le rôle essentiel de l'intervention humaine (validation, tests, architecture)
+- Le rôle de l'intervention humaine (validation, tests, architecture)
 
 ### 5. Proposer une réflexion prospective
-Anticiper l'évolution du métier de développeur à l'horizon 2030 :
-- Transformation des compétences requises (de "codeur" à "architecte-superviseur")
-- Impact sur l'éducation et la formation en informatique
-- Enjeux éthiques (propriété intellectuelle, dépendance technologique)
-- Vision du développement logiciel assisté par IA en 2030
+Anticiper l'évolution du métier de développeur d'ici 2030 :
+- Comment les compétences vont-elles évoluer ? (de "codeur" à "architecte-superviseur")
+- Quel impact sur l'éducation et la formation en informatique ?
+- Quels enjeux éthiques ? (propriété intellectuelle, dépendance technologique)
+- À quoi ressemblera le développement logiciel assisté par IA en 2030 ?
 
 ---
 
@@ -76,19 +76,19 @@ Cet exposé s'organise en **cinq parties thématiques** regroupant **huit chapit
 
 **Chapitre 1 — Le Vibe Coding : une nouvelle approche du développement**
 
-Ce chapitre pose les fondements théoriques du vibe coding. Je retrace son origine (message d'Andrej Karpathy, février 2025), j'explique le fonctionnement des LLM (GPT, Claude, Gemini) et je décris la boucle itérative caractéristique : Intention → Génération par l'IA → Test → Correction → Amélioration. J'analyse ensuite les avantages (automatisation, rapidité, accessibilité) et les limites (hallucinations, nécessité de validation) en précisant le rôle central de l'humain comme "pilote" et juge final.
+Ce chapitre pose les fondements théoriques. Je retrace l'origine du vibe coding (message d'Andrej Karpathy, février 2025), j'explique comment fonctionnent les LLM (GPT, Claude, Gemini) et je décris la boucle itérative caractéristique : Intention → Génération par l'IA → Test → Correction → Amélioration. J'analyse ensuite les avantages (automatisation, rapidité, accessibilité) et les limites (hallucinations, validation nécessaire) en précisant le rôle central de l'humain comme "pilote" et juge final.
 
 ### DEUXIÈME PARTIE : PRÉSENTATION DU PROJET
 
 **Chapitre 2 — Blaiz'Bot : contexte du projet**
 
-Ce chapitre présente BlaizBot en détail : une application éducative web avec trois interfaces (Admin, Professeur, Élève), un assistant IA pédagogique, et des fonctionnalités de gestion de cours, d'exercices et de suivi de progression. Il expose les motivations du projet (tester le vibe coding en conditions réelles, répondre à un besoin pédagogique concret) et définit précisément le périmètre du MVP avec ses limites assumées (pas de plateforme LMS complète, pas d'interface Parent dans la V1).
+Ce chapitre présente BlaizBot en détail : une application éducative web avec trois interfaces (Admin, Professeur, Élève), un assistant IA pédagogique, et des fonctionnalités de gestion de cours, d'exercices et de suivi de progression. J'expose les motivations du projet (tester le vibe coding en conditions réelles, répondre à un besoin pédagogique concret) et je définis précisément le périmètre du MVP — avec ses limites assumées (pas de plateforme LMS complète, pas d'interface Parent dans la V1).
 
 ### TROISIÈME PARTIE : MÉTHODOLOGIE ET CONCEPTION
 
 **Chapitre 3 — Pré-projet : de l'idée au wireframe**
 
-Ce chapitre détaille la phase de préparation méthodologique avant le premier commit de code :
+Ce chapitre détaille la phase de préparation avant le premier commit de code :
 - Brainstorming et cadrage du MVP avec ChatGPT
 - Organisation du projet (prompt système, fils de discussion thématiques)
 - Choix des outils (VS Code, GitHub, Vercel, Word)
@@ -118,7 +118,7 @@ Ce chapitre décrit la création du prototype interactif :
 
 **Chapitre 5 — Développement de l'application (implémentation du MVP)**
 
-Ce chapitre constitue le cœur technique de l'exposé. Il documente l'implémentation complète du MVP :
+C'est le cœur technique de l'exposé. Ce chapitre documente l'implémentation complète du MVP :
 - Initialisation du dépôt Next.js 16.1.1 avec TypeScript strict et Tailwind v4
 - Traduction du wireframe en routes Next.js (App Router, layouts partagés)
 - Intégration des composants UI shadcn/ui
@@ -135,7 +135,7 @@ Ce chapitre constitue le cœur technique de l'exposé. Il documente l'implément
 
 **Chapitre 6 — Fonctionnement de l'application**
 
-Ce chapitre présente l'application finale en fonctionnement :
+Ce chapitre présente l'application finale telle qu'elle fonctionne :
 - Architecture technique globale (diagrammes)
 - Parcours utilisateur détaillés pour chaque rôle
 - Fonctionnement de l'assistant IA (RAG, contexte, streaming)
@@ -146,7 +146,7 @@ Ce chapitre présente l'application finale en fonctionnement :
 
 **Chapitre 7 — Prospective : l'avenir du vibe coding**
 
-Ce chapitre propose une analyse prospective :
+Ce chapitre propose une analyse tournée vers l'avenir :
 - État actuel du vibe coding (outils disponibles, adoption, limites)
 - Impact sur le métier de développeur (transformation des compétences)
 - Évolution des compétences requises (prompt engineering, architecture)
@@ -160,7 +160,7 @@ Ce chapitre propose une analyse prospective :
 Le chapitre final propose une synthèse :
 - Récapitulatif des travaux réalisés et objectifs atteints
 - Apports personnels et compétences acquises (techniques, méthodologiques, transversales)
-- Limites du projet et difficultés rencontrées (honnêteté académique)
+- Limites du projet et difficultés rencontrées (en toute honnêteté)
 - Perspectives d'amélioration de BlaizBot (court, moyen et long terme)
 - Réflexion finale sur le vibe coding et son avenir
 
@@ -170,7 +170,7 @@ Le chapitre final propose une synthèse :
 
 **Glossaire** : 70+ termes techniques définis (API, LLM, MVP, Next.js, Prisma, RAG, vibe coding, etc.)
 
-**Bibliographie** : Sources académiques, documentation technique, articles de blog, outils utilisés.
+**Bibliographie** : Sources académiques, documentation technique, outils utilisés.
 
 ---
 
