@@ -39,7 +39,7 @@ Exemples chemins complets :
 - pages/D-teacher/D-05-courses/D-05-04-04new.png         → Nouveau cours
 ```
 
-> 📖 Voir [PAGES-TREE.md](../pages/E-docs/PAGES-TREE.md) pour l'arborescence complète (~136 fichiers).
+> 📖 Voir [PAGES-TREE.md](../../pages/E-docs/PAGES-TREE.md) pour l'arborescence complète (~136 fichiers).
 
 ---
 
